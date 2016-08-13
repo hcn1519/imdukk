@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  
+  <!--materialize 아이콘-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <!--navbar(상단바) 설정-->
+  <%= render 'layouts/navbar' %>
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+  
+  <!--footer 설정-->
+  <%= render 'layouts/footer' %>
+  
+</body>
+</html>

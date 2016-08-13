@@ -17,10 +17,11 @@ class User < ActiveRecord::Base
       # 이미 있는 이메일인지 확인한다.
       email = auth.info.email
       user = User.where(:email => email).first  
+      
       unless self.where(email: auth.info.email).exists?
-
         # 없다면 새로운 데이터를 생성한다.
         if user.nil?
+          # 트위터는 email을 제공하지 않음
           if auth.provider == "twitter"
             user = User.new(
               name: auth.info.name,
@@ -49,6 +50,7 @@ class User < ActiveRecord::Base
 
   end
 
+  # email이 없어도 가입이 되도록 설정
   def email_required?
     false
   end

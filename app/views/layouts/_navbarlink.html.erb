@@ -1,23 +1,24 @@
+<!--기본 셋팅-->
 <ul class="right hide-on-med-and-down">
-    <li><a href="#"><i class="material-icons">search</i></a></li>
-    <% if user_signed_in? %>
-      <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
-      <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'waves-effect waves-light btn indigo') %></li>
-    <% else %>
-      <li><a href="/users/sign_in" class="waves-effect waves-light btn yellow">로그인</a></li>      
-    <% end %>
-        
+  <li><a href="#"><i class="material-icons">search</i></a></li>
+  <% if user_signed_in? %>
+    <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
+    <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'waves-effect waves-light btn indigo') %></li>
+  <% else %>
+    <li><a href="/users/sign_in" class="waves-effect waves-light btn yellow">로그인</a></li>      
+  <% end %>
+  <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+</ul>
+  
+<!--모바일 셋팅-->
+<ul class="side-nav" id="mobile-demo">
+  <li><a href="#">Search</a></li>
+  <% if user_signed_in? %>
+    <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete) %></li>
     
-    <li><a href="#"><i class="material-icons">more_vert</i></a></li>
-  </ul>
-  <ul class="side-nav" id="mobile-demo">
-    <li><a href="#">Search</a></li>
-    <% if user_signed_in? %>
-      <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete) %></li>
-      
-    <% else %>
-      <li><a href="/users/sign_in">로그인</a></li>
-    <% end %>
-    
-    <li><a href="#">더보기</a></li>
-  </ul>
+  <% else %>
+    <li><a href="/users/sign_in">로그인</a></li>
+  <% end %>
+  
+  <li><a href="#">더보기</a></li>
+</ul>

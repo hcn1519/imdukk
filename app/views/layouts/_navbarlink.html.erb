@@ -1,24 +1,58 @@
+<style type="text/css">
+  /*font-awesome 아이콘 크기 설정*/
+  .iconSize {
+    font-size: 2rem;
+  }
+</style>
+
+
 <!--기본 셋팅-->
 <ul class="right hide-on-med-and-down">
-  <li><a href="#"><i class="material-icons">search</i></a></li>
+  
   <% if user_signed_in? %>
     <li><a href="#"><i class="material-icons">perm_identity</i></a></li>
     <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'waves-effect waves-light btn indigo') %></li>
   <% else %>
     <li><a href="/users/sign_in" class="waves-effect waves-light btn yellow">로그인</a></li>      
   <% end %>
-  <li><a href="#"><i class="material-icons">more_vert</i></a></li>
+  
+  <li><a class="dropdown-button" href="#!" data-activates="setCategory">아이돌<i class="material-icons right">arrow_drop_down</i></a></li>
+  <li>
+    <a href="#" class="iconSize">
+      <i class="fa fa-user iconSize" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <%= link_to "#createMissionModal", :class => 'modal-trigger' do %>
+      <i class="large material-icons">mode_edit</i>
+    <% end %>
+  </li>
 </ul>
   
 <!--모바일 셋팅-->
-<ul class="side-nav" id="mobile-demo">
-  <li><a href="#">Search</a></li>
+<ul class="side-nav" id="mobile-sideNav">
+  
   <% if user_signed_in? %>
     <li><%= link_to('로그아웃', destroy_user_session_path, :method => :delete) %></li>
     
   <% else %>
     <li><a href="/users/sign_in">로그인</a></li>
   <% end %>
-  
-  <li><a href="#">더보기</a></li>
+  <li><a class="dropdown-button" href="#!" data-activates="setCategory">아이돌</a></li>
+  <li>
+    <a href="#">
+      개인정보
+    </a>
+  </li>
+  <li>
+    <%= link_to "#createMissionModal", :class => 'modal-trigger' do %>
+      미션 만들기
+    <% end %>
+  </li>
 </ul>
+
+<!--카테고리 드랍다운 -->
+<%= render 'layouts/navDropdown' %>
+
+<!--미션 제작 모달 -->
+<%= render 'layouts/createMissionModal' %>

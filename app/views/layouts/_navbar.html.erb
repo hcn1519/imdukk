@@ -1,7 +1,12 @@
-<nav>
+<style type="text/css">
+  .button-collapse{
+    float: right;
+  }
+</style>
+<nav class="amber">
   <div class="nav-wrapper">
-    <%= link_to '로고', root_path, :class => 'brand-logo' %>
-    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+    <%= link_to '로고', root_path, :class => 'brand-logo center' %>
+    <a href="#" data-activates="mobile-sideNav" class="button-collapse right"><i class="material-icons">menu</i></a>
     
     <!--navbar 들어가는 링크-->
     <%= render 'layouts/navbarlink' %>
@@ -10,5 +15,8 @@
 </nav>
 
 <script>
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({
+    edge: 'right',
+    closeOnClick: true
+    });
 </script>

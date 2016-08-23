@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/index'
+  get 'home/timeline'
 
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks' }
   

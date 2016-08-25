@@ -1,14 +1,32 @@
 <!-- Modal Structure -->
-<div id="createMissionModal" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
+<div class="ui modal" id="createMissionModalContent">
+  <i class="close icon"></i>
+  <div class="header">
+    Profile Picture
   </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="/images/test2.jpg">
+    </div>
+    <div class="description">
+      <div class="ui header">We've auto-chosen a profile image for you.</div>
+      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
+      <p>Is it okay to use this photo?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
   </div>
 </div>
 
 <script>
-  $('.modal-trigger').leanModal();
+ $('#createMissionModal').click(function(){
+  $('#createMissionModalContent').modal('show');
+ });
 </script>

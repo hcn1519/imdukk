@@ -19,7 +19,7 @@
       <div class="col s12 m4">
         <div class="card">
           <div class="card-image basic-card">
-            <img class="basic-card-thumbnail" src="images/basic<%= i %>.png">
+            <img class="basic-card-thumbnail" src="/images/basic<%= i %>.png">
             <span class="card-title"><%= title[i-1] %></span>
           </div>
         </div>
@@ -27,26 +27,31 @@
     <% end %>
   </div>
 </div>
-<div class="section">
-   
-   <div class="row">
-     <% for i in 1..6 do %>
-        <div class="col s12 m4">
-          <div class="card">
-            <div class="card-image">
-              <img src="images/test<%= i %>.jpg">
-              <span class="card-title">Card Title</span>
-            </div>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      <% end %>  
+
+<div class="ui link cards">
+<% for i in 1..6 do %>
+  <div class="card">
+    <div class="image">
+      <img src="/images/test<%= i %>.jpg">
     </div>
-        
+    <div class="content">
+      <div class="header">Matt Giampietro</div>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Matthew is an interior designer living in New York.
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+      <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+    </div>
+    </div>
+<% end %>
 </div>

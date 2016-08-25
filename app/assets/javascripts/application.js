@@ -14,4 +14,9 @@
 //= require jquery_ujs
 //= require materialize-sprockets
 //= require turbolinks
-//= require_tree .
+
+//= require semantic/form.min
+//= require semantic/dimmer.min
+//= require semantic/modal.min
+//= require semantic/transition.min
+

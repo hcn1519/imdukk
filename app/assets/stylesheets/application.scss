@@ -1,4 +1,4 @@
-@import "materialize";
+@import 'materialize';
 @import "font-awesome";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -15,4 +15,10 @@
  *= require_tree .
  *= require_self
  */
+ @import 'semantic/card.css';
+ @import 'semantic/form.css';
+ @import 'semantic/input.css';
+ @import 'semantic/modal.css';
+ @import 'semantic/dimmer.min.css';
+ @import 'semantic/transition.min.css';
  

@@ -6,7 +6,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
 
-gem 'materialize-sass'
+gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem "font-awesome-rails"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -12,11 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require materialize-sprockets
+//= require semantic-ui
 //= require turbolinks
 
-//= require semantic/form.min
-//= require semantic/dimmer.min
-//= require semantic/modal.min
-//= require semantic/transition.min
 

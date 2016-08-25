@@ -1,16 +1,41 @@
 <style type="text/css">
-  .button-collapse{
-    float: right;
+  i.icon, i.icons {
+    font-size: 1.7rem;
   }
 </style>
-<nav class="amber">
-  <div class="nav-wrapper">
-    <%= link_to image_tag("/images/logo.png"), root_path, :class => 'brand-logo center' %>
-    <a href="#" data-activates="mobile-sideNav" class="button-collapse right"><i class="material-icons">menu</i></a>
+<!--<nav class="amber">-->
+<!--  <div class="nav-wrapper">-->
+<!--    <%#= link_to image_tag("/images/logo.png"), root_path, :class => 'brand-logo center' %>-->
+<!--    <a href="#" data-activates="mobile-sideNav" class="button-collapse right"><i class="material-icons">menu</i></a>-->
     
     <!--navbar 들어가는 링크-->
-    <%= render 'layouts/navbarlink' %>
+<!--    <%#= render 'layouts/navbarlink' %>-->
     
-  </div>
-</nav>
+<!--  </div>-->
+<!--</nav>-->
 
+
+<!--nav bar-->
+<div class="ui menu fixed" style="background: #ffc718; height: 60px">
+  <div class="header item borderless">
+    <img class="logo_image" src="/images/white_duck_logo.png">
+  </div>
+  
+  <div class="right item borderless">
+    <div class="ui simple dropdown item borderless">
+        아이돌 <i class="dropdown icon"></i>
+        <div class="menu">
+          <a class="item" href="#">게임</a>
+        </div>
+    </div>
+    <!--프로필 탭-->
+    <a class="item borderless" href="#">
+      <i class="user icon"></i>
+      
+    <!--만들기 탭-->
+    </a>
+    <a class="item borderless" href="#">
+      <i class="write icon"></i>
+    </a>
+  </div>
+</div>

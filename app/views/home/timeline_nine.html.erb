@@ -1,0 +1,129 @@
+
+<!--$(document).ready(function(){-->
+<!--$(".button").click(function(){ -->
+<!--alert( "Handler for .click() called." );-->
+<!--( $("").hasClass("ui three stackable cards") == true) {-->
+<!--$("내 버튼 아이디").click(function(){-->
+<!--$(".cards").removeClass("three"); -->
+<!--$(".cards").addClass("one"); -->
+<!--$(".ui three stackable cards").addClass("one"); -->
+<!--$(".ui three stackable cards").removeClass("three");   -->
+<!--});-->
+<!--});    -->
+    
+
+<!--// $(document).ready(function(){-->
+<!--// $(".button").click(function(){-->
+
+<!--// if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
+<!--// $(".cards").removeClass("three"); -->
+<!--// $(".cards").addClass("one"); -->
+<!--// $(".button").addClass("red"); -->
+<!--// });-->
+<!--// });-->
+
+<!--// else if { -->
+<!--// $(".cards").removeClass("one"); -->
+<!--// $(".cards").addClass("three"); -->
+<!--// $(".button").removeClass("red"); -->
+<!--// });-->
+<!--// });-->
+<!--헤헤-->
+<!--$(document).ready(function(){-->
+<!--    $('.button').on('click',function(e) {-->
+        
+<!--        if ($(this).hasClass('black')) {-->
+<!--            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');-->
+<!--        }-->
+        
+<!--        else if($(this).hasClass('red')) {-->
+<!--            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');-->
+<!--        }-->
+        
+<!--    });-->
+<!--});-->
+    
+
+<script>
+$(document).ready(function(){
+    $('.button').on('click',function(e) {
+        
+        if ($(this).hasClass('black')) {
+            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');
+            $('.button').removeClass('black').addClass('red');
+        }
+        
+        else if($(this).hasClass('red')) {
+            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');
+             $('.button').removeClass('red').addClass('black');
+        }
+        
+    });
+});
+</script>
+
+
+<!--$(document).ready(function(){-->
+<!--$(".button").click(function(){-->
+
+<!--if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
+<!--$(".cards").removeClass("three"); -->
+<!--$(".cards").addClass("one"); -->
+<!--$(".button").addClass("red"); -->
+<!--});-->
+<!--});-->
+
+<!--else if { -->
+<!--$(".cards").removeClass("one"); -->
+<!--$(".cards").addClass("three"); -->
+<!--$(".button").removeClass("red"); -->
+<!--});-->
+<!--});-->
+<!--</script>-->
+
+
+
+ 
+ 
+ 
+<button class="ui button black">
+  Button
+</button>
+
+<i class="grid layout icon"></i>
+<i class="square icon"></i>
+
+<div class="ui three stackable cards" style="padding-bottom:100px;margin:0 auto;">
+  <% for i in 1..6 do %>
+
+<div class="ui fluid card">
+    <!--프로필 파트-->
+    <div class="content">
+      <div class="right floated meta">14h</div>
+      <img class="ui avatar image" src="/images/test<%= i%>.jpg"> Elliot
+    </div>
+    
+    <!--메인 이미지-->
+    <div class="image">
+      <img class="image" src="/images/test<%= i%>.jpg">
+    </div>
+    
+    <!--내용-->
+    <div class="content">
+      <span class="right floated">
+        <i class="heart outline like icon"></i>
+        17 likes
+      </span>
+      <i class="comment icon"></i>
+      3 comments
+    </div>
+    <div class="extra content">
+      <div class="ui large transparent left icon input">
+        <i class="heart outline icon"></i>
+        <input type="text" placeholder="Add Comment...">
+      </div>
+    </div>
+    </div>
+  <% end %>
+</div>
+

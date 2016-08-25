@@ -2,7 +2,10 @@ class HomeController < ApplicationController
   def index
   end
   
-  def timeline
+  def timeline_basic
+  end
+  
+  def timeline_nine
   end
 
   def mission_detail

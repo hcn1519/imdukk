@@ -1,44 +1,80 @@
-<!--<div class="row center">-->
-<!--  <p class="header col s12 light">오늘 할 덕질을 내일로 미루지 말자</p>-->
-<!--</div>-->
+<div class="ui center aligned segment" style="border: none; box-shadow: none;">
+  오늘 할 덕질을 내일로 미루지 말자
+</div>
 
     <% title = ["[1일 1덕]", "데일리 팬뉴스", "아티스트 프로필"] %>
     <div class="ui three stackable cards">
     <% for i in 1..3 do %>
         <div class="ui fluid card">
-          <div class="image">
-            <img src="/images/basic<%= i %>.png">
+          <div class="blurring dimmable image basic-image">
+            <div class="ui dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui inverted button"><%= title[i-1] %></div>
+                </div>
+              </div>
+            </div>
+            <img class="image" src="/images/basic<%= i %>.png">
+            <h2 style="position: absolute; top: 0; color: #fff"><%= title[i-1] %></h4>
           </div>
+          
         </div>
     <% end %>
     </div>
 
+          
 <div class="ui three stackable cards">
 <% for i in 1..6 do %>
-
-  <div class="ui fluid card">
-    <div class="image">
-      <img src="/images/test<%= i %>.jpg">
-    </div>
-    <div class="content">
-      <div class="header">Matt Giampietro</div>
-      <div class="meta">
-        <a>Friends</a>
+  
+    <div class="ui fluid card">
+      <!--프로필 파트-->
+      <div class="content">
+        <div class="right floated meta">14h</div>
+        <img class="ui avatar image" src="/images/test<%= i%>.jpg"> Elliot
       </div>
-      <div class="description">
-        Matthew is an interior designer living in New York.
+      
+      <!--메인 이미지-->
+      
+    <div class="blurring dimmable image user-create-image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div class="ui inverted button">자세히 보기</div>
+          </div>
+        </div>
       </div>
+      <img class="image" src="/images/test<%= i%>.jpg">
     </div>
-    <div class="extra content">
-      <span class="right floated">
-        Joined in 2013
-      </span>
-      <span>
-        <i class="user icon"></i>
-        75 Friends
-      </span>
-    </div>
+      
+      <!--내용-->
+      <div class="content">
+        <span class="right floated">
+          <i class="heart outline like icon"></i>
+          17 likes
+        </span>
+        <i class="comment icon"></i>
+        3 comments
+      </div>
+      <div class="extra content">
+        <div class="ui large transparent left icon input">
+          <i class="heart outline icon"></i>
+          <input type="text" placeholder="Add Comment...">
+        </div>
+      </div>
     </div>
 <% end %>
 
 </div>
+
+<script>
+$(document).ready(function(){
+  $('.cards .user-create-image').dimmer({
+    on: 'hover'
+  });
+  $('.cards .basic-image').dimmer({
+    on: 'hover'
+  });
+});
+  
+</script>
+

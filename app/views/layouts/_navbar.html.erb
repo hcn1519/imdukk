@@ -30,13 +30,17 @@
         </div>
     </div>
     <!--프로필 탭-->
-    <a class="item borderless" href="#">
+    <a class="item borderless" href="/home/timeline">
       <i class="user icon"></i>
       
     <!--만들기 탭-->
     </a>
-    <a class="item borderless" href="#">
+    <span id="createMissionModal" class="item borderless" style="cursor: pointer">
       <i class="write icon"></i>
-    </a>
+    </span>
   </div>
 </div>
+
+<!--미션 제작 모달 삽입-->
+<%= render 'layouts/createMissionModal' %>
+

@@ -6,7 +6,7 @@
   </div>
   <div class="image content">
     <div class="ui medium image">
-      <img src="/images/test2.jpg">
+      <img src="/images/test1.jpg">
     </div>
     <div class="description">
       <div class="ui header">We've auto-chosen a profile image for you.</div>
@@ -26,7 +26,10 @@
 </div>
 
 <script>
- $('#createMissionModal').click(function(){
-  $('#createMissionModalContent').modal('show');
- });
+$(document).ready(function(){
+
+  $('#createMissionModal').click(function(){
+    $('.ui.modal').modal('show');
+  });
+});
 </script>

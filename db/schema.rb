@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813073211) do
+ActiveRecord::Schema.define(version: 20160825032814) do
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20160813073211) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "nickname"
+    t.string   "profile_img"
+    t.string   "profile_background_img"
+    t.string   "duck_img"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,9 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @all_user = User.all
   end
   
   def timeline
   end
 
+  def mission_detail
+  end
 end

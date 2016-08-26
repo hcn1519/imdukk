@@ -21,6 +21,13 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
-      root_path
+      auth = request.env['omniauth.auth']
+      @identity = Identity.find_for_oauth(auth)
+      
+      if @identity.provider == "twitter" 
+        root_path
+      else
+        home_main_path
+      end
   end
 end

@@ -5,6 +5,4 @@ class HomeController < ApplicationController
   def timeline
   end
 
-  def mission_detail
-  end
 end

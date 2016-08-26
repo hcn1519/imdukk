@@ -76,6 +76,7 @@
             <a class="item" href="#">게임</a>
           </div>
       </div>
+      
       <!--프로필 탭-->
       <a class="item borderless" href="/home/timeline" style="line-height: 1">
         <i class="user icon"></i>
@@ -103,6 +104,12 @@
             <a class="item" href="#">게임</a>
           </div>
       </div>
+      <% if user_signed_in? %>
+        <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'item') %>
+        
+      <% else %>
+        <a href="/users/sign_in" class="item">로그인</a>
+      <% end %>
       <!--프로필 탭-->
       <a class="item borderless" href="/home/timeline" style="line-height: 1">
         <i class="user icon"></i>

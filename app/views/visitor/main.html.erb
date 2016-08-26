@@ -1,91 +1,152 @@
+
   <style type="text/css">
-    body {
-      background-color: #DADADA;
+
+    .hidden.menu {
+      display: none;
     }
-    body > .grid {
-      height: 100%;
+
+    .masthead.segment {
+      min-height: 700px;
+      padding: 1em 0em;
     }
-    .image {
-      margin-top: -100px;
+    .masthead .logo.item img {
+      margin-right: 1em;
     }
-    .column {
-      max-width: 450px;
+    .masthead .ui.menu .ui.button {
+      margin-left: 0.5em;
     }
+    .masthead h1.ui.header {
+      margin-top: 3em;
+      margin-bottom: 0em;
+      font-size: 4em;
+      font-weight: normal;
+    }
+    .masthead h2 {
+      font-size: 1.7em;
+      font-weight: normal;
+    }
+
+    .ui.vertical.stripe {
+      padding: 7em 0em;
+    }
+    .ui.vertical.stripe h3 {
+      font-size: 2em;
+    }
+    .ui.vertical.stripe .button + h3,
+    .ui.vertical.stripe p + h3 {
+      margin-top: 3em;
+    }
+    .ui.vertical.stripe .floated.image {
+      clear: both;
+    }
+    .ui.vertical.stripe p {
+      font-size: 1.33em;
+    }
+    .ui.vertical.stripe .horizontal.divider {
+      margin: 3em 0em;
+    }
+
+    .quote.stripe.segment {
+      padding: 0em;
+    }
+    .quote.stripe.segment .grid .column {
+      padding-top: 5em;
+      padding-bottom: 5em;
+    }
+
+    .footer.segment {
+      padding: 5em 0em;
+    }
+
+    .secondary.pointing.menu .toc.item {
+      display: none;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .ui.fixed.menu {
+        display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: block;
+      }
+      .masthead.segment {
+        min-height: 350px;
+      }
+      .masthead h1.ui.header {
+        font-size: 2em;
+        margin-top: 1.5em;
+      }
+      .masthead h2 {
+        margin-top: 0.5em;
+        font-size: 1.5em;
+      }
+    }
+
+
   </style>
 
 
+<body class="pushable">
 
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-    <h2 class="ui teal image header">
-      <img src="/images/white_duck_logo.png" class="image">
-      <div class="content">
-        Log-in to your account
+<!-- Page Contents -->
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+        <a class="toc item">
+          <i class="sidebar icon"></i>
+        </a>
+        
       </div>
-    </h2>
-    <form class="ui large form">
-      <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="ui fluid large teal submit button">Login</div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-<!--회원가입-->
-    <div class="ui message">
-      New to us? <a href="#">Sign Up</a>
     </div>
-    
+
+    <div class="ui text container">
+      <h1 class="ui inverted header">
+        <div class="ui header">
+          <img src="/images/white_duck_logo.png" class="image animated infinite jello">
+        </div>
+      덕질할땐? 아임덕
+      </h1>
+   
+        <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+    </div>
+<!--회원가입-->
+    <div class="content">
+      <a href="#">Login</a>
+    </div>
   </div>
+
 </div>
+
+</body>
 
   <script>
   $(document)
     .ready(function() {
-      $('.ui.form')
-        .form({
-          fields: {
-            email: {
-              identifier  : 'email',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : '이메일 주소를 입력하세요.'
-                },
-                {
-                  type   : 'email',
-                  prompt : '유효한 이메일 주소를 입력하세요.'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : '비밀번호를 입력해주세요.'
-                },
-                {
-                  type   : 'length[6]',
-                  prompt : '비밀번호 길이는 6자 이상이어야 합니다.'
-                }
-              ]
-            }
+
+      // fix menu when passed
+      $('.masthead')
+        .visibility({
+          once: false,
+          onBottomPassed: function() {
+            $('.fixed.menu').transition('fade in');
+          },
+          onBottomPassedReverse: function() {
+            $('.fixed.menu').transition('fade out');
           }
         })
       ;
+
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item')
+      ;
+
     })
   ;
   </script>

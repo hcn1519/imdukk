@@ -21,13 +21,23 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def after_sign_in_path_for(resource)
+      @user = User.find_for_oauth(env["omniauth.auth"], current_user)
       auth = request.env['omniauth.auth']
       @identity = Identity.find_for_oauth(auth)
       
-      if @identity.provider == "twitter" 
-        root_path
+      # 새로운 유저라면?
+      if @user.persisted?
+        
+         # 가입형식별 redirct
+        if @identity.provider == "twitter"
+          register_info2_path
+        else
+          register_info1_path
+        end
+        
+      # 이미 있는 유저라면?
       else
         home_main_path
-      end
+      end  
   end
 end

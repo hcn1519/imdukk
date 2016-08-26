@@ -13,11 +13,15 @@
 </head>
 <body>
   <!--navbar(상단바) 설정-->
-  
+  <% if current_page?(controller: 'visitor', action: 'main')%>
+  <%= yield %>
+  <% else %>
   <%= render 'layouts/navbar' %>
   <div class="ui container">
     <%= yield %>
   </div>
+  <% end %>
+  
   
   <!--footer 설정-->
   <%= render 'layouts/footer' %>

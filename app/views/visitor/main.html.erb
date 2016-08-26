@@ -16,13 +16,13 @@
       margin-left: 0.5em;
     }
     .masthead h1.ui.header {
-      margin-top: 3em;
+      margin-top: 1.5em;
       margin-bottom: 0em;
       font-size: 4em;
       font-weight: normal;
     }
     .masthead h2 {
-      font-size: 1.7em;
+      font-size: 2.5em;
       font-weight: normal;
     }
 
@@ -85,23 +85,18 @@
         font-size: 1.5em;
       }
     }
-
-
   </style>
 
-
 <body class="pushable">
-
 <!-- Page Contents -->
 <div class="pusher">
   <div class="ui inverted vertical masthead center aligned segment">
 
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
-        <a class="toc item">
-          <i class="sidebar icon"></i>
-        </a>
-        
+        <div class="right item">
+          <a class="ui inverted button">Log in</a>
+        </div>
       </div>
     </div>
 
@@ -110,10 +105,9 @@
         <div class="ui header">
           <img src="/images/white_duck_logo.png" class="image animated infinite jello">
         </div>
-      덕질할땐? 아임덕
       </h1>
-   
-        <div class="ui huge primary button">Get Started <i class="right arrow icon"></i></div>
+      <h2>아임덕</h2>
+    <div class="ui primary button">시작하기 <i class="right arrow icon"></i></div>
     </div>
 <!--회원가입-->
     <div class="content">
@@ -121,32 +115,11 @@
     </div>
   </div>
 
-</div>
+
 
 </body>
 
+
   <script>
-  $(document)
-    .ready(function() {
 
-      // fix menu when passed
-      $('.masthead')
-        .visibility({
-          once: false,
-          onBottomPassed: function() {
-            $('.fixed.menu').transition('fade in');
-          },
-          onBottomPassedReverse: function() {
-            $('.fixed.menu').transition('fade out');
-          }
-        })
-      ;
-
-      // create sidebar and attach to menu open
-      $('.ui.sidebar')
-        .sidebar('attach events', '.toc.item')
-      ;
-
-    })
-  ;
   </script>

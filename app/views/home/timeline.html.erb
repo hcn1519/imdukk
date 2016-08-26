@@ -62,6 +62,27 @@ $(document).ready(function(){
 });
 </script>
 
+<div class="some-wrapping-div">
+  <div class="ui custom button">Show custom popup</div>
+</div>
+<div class="ui custom popup top left transition hidden">
+  I'm not on the same level as the button, but i can still be found.
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.ui.custom.button').click(function(){
+    $('.some-wrapping-div').popup({
+      debug : true,
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });  
+  });
+});
+</script>
+
+
+
 
 <!--$(document).ready(function(){-->
 <!--$(".button").click(function(){-->
@@ -90,8 +111,8 @@ $(document).ready(function(){
   Button
 </button>
 
-<i class="grid layout icon"></i>
-<i class="square icon"></i>
+<i class="grid layout icon" style="display: none;"></i>
+<i class="square icon" style="display: none;"></i>
 
 <div class="ui three stackable cards" style="padding-bottom:100px;margin:0 auto;">
   <% for i in 1..6 do %>
@@ -110,12 +131,16 @@ $(document).ready(function(){
     
     <!--내용-->
     <div class="content">
-      <span class="right floated">
+      <span class="left floated">
         <i class="heart outline like icon"></i>
         17 likes
       </span>
-      <i class="comment icon"></i>
-      3 comments
+      <span class="right floated">
+        <i class="comment icon"></i>
+        3 comments
+        <i class="share alternate icon"></i>
+        9 shared
+      </span>
     </div>
     <div class="extra content">
       <div class="ui large transparent left icon input">
@@ -126,4 +151,3 @@ $(document).ready(function(){
     </div>
   <% end %>
 </div>
-

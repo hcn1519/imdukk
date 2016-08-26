@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get 'visitor/main'
 
   get 'home/main'
-  get 'home/timeline_basic'
-  get 'home/timeline_nine'
+  get 'home/timeline'
   get 'home/mission_detail'
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks' }
   

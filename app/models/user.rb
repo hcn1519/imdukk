@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  has_many :identities
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -24,14 +25,14 @@ class User < ActiveRecord::Base
           # 트위터는 email을 제공하지 않음
           if auth.provider == "twitter"
             user = User.new(
-              name: auth.info.name,
+              profile_img: auth.info.image,
               password: Devise.friendly_token[0,20]
             )    
           
           else  
             user = User.new(
-              name: auth.info.name,
               email: auth.info.email,
+              profile_img: auth.info.image,
               password: Devise.friendly_token[0,20]
             )            
           end 

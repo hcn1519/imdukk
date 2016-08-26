@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'mission/detail'
+
   root 'visitor#main'
   
   get 'visitor/main'

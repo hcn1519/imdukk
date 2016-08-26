@@ -1,46 +1,119 @@
 <style type="text/css">
   i.icon, i.icons {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+  }
+  .navbar {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23) !important;
+  }
+  .logo_image {
+    margin-top: -0.5rem !important;
   }
 </style>
-<!--<nav class="amber">-->
-<!--  <div class="nav-wrapper">-->
-<!--    <%#= link_to image_tag("/images/logo.png"), root_path, :class => 'brand-logo center' %>-->
-<!--    <a href="#" data-activates="mobile-sideNav" class="button-collapse right"><i class="material-icons">menu</i></a>-->
-    
-    <!--navbar 들어가는 링크-->
-<!--    <%#= render 'layouts/navbarlink' %>-->
-    
-<!--  </div>-->
-<!--</nav>-->
-
-
-<!--nav bar-->
-<div class="ui menu fixed" style="background: #ffc718; height: 60px">
-  <%= link_to root_path do %>
-  <div class="header item borderless">
-    <img class="logo_image" src="/images/white_duck_logo.png">
-  </div>
-  <% end %>
-  <div class="right item borderless">
-    <div class="ui simple dropdown item borderless">
-        아이돌 <i class="dropdown icon"></i>
-        <div class="menu">
-          <a class="item" href="#">게임</a>
-        </div>
-    </div>
-    <!--프로필 탭-->
-    <a class="item borderless" href="/home/timeline">
-      <i class="user icon"></i>
-      
-    <!--만들기 탭-->
-    </a>
-    <span id="createMissionModal" class="item borderless" style="cursor: pointer">
-      <i class="write icon"></i>
-    </span>
-  </div>
-</div>
 
 <!--미션 제작 모달 삽입-->
 <%= render 'layouts/createMissionModal' %>
 
+
+<div class="ui menu grid navbar" style="background: #ffc718; height: 50px">
+  
+  <!--모바일-->
+  <div class="mobile only row">
+    <%= link_to root_path do %>
+    <div class="header item borderless" style="padding-top: 0px">
+      <img class="logo_image" src="/images/white_duck_logo.png">
+    </div>
+    <% end %>
+    <div class="right item borderless">
+      <div class="ui simple dropdown item borderless">
+          아이돌 <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="#">게임</a>
+          </div>
+      </div>
+      <i id="hamburger" class="content icon" style="margin-right: 0; cursor: pointer"></i>
+    </div>
+  </div>
+  
+  <div class="ui right vertical sidebar labeled icon menu">
+    <!--프로필 탭-->
+      <a class="item" href="/home/timeline" style="line-height: 1">
+        <i class="user icon"></i>
+        타임라인
+      <!--만들기 탭-->
+      </a>
+      <span id="createMissionModalTablet" class="item borderless" style="cursor: pointer">
+        <i class="write icon"></i>
+        미션제작
+      </span>
+    
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('#hamburger').click(function(){
+        $('.sidebar')
+        .sidebar('setting', 'transition', 'overlay')
+        .sidebar('toggle');  
+      });
+    });
+  </script>
+  
+  
+  <!--패드-->
+  <div class="tablet only row">
+  
+    <%= link_to root_path do %>
+    <div class="header item borderless" style="padding-top: 0px">
+      <img class="logo_image" src="/images/white_duck_logo.png">
+    </div>
+    <% end %>
+    <div class="right item borderless">
+      <div class="ui simple dropdown item borderless">
+          아이돌 <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="#">게임</a>
+          </div>
+      </div>
+      <!--프로필 탭-->
+      <a class="item borderless" href="/home/timeline" style="line-height: 1">
+        <i class="user icon"></i>
+        
+      <!--만들기 탭-->
+      </a>
+      <span id="createMissionModalTablet" class="item borderless" style="cursor: pointer">
+        <i class="write icon"></i>
+      </span>
+    </div>
+  
+  </div>
+  
+  <!--데스크탑-->
+  <div class="computer only row">
+    <%= link_to root_path do %>
+    <div class="header item borderless" style="padding-top: 0px">
+      <img class="logo_image" src="/images/white_duck_logo.png">
+    </div>
+    <% end %>
+    <div class="right item borderless">
+      <div class="ui simple dropdown item borderless">
+          아이돌 <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="#">게임</a>
+          </div>
+      </div>
+      <!--프로필 탭-->
+      <a class="item borderless" href="/home/timeline" style="line-height: 1">
+        <i class="user icon"></i>
+        
+      <!--만들기 탭-->
+      </a>
+      <span id="createMissionModalDesktop" class="item borderless" style="cursor: pointer">
+        <i class="write icon"></i>
+      </span>
+    </div>
+  </div>
+
+<!--전체 그리드-->
+</div>

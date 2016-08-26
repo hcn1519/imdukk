@@ -1,12 +1,13 @@
 <!-- Modal Structure -->
-<div class="ui modal" id="createMissionModalContent">
+<% for i in 1..6 %>
+<div class="ui modal" id="missionPreviewModalContent<%= i %>">
   <i class="close icon"></i>
   <div class="header">
     Profile Picture
   </div>
   <div class="image content">
     <div class="ui medium image">
-      <img src="/images/test1.jpg">
+      <img src="/images/test<%= i %>.jpg">
     </div>
     <div class="description">
       <div class="ui header">We've auto-chosen a profile image for you.</div>
@@ -24,14 +25,14 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <script>
 $(document).ready(function(){
-  $('#createMissionModalDesktop').click(function(){
-    $('#createMissionModalContent').modal('show');
+  <% for i in 1..6 do %>
+  $('#missionPreviewModal<%= i %>').click(function(){
+    $('#missionPreviewModalContent<%= i%>').modal('show');
   });
-  $('#createMissionModalTablet').click(function(){
-    $('#createMissionModalContent').modal('show');
-  });
+  <% end %>
 });
 </script>

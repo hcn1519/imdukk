@@ -10,12 +10,11 @@ Rails.application.routes.draw do
   get 'visitor/main'
 
   get 'home/main'
-  get 'home/timeline_basic'
-  get 'home/timeline_nine'
+  get 'home/timeline'
   get 'home/mission_detail'
   
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations" }
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

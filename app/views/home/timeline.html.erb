@@ -1,19 +1,25 @@
-<div class="some-wrapping-div">
-  <div class="ui custom button">Show custom popup</div>
-</div>
+<!--팝업 내용물-->
 <div class="ui custom popup top left transition hidden">
-  I'm not on the same level as the button, but i can still be found.
+  <a href="www.facebook.com">이렇게 하면 되나?</a>
+  <!--<a href="facebook.com"><i class="instagram icon"></i></a>-->
+  <!--<a href="facebook.com"><i class="facebook f icon"></i></a>-->
+  <!--<a href="facebook.com"><i class="facebook f icon"></i></a>-->
 </div>
 
+<!--팝업창용 script-->
 <script>
-// 팝업창용
 $(document).ready(function(){
-  $( ".share" ).click(function() {
-    alert( "Handler for .click() called." );
-  });
+  $(".share")
+    .popup({
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });
 });
 </script>
 
+
+
+<!--내용-->
 <button class="ui button black gridSwitch">
   Button
 </button>
@@ -46,7 +52,7 @@ $(document).ready(function(){
         <i class="comment icon"></i>
         3 comments
         
-        <i class="share alternate icon" title="Hello I am a popup"></i>
+        <i class="share alternate icon" style="cursor :pointer"></i>
         9 shared
       </span>
     </div>

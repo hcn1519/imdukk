@@ -1,6 +1,7 @@
 <div class="ui one stackable cards" style="padding-bottom:100px;margin:0 auto;">
   <% for i in 1..6 do %>
 
+
 <div class="ui fluid card">
     <!--프로필 파트-->
     <div class="content">
@@ -15,6 +16,8 @@
     
     <!--내용-->
     <div class="content">
+      <h4><%= @one_mission.title %></h4>
+      <p><%= @one_mission.content %></p>
       <span class="left floated">
         <i class="heart outline like icon"></i>
         17 likes

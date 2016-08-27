@@ -8,8 +8,7 @@ class CreatePerformedMissions < ActiveRecord::Migration
       t.integer :warning
       
       t.string :title
-      t.string :creator_hashtag
-      t.string :user_hashtag
+      t.string :multimedia
       t.text :content
       
       t.timestamps null: false

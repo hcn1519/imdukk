@@ -1,16 +1,15 @@
 <div class="ui one stackable cards" style="padding-bottom:100px;margin:0 auto;">
-  <% for i in 1..6 do %>
-
+   
 <div class="ui fluid card">
     <!--프로필 파트-->
     <div class="content">
       <div class="right floated meta">14h</div>
-      <img class="ui avatar image" src="/images/test<%= i%>.jpg"> Elliot
+      <img class="ui avatar image" src="<%= @mission.multimedia %>"> Elliot
     </div>
     
     <!--메인 이미지-->
     <div class="image">
-      <img class="image" src="/images/test<%= i%>.jpg">
+      <img class="image" src="<%= @mission.multimedia %>">
     </div>
     
     <!--내용-->
@@ -18,8 +17,8 @@
       <!--<h4><5= @one_mission.title 5></5></h4>-->
       <!--<p><5= @one_mission.content 5></p>-->
       <span class="left floated">
-        <i class="heart outline like icon"></i>
-        17 likes
+        <%= @mission.title %><br>
+        <%= @mission.content %>
       </span>
       <span class="right floated">
         <i class="comment icon"></i>
@@ -35,5 +34,15 @@
       </div>
     </div>
     </div>
+
+</div>
+<!--여기까지가 미션 문제-->
+
+<!--여기부터 performed_mission-->
+<div class="section">
+  <% @performed_mission.each do |m| %>
+  수행한 미션 타이틀: <%= m.title %><br>
+  수행한 미션 이미지: <img src="<%= m.multimedia %>"/><br>
+  수행한 미션 내용: <%= m.content %><br>
   <% end %>
 </div>

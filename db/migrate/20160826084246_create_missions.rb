@@ -7,7 +7,6 @@ class CreateMissions < ActiveRecord::Migration
       
       t.string :title
       t.string :multimedia
-      t.string :creator_hashtag
       t.text :content
       
       t.timestamps null: false

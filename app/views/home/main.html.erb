@@ -24,12 +24,12 @@
 
 
 <div class="ui three stackable cards">
-<% for i in 1..6 do %>
+<% @missions.each do |m| %>
      <div class="ui fluid card">
       <!--프로필 파트-->
       <div class="content">
         <div class="right floated meta">14h</div>
-          <img class="ui avatar image" src="/images/test<%= i%>.jpg"> Elliot
+          <img class="ui avatar image" src="<%= m.multimedia %>"> Elliot
       </div>
       
       <!--메인 이미지-->
@@ -40,8 +40,9 @@
       <div class="ui dimmer">
         <div class="content">
           <div class="center">
-            <%= link_to ('/mission/detail/#') do %><div id="missionPreviewModal<%= i %>" class="ui inverted button">자세히 보기</div>
-            <% end %>
+            <a href="/mission/detail/<%= m.id %>">
+              <div id="missionPreviewModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
+            </a>
     
     <!--다른 것들-->
     <!--<a href="/mission/detail/<5= m.id 5>>--
@@ -51,7 +52,7 @@
           </div>
         </div>
       </div>
-        <img class="image" src="/images/test<%= i%>.jpg">
+        <img class="image" src="<%= m.multimedia %>">
     </div>
     
       <!--내용-->

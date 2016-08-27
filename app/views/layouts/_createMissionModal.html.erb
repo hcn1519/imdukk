@@ -4,7 +4,9 @@
   <div class="header">
     미션 만들기
   </div>
-  <form action="/mission/mission_create/" method="post" enctype="multipart/form-data">
+  <%= form_tag('/mission/mission_create', :enctype => 'multipart/form-data') do %>
+      <input name="utf8" type="hidden"/>
+  <input name="authenticity_token" type="hidden"/>
     <div class="image content">
       <div class="ui medium image">
         <img src="/images/test1.jpg">
@@ -28,16 +30,18 @@
         </div>
       </div>
     </div>
-    <div class="actions" type="submit" name="action">
+    <div class="actions">
       <!--<div class="ui black deny button">-->
       <!--  취소-->
       <!--</div>-->
-      <div class="ui positive right labeled icon button">
-        만들기
-        <i class="checkmark icon"></i>
-      </div>
+    
+        <button class="ui positive right labeled icon button">
+          만들기
+          <i class="checkmark icon"></i>
+        </button>
+
     </div>
-  </form>
+  <% end %>
 </div>
 
 <script>

@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+for i in 1..6 do
+  Mission.create(
+    title: "타이틀#{i}",
+    multimedia: "/images/test#{i}.jpg",
+    content: "#{i}번째 화사의 섹시함은 무무님들 모두 공감하시겠지만, 갠적으로 이번 컨셉 화보로 절정을  찍은 것 같네요. 저 말고 한정판 잡지 겟하신 분~?"
+    )
+end
+
+for i in 1..6 do
+  PerformedMission.create(
+    mission_id: i,
+    title: "수행한 미션 타이틀#{i}",
+    multimedia: "/images/test#{i}.jpg",
+    content: "#{i}방탄 오빠들 한 번 그려봤어요!! 이번에 오빠들 컴백한다는 데…벌써 두근거리네요. 금손이신 분들 함께 해요~"
+    )
+end

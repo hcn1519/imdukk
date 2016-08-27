@@ -37,10 +37,9 @@ ActiveRecord::Schema.define(version: 20160826131702) do
     t.integer  "warning"
     t.string   "title"
     t.string   "multimedia"
-    t.string   "creator_hashtag"
     t.text     "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "performed_mission_comments", force: :cascade do |t|
@@ -57,11 +56,10 @@ ActiveRecord::Schema.define(version: 20160826131702) do
     t.integer  "category_id"
     t.integer  "warning"
     t.string   "title"
-    t.string   "creator_hashtag"
-    t.string   "user_hashtag"
+    t.string   "multimedia"
     t.text     "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

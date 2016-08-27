@@ -1,6 +1,6 @@
-<<<<<<< HEAD
 <div class="ui one stackable cards" style="padding-bottom:100px;margin:0 auto;">
   <% for i in 1..6 do %>
+
 
 <div class="ui fluid card">
     <!--프로필 파트-->
@@ -16,6 +16,8 @@
     
     <!--내용-->
     <div class="content">
+      <h4><%= @one_mission.title %></h4>
+      <p><%= @one_mission.content %></p>
       <span class="left floated">
         <i class="heart outline like icon"></i>
         17 likes
@@ -36,7 +38,3 @@
     </div>
   <% end %>
 </div>
-=======
-<h1>Mission#detail</h1>
-<p>Find me in app/views/mission/detail.html.erb</p>
->>>>>>> 4a63fdf56055462c2e40bc4e339a5a694dfbb6b4

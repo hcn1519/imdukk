@@ -1,40 +1,9 @@
-<<<<<<< HEAD:app/views/devise/registrations/new.html.erb
-<h2>Sign up11</h2>
-=======
-    <!--로그인폼-->
+<h2>Sign up</h2>
+
 <div class="ui one column stackable center aligned page grid">
   <div class="column">
-    <form class="ui large form">
       <div class="ui stacked segment">
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
-          </div>
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password_confirm" placeholder="Password Confirm">
-          </div>
-        </div>
-        <div class="ui fluid large teal submit button">Sign-up</div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-
-<h2>Sign up</h2>
->>>>>>> 8d7485058b57ec454e3b588828c7df4f3147786f:app/views/users/registrations/new.html.erb
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "ui large form"}) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -59,5 +28,7 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
+</div>
+</div>
+</div>
 <%= render "devise/shared/links" %>

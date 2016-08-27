@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'visitor#main'
-
+  
   get 'register/info1'
   get 'register/info2'
   post 'register/infoget'
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'home/mission_detail'
   
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations" }
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog-aws'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'

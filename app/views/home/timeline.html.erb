@@ -1,31 +1,5 @@
-
-<script>
-$(document).ready(function(){
-    $('.button').on('click',function(e) {
-        
-        if ($(this).hasClass('black')) {
-            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');
-            $('.button').removeClass('black').addClass('red');
-        }
-        
-        else if($(this).hasClass('red')) {
-            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');
-             $('.button').removeClass('red').addClass('black');
-        }
-        
-    });
-});
-</script>
-
-<div class="some-wrapping-div">
-  <div class="ui custom button">Show custom popup</div>
-</div>
-<div class="ui custom popup top left transition hidden">
-  I'm not on the same level as the button, but i can still be found.
-</div>
-
-<script>
 // 팝업창용
+<script>
 $(document).ready(function(){
 $( ".share" ).click(function() {
   alert( "Handler for .click() called." );
@@ -52,30 +26,12 @@ $(document).ready(function(){
 });
 </script>
 
-<!--<div class="ui button">Show flowing popup</div>-->
-<!--<div class="ui flowing popup top left transition visible animating scale out">-->
-<!--  <div class="ui three column divided center aligned grid">-->
-<!--    <div class="column">-->
-<!--      <h4 class="ui header">Basic Plan</h4>-->
-<!--      <p><b>2</b> projects, $10 a month</p>-->
-<!--      <div class="ui button">Choose</div>-->
-<!--    </div>-->
-<!--    <div class="column">-->
-<!--      <h4 class="ui header">Business Plan</h4>-->
-<!--      <p><b>5</b> projects, $20 a month</p>-->
-<!--      <div class="ui button">Choose</div>-->
-<!--    </div>-->
-<!--    <div class="column">-->
-<!--      <h4 class="ui header">Premium Plan</h4>-->
-<!--      <p><b>8</b> projects, $25 a month</p>-->
-<!--      <div class="ui button">Choose</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
 
 
- 
- 
+
+
+
+<!--내용-->
 <button class="ui button black">
   Button
 </button>
@@ -107,7 +63,8 @@ $(document).ready(function(){
       <span class="right floated">
         <i class="comment icon"></i>
         3 comments
-        <i class="share alternate icon" ></i>
+        
+        <i class="share alternate icon" title="Hello I am a popup"></i>
         9 shared
       </span>
     </div>
@@ -122,6 +79,6 @@ $(document).ready(function(){
 </div>
 
 
-<div  id="divContentToPopup">
-   제발 떠라 
-</div>
+
+
+

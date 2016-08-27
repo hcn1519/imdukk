@@ -6,5 +6,5 @@ class PerformedMission < ActiveRecord::Base
     has_many :performed_mission_likes, :through => :performed_mission_like, :source => :user
     has_many :performed_mission_comments, :through => :performed_mission_comment, :source => :user
     belongs_to :category
-    
+    mount_uploader :image, PerformedMissionMultimediaUploader
 end

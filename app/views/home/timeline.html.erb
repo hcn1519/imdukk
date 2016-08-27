@@ -1,49 +1,4 @@
 
-<!--$(document).ready(function(){-->
-<!--$(".button").click(function(){ -->
-<!--alert( "Handler for .click() called." );-->
-<!--( $("").hasClass("ui three stackable cards") == true) {-->
-<!--$("내 버튼 아이디").click(function(){-->
-<!--$(".cards").removeClass("three"); -->
-<!--$(".cards").addClass("one"); -->
-<!--$(".ui three stackable cards").addClass("one"); -->
-<!--$(".ui three stackable cards").removeClass("three");   -->
-<!--});-->
-<!--});    -->
-    
-
-<!--// $(document).ready(function(){-->
-<!--// $(".button").click(function(){-->
-
-<!--// if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
-<!--// $(".cards").removeClass("three"); -->
-<!--// $(".cards").addClass("one"); -->
-<!--// $(".button").addClass("red"); -->
-<!--// });-->
-<!--// });-->
-
-<!--// else if { -->
-<!--// $(".cards").removeClass("one"); -->
-<!--// $(".cards").addClass("three"); -->
-<!--// $(".button").removeClass("red"); -->
-<!--// });-->
-<!--// });-->
-<!--헤헤-->
-<!--$(document).ready(function(){-->
-<!--    $('.button').on('click',function(e) {-->
-        
-<!--        if ($(this).hasClass('black')) {-->
-<!--            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');-->
-<!--        }-->
-        
-<!--        else if($(this).hasClass('red')) {-->
-<!--            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');-->
-<!--        }-->
-        
-<!--    });-->
-<!--});-->
-    
-
 <script>
 $(document).ready(function(){
     $('.button').on('click',function(e) {
@@ -62,25 +17,54 @@ $(document).ready(function(){
 });
 </script>
 
-<div class="some-wrapping-div">
-  <div class="ui custom button">Show custom popup</div>
-</div>
-<div class="ui custom popup top left transition hidden">
-  I'm not on the same level as the button, but i can still be found.
-</div>
+<!--<div class="some-wrapping-div">-->
+<!--  <div class="ui custom button">Show custom popup</div>-->
+<!--</div>-->
+<!--<div class="ui custom popup top left transition hidden">-->
+<!--  I'm not on the same level as the button, but i can still be found.-->
+<!--</div>-->
+
+<!--<script-->
+<!--$(document).ready(function(){-->
+<!--  $('.ui.custom.button').click(function(){-->
+<!--    $('.some-wrapping-div').popup({-->
+<!--      debug : true,-->
+<!--      popup : $('.custom.popup'),-->
+<!--      on    : 'click'-->
+<!--    });  -->
+<!--  });-->
+<!--});-->
+<!--</script-->
 
 <script>
 $(document).ready(function(){
-  $('.ui.custom.button').click(function(){
-    $('.some-wrapping-div').popup({
-      debug : true,
-      popup : $('.custom.popup'),
-      on    : 'click'
-    });  
-  });
+$( ".share" ).click(function() {
+  alert( "Handler for .click() called." );
+});
 });
 </script>
 
+
+<!--<div class="ui button">Show flowing popup</div>-->
+<!--<div class="ui flowing popup top left transition visible animating scale out">-->
+<!--  <div class="ui three column divided center aligned grid">-->
+<!--    <div class="column">-->
+<!--      <h4 class="ui header">Basic Plan</h4>-->
+<!--      <p><b>2</b> projects, $10 a month</p>-->
+<!--      <div class="ui button">Choose</div>-->
+<!--    </div>-->
+<!--    <div class="column">-->
+<!--      <h4 class="ui header">Business Plan</h4>-->
+<!--      <p><b>5</b> projects, $20 a month</p>-->
+<!--      <div class="ui button">Choose</div>-->
+<!--    </div>-->
+<!--    <div class="column">-->
+<!--      <h4 class="ui header">Premium Plan</h4>-->
+<!--      <p><b>8</b> projects, $25 a month</p>-->
+<!--      <div class="ui button">Choose</div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 
 
@@ -138,7 +122,7 @@ $(document).ready(function(){
       <span class="right floated">
         <i class="comment icon"></i>
         3 comments
-        <i class="share alternate icon"></i>
+        <i class="share alternate icon" ></i>
         9 shared
       </span>
     </div>
@@ -150,4 +134,9 @@ $(document).ready(function(){
     </div>
     </div>
   <% end %>
+</div>
+
+
+<div  id="divContentToPopup">
+   제발 떠라 
 </div>

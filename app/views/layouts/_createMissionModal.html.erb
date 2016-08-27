@@ -2,27 +2,42 @@
 <div class="ui modal" id="createMissionModalContent">
   <i class="close icon"></i>
   <div class="header">
-    Profile Picture
+    미션 만들기
   </div>
-  <div class="image content">
-    <div class="ui medium image">
-      <img src="/images/test1.jpg">
+  <form action="/mission/mission_create/" method="post" enctype="multipart/form-data">
+    <div class="image content">
+      <div class="ui medium image">
+        <img src="/images/test1.jpg">
+        <input type="file" name="pic" accept="image/*">
+        <!---> name 수정필요-->
+      </div>
+      <div class="description">
+        <div class="ui header">
+          <div class="ui form">
+            <div class="field">
+              <label></label>
+              <input name="mission_title" type="text" placeholder="미션 제목">
+            </div>
+          </div>
+        </div>
+        <div class="ui form">
+          <div class="field">
+            <label></label>
+            <textarea name="mission_content" placeholder="미션 내용"></textarea>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="description">
-      <div class="ui header">We've auto-chosen a profile image for you.</div>
-      <p>We've grabbed the following image from the <a href="https://www.gravatar.com" target="_blank">gravatar</a> image associated with your registered e-mail address.</p>
-      <p>Is it okay to use this photo?</p>
+    <div class="actions" type="submit" name="action">
+      <!--<div class="ui black deny button">-->
+      <!--  취소-->
+      <!--</div>-->
+      <div class="ui positive right labeled icon button">
+        만들기
+        <i class="checkmark icon"></i>
+      </div>
     </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div>
+  </form>
 </div>
 
 <script>

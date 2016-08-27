@@ -38,7 +38,17 @@
 </div>
 <!--여기까지가 미션 문제-->
 
+<!--미션 수행하기 모달-->
+<%= render 'mission/createPerformedMissionModal' %>
+
 <!--여기부터 performed_mission-->
+<div class="ui animated fade button centered yellow" id="createPerformedMissionModal" tabindex="0">
+  <div class="visible content">미션수행하기</div>
+  <div class="hidden content">
+    덕질하자
+  </div>
+</div>
+
 <div class="section">
   <% @performed_mission.each do |m| %>
   수행한 미션 타이틀: <%= m.title %><br>
@@ -48,6 +58,8 @@
 </div>
 
 
+
+<!--다른 사람이 수행한 미션들-->
 <div class="ui 3 stackable images" style="padding-bottom:100px;margin:0 auto;">
    
 <div class="ui fluid images">

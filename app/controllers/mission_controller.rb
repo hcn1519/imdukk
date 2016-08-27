@@ -57,12 +57,7 @@ class MissionController < ApplicationController
     @performed_mission.content = params[:performed_mission_content]
     @performed_mission.warning = params[:performed_mission_warning]
     @performed_mission.user_id = current_user
-    # 지금 로그인 한 사람
-    # file = params[:pic]
-    # uploader = SnsfbUploader.new->performed_mission로바꾸자 uploader부분손봐야함
-    # uploader.store!(file)
-    # performed_mission.pic_address = uploader.url
-    # # 이건옛날꺼 post.pic_address = params[:pic]
+
     if @performed_mission.save
       redirect_to "/home/timeline"
     else

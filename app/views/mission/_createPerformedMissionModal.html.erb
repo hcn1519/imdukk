@@ -1,0 +1,53 @@
+<!-- Modal Structure -->
+<div class="ui modal" id="createPerformedMissionModalContent">
+  <i class="close icon"></i>
+  <div class="header">
+    미션 만들기
+  </div>
+  <%= form_tag('/mission/mission_create', :enctype => 'multipart/form-data') do %>
+      <input name="utf8" type="hidden"/>
+  <input name="authenticity_token" type="hidden"/>
+    <div class="image content">
+      <div class="ui medium image">
+        <img src="/images/test1.jpg">
+        <input type="file" name="mission_multimedia" accept="image/*">
+        <!---> name 수정필요-->
+      </div>
+      <div class="description">
+        <div class="ui header">
+          <div class="ui form">
+            <div class="field">
+              <label></label>
+              <input name="mission_title" type="text" placeholder="미션 제목">
+            </div>
+          </div>
+        </div>
+        <div class="ui form">
+          <div class="field">
+            <label></label>
+            <textarea name="mission_content" placeholder="미션 내용"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <!--<div class="ui black deny button">-->
+      <!--  취소-->
+      <!--</div>-->
+    
+        <button class="ui positive right labeled icon button">
+          만들기
+          <i class="checkmark icon"></i>
+        </button>
+
+    </div>
+  <% end %>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#createPerformedMissionModal').click(function(){
+    $('#createPerformedMissionModalContent').modal('show');
+  });
+});
+</script>

@@ -2,6 +2,9 @@ class MissionController < ApplicationController
   def detail
     @mission = Mission.find(params[:id])
     
+    # 미션 제작자
+    @mission_creator = User.find(@mission.user_id)
+    
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
   end
   

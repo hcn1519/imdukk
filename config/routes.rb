@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get 'mission/detail/:id', to: 'mission#detail'
   post 'mission/mission_create'
-  
+  post 'mission/performed_mission_create'
+  post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
   
   get 'visitor/main'
 

@@ -57,9 +57,10 @@ class MissionController < ApplicationController
     @performed_mission.content = params[:performed_mission_content]
     @performed_mission.warning = params[:performed_mission_warning]
     @performed_mission.user_id = current_user
+    @performed_mission.multimedia = params[:performed_mission_multimedia]
 
     if @performed_mission.save
-      redirect_to "/home/timeline"
+      redirect_to "/mission/detail/" + @current_mission.id.to_s
     else
       render text: performed_mission.errors.messages[:performed_mission_content].first
     end

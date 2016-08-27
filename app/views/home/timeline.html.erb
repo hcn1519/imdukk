@@ -1,4 +1,28 @@
+<<<<<<< HEAD
+=======
+<!--팝업 내용물-->
+<div class="ui custom popup top left transition hidden">
+  <a href="www.facebook.com">이렇게 하면 되나?</a>
+  <!--<a href="facebook.com"><i class="instagram icon"></i></a>-->
+  <!--<a href="facebook.com"><i class="facebook f icon"></i></a>-->
+  <!--<a href="facebook.com"><i class="facebook f icon"></i></a>-->
+</div>
 
+<!--팝업창용 script-->
+<script>
+$(document).ready(function(){
+  $(".share")
+    .popup({
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });
+});
+</script>
+>>>>>>> d5edaf75ef4bb1ef8ed9ffcdfa89d2be2c3571dc
+
+
+
+<!--내용-->
 <button class="ui button black gridSwitch">
   Button
 </button>
@@ -31,7 +55,7 @@
         <i class="comment icon"></i>
         3 comments
         
-        <i class="share alternate icon" title="Hello I am a popup"></i>
+        <i class="share alternate icon" style="cursor :pointer"></i>
         9 shared
       </span>
     </div>

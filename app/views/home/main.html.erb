@@ -29,8 +29,11 @@
       <!--프로필 파트-->
       <div class="content">
         <div class="right floated meta">14h</div>
+        <% if @mission_creator.nil? %>
         <% creator = User.find(@mission_creator[index]) %>
+        
         <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
+      <% end %>
       </div>
       
       <!--메인 이미지-->

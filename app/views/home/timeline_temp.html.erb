@@ -1,20 +1,47 @@
-<div class="some-wrapping-div">
-  <div class="ui custom button">Show custom popup</div>
-</div>
+
+
+<!--팝업 내용물-->
 <div class="ui custom popup top left transition hidden">
-  I'm not on the same level as the button, but i can still be found.
+  <div class="ui small buttons">
+    <button class="ui facebook icon button">
+      <i class="facebook icon"></i>
+    </button>
+    <button class="ui circular twitter icon button">
+      <i class="twitter icon"></i>
+    </button>
+    <button class="ui circular youtube icon button">
+      <i class="youtube icon"></i>
+    </button>
+  </div>
 </div>
 
+
+  
+  
+  
+  
+  
+  
+<!--팝업창용 script-->
 <script>
-// 팝업창용
 $(document).ready(function(){
-  $( ".share" ).click(function() {
-    alert( "Handler for .click() called." );
-  });
+  $(".share")
+    .popup({
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });
 });
 </script>
+
+
+
+
+
+
+
+
 <button class="ui button black gridSwitch">
-  Button
+  보기 모드 전환
 </button>
 
 <i class="grid layout icon" style="display: none;"></i>
@@ -44,8 +71,12 @@ $(document).ready(function(){
       <span class="right floated">
         <i class="comment icon"></i>
         3 comments
-        <i class="share alternate icon" ></i>
-        9 shared
+        <div>
+          <a href="#" class="mmm">
+            <i class="share alternate icon"></i>
+          </a>
+          9 shared
+        </div>
       </span>
     </div>
     <div class="extra content">

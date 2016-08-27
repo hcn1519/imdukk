@@ -15,15 +15,15 @@ class MissionController < ApplicationController
     @mission.content = params[:mission_content]
     @mission.warning = params[:mission_warning]
     @mission.category_id = params[:category_id]
-    @mission.user_id = current_user
-    
+    @mission.user_id = current_user.id
     # 지금 로그인 한 사람
-    # file = params[:pic]
-    # uploader = SnsfbUploader.new
-    # ->mission으로바꾸자 uploader부분은 손봐야함
+    @mission.multimedia = params[:mission_multimedia]
+    
+    # file = params[:mission_multimedia]
+    # uploader = MissionMultimediaUploader.new
     # uploader.store!(file)
-    # performed_mission.pic_address = uploader.url
-    # #이건옛날꺼 post.pic_address = params[:pic]
+    # @mission.multimedia = uploader.url
+    #이건옛날꺼 @mission.multimedia = params[:mission_multimedia]
     
     if @mission.save
       redirect_to "/home/main"

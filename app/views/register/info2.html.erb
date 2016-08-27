@@ -1,16 +1,3 @@
 <h1>닉네임, 이메일 받기</h1>
 
-<%= form_tag(register_infoget_path) do %>
-  <div class="field">
-    
-    <%= text_field_tag :email %>
-  </div>
-  
-  <div class="field">
-    
-    <%= text_field_tag :nickname %>
-  </div>
-  
-  <%= submit_tag "제출" %>
-<% end %>
-
+<%= render 'register/additionalInfo' %>

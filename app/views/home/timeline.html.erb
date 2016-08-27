@@ -17,26 +17,15 @@ $(document).ready(function(){
 });
 </script>
 
-<!--<div class="some-wrapping-div">-->
-<!--  <div class="ui custom button">Show custom popup</div>-->
-<!--</div>-->
-<!--<div class="ui custom popup top left transition hidden">-->
-<!--  I'm not on the same level as the button, but i can still be found.-->
-<!--</div>-->
-
-<!--<script-->
-<!--$(document).ready(function(){-->
-<!--  $('.ui.custom.button').click(function(){-->
-<!--    $('.some-wrapping-div').popup({-->
-<!--      debug : true,-->
-<!--      popup : $('.custom.popup'),-->
-<!--      on    : 'click'-->
-<!--    });  -->
-<!--  });-->
-<!--});-->
-<!--</script-->
+<div class="some-wrapping-div">
+  <div class="ui custom button">Show custom popup</div>
+</div>
+<div class="ui custom popup top left transition hidden">
+  I'm not on the same level as the button, but i can still be found.
+</div>
 
 <script>
+// 팝업창용
 $(document).ready(function(){
 $( ".share" ).click(function() {
   alert( "Handler for .click() called." );
@@ -44,6 +33,24 @@ $( ".share" ).click(function() {
 });
 </script>
 
+<script>
+// 그리드 변경 버튼
+$(document).ready(function(){
+    $('.button').on('click',function(e) {
+        
+        if ($(this).hasClass('black')) {
+            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');
+            $('.button').removeClass('black').addClass('red');
+        }
+        
+        else if($(this).hasClass('red')) {
+            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');
+             $('.button').removeClass('red').addClass('black');
+        }
+        
+    });
+});
+</script>
 
 <!--<div class="ui button">Show flowing popup</div>-->
 <!--<div class="ui flowing popup top left transition visible animating scale out">-->
@@ -67,28 +74,6 @@ $( ".share" ).click(function() {
 <!--</div>-->
 
 
-
-<!--$(document).ready(function(){-->
-<!--$(".button").click(function(){-->
-
-<!--if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
-<!--$(".cards").removeClass("three"); -->
-<!--$(".cards").addClass("one"); -->
-<!--$(".button").addClass("red"); -->
-<!--});-->
-<!--});-->
-
-<!--else if { -->
-<!--$(".cards").removeClass("one"); -->
-<!--$(".cards").addClass("three"); -->
-<!--$(".button").removeClass("red"); -->
-<!--});-->
-<!--});-->
-<!--</script>-->
-
-
-
- 
  
  
 <button class="ui button black">

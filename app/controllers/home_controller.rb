@@ -1,8 +1,10 @@
 class HomeController < ApplicationController
-  def index
+
+  def main
   end
   
   def timeline
+    @user = current_user
   end
 
 end

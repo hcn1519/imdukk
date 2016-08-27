@@ -76,7 +76,21 @@
             <a class="item" href="#">게임</a>
           </div>
       </div>
-      
+      <% if user_signed_in? %>
+        <% unless current_user.profile_img.nil? %>
+          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
+            <img class="mini ui image" src="<%= current_user.profile_img %>">
+          </a>
+        <% else %>
+          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
+            <img class="mini ui image" src="/images/default-image.png">
+          </a>
+        <% end %>
+        <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'item borderless') %>
+        
+      <% else %>
+        <%= link_to('로그인', new_user_session_path, :class => 'item borderless') %> 
+      <% end %>
       <!--프로필 탭-->
       <a class="item borderless" href="/home/timeline" style="line-height: 1">
         <i class="user icon"></i>
@@ -105,10 +119,19 @@
           </div>
       </div>
       <% if user_signed_in? %>
-        <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'item') %>
+        <% unless current_user.profile_img.nil? %>
+          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
+            <img class="mini ui image" src="<%= current_user.profile_img %>">
+          </a>
+        <% else %>
+          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
+            <img class="mini ui image" src="/images/default-image.png">
+          </a>
+        <% end %>
+        <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'item borderless') %>
         
       <% else %>
-        <a href="/users/sign_in" class="item">로그인</a>
+        <%= link_to('로그인', new_user_session_path, :class => 'item borderless') %> 
       <% end %>
       <!--프로필 탭-->
       <a class="item borderless" href="/home/timeline" style="line-height: 1">

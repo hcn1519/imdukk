@@ -13,13 +13,13 @@
 </head>
 <body>
   <!--navbar(상단바) 설정-->
-  <% if current_page?(controller: 'visitor', action: 'main')%>
-  <%= yield %>
-  <% else %>
-  <%= render 'layouts/navbar' %>
-  <div class="ui container">
+  <% if current_page?('/')%>
     <%= yield %>
-  </div>
+  <% else %>
+    <%= render 'layouts/navbar' %>
+    <div class="ui container" style="margin-top: 20px; margin-bottom: 20px">
+      <%= yield %>
+    </div>
   <% end %>
   
   

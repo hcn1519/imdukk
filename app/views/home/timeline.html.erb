@@ -1,50 +1,26 @@
 
-<!--$(document).ready(function(){-->
-<!--$(".button").click(function(){ -->
-<!--alert( "Handler for .click() called." );-->
-<!--( $("").hasClass("ui three stackable cards") == true) {-->
-<!--$("내 버튼 아이디").click(function(){-->
-<!--$(".cards").removeClass("three"); -->
-<!--$(".cards").addClass("one"); -->
-<!--$(".ui three stackable cards").addClass("one"); -->
-<!--$(".ui three stackable cards").removeClass("three");   -->
-<!--});-->
-<!--});    -->
-    
-
-<!--// $(document).ready(function(){-->
-<!--// $(".button").click(function(){-->
-
-<!--// if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
-<!--// $(".cards").removeClass("three"); -->
-<!--// $(".cards").addClass("one"); -->
-<!--// $(".button").addClass("red"); -->
-<!--// });-->
-<!--// });-->
-
-<!--// else if { -->
-<!--// $(".cards").removeClass("one"); -->
-<!--// $(".cards").addClass("three"); -->
-<!--// $(".button").removeClass("red"); -->
-<!--// });-->
-<!--// });-->
-<!--헤헤-->
-<!--$(document).ready(function(){-->
-<!--    $('.button').on('click',function(e) {-->
-        
-<!--        if ($(this).hasClass('black')) {-->
-<!--            $('.cards').removeClass('ui three stackable cards').addClass('ui one stackable cards');-->
-<!--        }-->
-        
-<!--        else if($(this).hasClass('red')) {-->
-<!--            $('.cards').removeClass('ui one stackable cards').addClass('ui three stackable cards');-->
-<!--        }-->
-        
-<!--    });-->
-<!--});-->
-    
+<div class="some-wrapping-div">
+  <div class="ui custom button">Show custom popup</div>
+</div>
+<div class="ui custom popup top left transition hidden">
+  I'm not on the same level as the button, but i can still be found.
+</div>
 
 <script>
+// 팝업창용
+$(document).ready(function(){
+  $('.ui.custom.button').click(function(){
+    $('.some-wrapping-div').popup({
+      debug : true,
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });  
+  });
+});
+</script>
+
+<script>
+// 그리드 변경 버튼
 $(document).ready(function(){
     $('.button').on('click',function(e) {
         
@@ -62,49 +38,7 @@ $(document).ready(function(){
 });
 </script>
 
-<div class="some-wrapping-div">
-  <div class="ui custom button">Show custom popup</div>
-</div>
-<div class="ui custom popup top left transition hidden">
-  I'm not on the same level as the button, but i can still be found.
-</div>
 
-<script>
-$(document).ready(function(){
-  $('.ui.custom.button').click(function(){
-    $('.some-wrapping-div').popup({
-      debug : true,
-      popup : $('.custom.popup'),
-      on    : 'click'
-    });  
-  });
-});
-</script>
-
-
-
-
-<!--$(document).ready(function(){-->
-<!--$(".button").click(function(){-->
-
-<!--if ( $(".cards").hasClass("ui three stackable cards") == true) {-->
-<!--$(".cards").removeClass("three"); -->
-<!--$(".cards").addClass("one"); -->
-<!--$(".button").addClass("red"); -->
-<!--});-->
-<!--});-->
-
-<!--else if { -->
-<!--$(".cards").removeClass("one"); -->
-<!--$(".cards").addClass("three"); -->
-<!--$(".button").removeClass("red"); -->
-<!--});-->
-<!--});-->
-<!--</script>-->
-
-
-
- 
  
  
 <button class="ui button black">

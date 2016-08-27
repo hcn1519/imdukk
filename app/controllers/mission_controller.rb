@@ -1,6 +1,5 @@
 class MissionController < ApplicationController
   def detail
-<<<<<<< HEAD
     @missions = Mission.all
     # -> 이게맞냐? 미션은 방금꺼 하나만 떠야돼
     @performed_missions = PerformedMission.all
@@ -76,7 +75,4 @@ class MissionController < ApplicationController
     # -> 퍼폼드미션 작성자의 타임라인으로 가게 하는게 심플하다
   end
   
-=======
-  end
->>>>>>> 4a63fdf56055462c2e40bc4e339a5a694dfbb6b4
 end

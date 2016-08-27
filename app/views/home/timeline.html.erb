@@ -1,5 +1,3 @@
-
-
 <div class="some-wrapping-div">
   <div class="ui custom button">Show custom popup</div>
 </div>
@@ -10,14 +8,12 @@
 <script>
 // 팝업창용
 $(document).ready(function(){
-$( ".share" ).click(function() {
-  alert( "Handler for .click() called." );
-});
+  $( ".share" ).click(function() {
+    alert( "Handler for .click() called." );
+  });
 });
 </script>
 
- 
- 
 <button class="ui button black gridSwitch">
   Button
 </button>
@@ -49,7 +45,8 @@ $( ".share" ).click(function() {
       <span class="right floated">
         <i class="comment icon"></i>
         3 comments
-        <i class="share alternate icon" ></i>
+        
+        <i class="share alternate icon" title="Hello I am a popup"></i>
         9 shared
       </span>
     </div>
@@ -62,6 +59,7 @@ $( ".share" ).click(function() {
     </div>
   <% end %>
 </div>
+
 
 
 <script>
@@ -81,3 +79,4 @@ $(document).ready(function(){
     });
 });
 </script>
+

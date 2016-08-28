@@ -95,7 +95,11 @@
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
         <div class="right item">
-          <a class="ui inverted button" href="/users/sign_in">Log in</a>
+          <% if user_signed_in? %>
+          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui inverted button') %>
+          <% else %>
+          <a class="ui inverted button" href="/users/sign_in">로그인</a>
+          <% end %>
         </div>
       </div>
     </div>
@@ -107,7 +111,11 @@
         </div>
       </h1>
       <h2>아임덕</h2>
-    <a class="ui primary button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>
+      <% if user_signed_in? %>
+        <%= link_to('메인으로 가기', home_main_path, :class => 'ui primary button') %>
+      <% else %>
+        <a class="ui primary button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>
+      <% end %>
     </div>
 </div>
 </div>

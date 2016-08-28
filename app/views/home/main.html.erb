@@ -1,13 +1,22 @@
 <style>
   .mainButtongroup {
-    width: 100%;
     border-radius: 0 !important;
     border: none !important;
   }
-  .mainLike, .mainComment, .mainShare {
+  .mainButtongroup .ui.button {
     border-radius: 0 !important;
     border: none !important;
   }
+  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
+    box-shadow: none !important;
+  }
+  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
+    box-shadow: none !important;
+  }
+
+  /*.mainLike1:hover, .mainLike2:hover, .mainLike3:hover, .mainLike4:hover, .mainLike5:hover, .mainLike6:hover  {*/
+  /*  border: none !important;*/
+  /*}*/
 </style>
 <div class="ui center aligned segment" style="border: none; box-shadow: none; background: transparent">
   오늘 할 덕질을 내일로 미루지 말자
@@ -64,7 +73,6 @@
     
       <!--내용-->
       <div class="content">
-<<<<<<< HEAD
         <h3 class="title">
           <%= m.title %>
         </h3>
@@ -75,11 +83,11 @@
       <div class="content" style="padding: 0;">
         <div class="ui basic buttons mainButtongroup">
           
-          <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
-            <button class="ui button mainLike<%= m.id%>">
-              <i class="heart icon" style="cursor :pointer"></i>
-              <span class="maionLike<%= m.id %>"><%= m.mission_like_count %></span>
-            </button>
+        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+      <button class="ui button mainLike<%= m.id%>">
+        <i class="heart icon" style="cursor: pointer"></i>
+        <span class="mainLike<%= m.id %>"><%= m.mission_like_count %></span>
+      </button>
           </a>
 
           <button class="ui button mainComment">
@@ -89,19 +97,6 @@
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
         </div>
-       
-=======
-        <strong><%= m.title %></strong><br>
-        <br>
-        <%= m.content %><br>
-        <br>
-        <span class="right floated">
-          <i class="heart outline like icon"></i>
-          17 likes
-        </span>
-        <i class="comment icon"></i>
-        3 comments
->>>>>>> f109d2e436bac94de84b46c88a5a6680dfa58f34
       </div>
       <div class="extra content">
         <div class="ui large transparent left icon input">

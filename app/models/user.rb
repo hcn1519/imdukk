@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :user_categories
+  has_many :mycategories, :through => :user_category, :source => :mycategory
+  
   has_many :missions
   has_many :performed_missions
   

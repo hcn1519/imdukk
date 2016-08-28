@@ -1,7 +1,7 @@
 class RegisterController < ApplicationController
   before_action :set_user, only: [:info1, :info2, :infoget]
   before_filter :authenticate_user!
-  
+  # 카테고리 선택하기 추가
   def info1
   end
 

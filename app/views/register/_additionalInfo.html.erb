@@ -10,5 +10,28 @@
     <label for="nickname">nickname</label>
     <%= text_field_tag :nickname %>
   </div>
+  
+  <div class="ui form">
+  <div class="inline fields">
+    <label for="fruit">관심사를 선택하세요</label>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <%= radio_button_tag :mycategory, "아이돌" %>
+        <label>아이돌</label>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <%= radio_button_tag :mycategory, "게임" %>
+        <label>게임</label>
+      </div>
+    </div>
+  </div>
+  
   <%= submit_tag "제출", :class => 'ui primary button' %>
 <% end %>
+<script>
+  $(document).ready(function(){
+    $('.ui.radio.checkbox').checkbox();
+  });
+</script>

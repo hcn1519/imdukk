@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post 'register/infoget'
 
   get 'mission/detail/:id', to: 'mission#detail'
+  
   post 'mission/mission_create'
-  post 'mission/performed_mission_create'
   post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
   
   get 'visitor/main'
@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'home/main'
   get 'home/timeline/:id', to: 'home#timeline'
   get 'home/timeline_temp'
-  get 'home/mission_detail'
   
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations" }
   

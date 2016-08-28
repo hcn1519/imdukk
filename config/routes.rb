@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   get '/mission/:id/destroy' => 'home#mission_destory'                                    # 작성자가 본인 글 삭제
   get '/mission/performed_mission:id/destroy' => 'home#mission_destory'                   # 수행자가 본인 글 삭제
   
-  #                                                                                         # 수정
-  # post '/mission/:id/edit' => 'home#mission_edit'                                         # 작성자 본인 글의 수정이 실제로 일어나는 페이지
-  # get '/mission/:id/edit/view' => 'home#mission_edit_view'                                # 작성자 본인이 수정한 게 보여지는 페이지
+                                                                                          # 수정
+  post '/mission/:id/edit' => 'home#mission_edit'                                         # 작성자 본인 글의 수정이 실제로 일어나는 페이지
+  get '/mission/:id/edit/view' => 'home#mission_edit_view'                                # 작성자 본인이 수정한 게 보여지는 페이지
+  
+  post 'mission/mission_comment_create'
   
   # post '/mission/performed_mission:id/edit' => 'home#performed_mission_edit'              # 수행자 본인 글의 수정이 실제로 일어나는 페이지
   # get '/mission/performed_mission:id/edit/view' => 'home#performed_mission_edit_view'     # 수행자 본인이 수정한 게 보여지는 페이지

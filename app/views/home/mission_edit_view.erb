@@ -1,0 +1,23 @@
+<div class="container">
+<div class="card-panel grey lighten-5 z-depth-1" style="width:100%;height:400px; overflow-y:auto; margin-top:50px;">
+    <p style="font-size:17px;font-weight:bold">글 수정 페이지입니다.</p>
+        <form action = "/post/write" method="POST" enctype="multipart/form-data">
+            <div style="width:100%;height:250px;">
+            <!--글 내용 입력창-->
+                <div class="input-field col s5" style="display:block;">
+                    <textarea id ="content" style="min-height:10px!important; height:1rem" class="materialize-textarea" name="content" placeholder="내용을 써봐"><%= @post.content %></textarea>
+                </div>
+                <!--태그 작성-->
+                <div class="input-field col s5 style="display:block;"">
+                    <input class="materialize-textarea" type="text" id="tags" name="tags" placeholder="태그도 넣어봐~" value="<%= @post.tags %>">
+                </div>
+                <!--사진 올리기-->
+                <input style="margin-bottom:10px;"type="file" name="pic" accept="image/*"></br>
+                <!--전송 버튼-->
+                <button class="btn waves-effect waves-light red " type="submit" id="post_submit" name="action" style="margin-top:10px;">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+
+</div>

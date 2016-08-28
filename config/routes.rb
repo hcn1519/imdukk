@@ -6,13 +6,8 @@ Rails.application.routes.draw do
   post 'register/infoget'
 
   get 'mission/detail/:id', to: 'mission#detail'
-<<<<<<< HEAD
-  
-  post 'mission/mission_create'
-=======
   post 'mission/mission_create'                                                           #작성자가 미션 작성하는 페이지
   post 'mission/performed_mission_create'                                                 #수행자가 미션 작성하는 페이지
->>>>>>> 76385dd51e36fa3d96d7202a3d1e3d4f6d87fdd4
   post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
                                                                                           # 삭제
   get '/mission/:id/destroy' => 'home#mission_destory'                                    # 작성자가 본인 글 삭제

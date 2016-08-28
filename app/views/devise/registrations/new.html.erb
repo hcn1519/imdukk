@@ -1,8 +1,9 @@
-<h2>Sign up</h2>
+<%= stylesheet_link_tag 'signupin', media: 'all', 'data-turbolinks-track' => true %>
 
+    <h2>가입하기</h2>
 <div class="ui one column stackable center aligned page grid">
   <div class="column">
-      <div class="ui stacked segment">
+      <div class="ui raise segment">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {class: "ui large form"}) do |f| %>
   <%= devise_error_messages! %>
 
@@ -14,7 +15,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> 자 이상이어야 합니다.)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -28,7 +29,7 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+    </div>
+  </div>
+  <%= render "devise/shared/links" %>
 </div>
-</div>
-</div>
-<%= render "devise/shared/links" %>

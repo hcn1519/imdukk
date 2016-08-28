@@ -1,7 +1,9 @@
+<%= stylesheet_link_tag 'signupin', media: 'all', 'data-turbolinks-track' => true %>
+
 <h2>Log in</h2>
 <div class="ui one column stackable center aligned page grid">
   <div class="column">
-      <div class="ui stacked segment">
+      <div class="ui raised segment">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "ui large form"}) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -24,7 +26,8 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-</div>
-</div>
-</div>
+    </div>
+  </div>
 <%= render "devise/shared/links" %>
+</div>
+

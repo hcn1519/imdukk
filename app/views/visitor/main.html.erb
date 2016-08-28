@@ -96,7 +96,7 @@
       <div class="ui large secondary menu">
         <div class="right item">
           <% if user_signed_in? %>
-          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui inverted button') %>
+          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui black basic button') %>
           <% else %>
           <a class="ui black basic button" href="/users/sign_in">로그인</a>
           <% end %>

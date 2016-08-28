@@ -1,51 +1,93 @@
+  <!--팝업 내용물-아직 하는 중입니다-->
+<div class="ui custom popup top left transition hidden">
+  <!--<div class="ui small buttons">-->
+    <!--원래 공유 버튼-->
+    <!--<button class="ui facebook icon button">-->
+    <!--  <a href="https://www.facebook.com/dialog/share?app_id=184484190795&display=popup&e2e=%7B%7D&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&locale=en_US&mobile_iframe=false&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df189db51f1a3c14%26domain%3Dwww.fbrell.com%26origin%3Dhttp%253A%252F%252Fwww.fbrell.com%252Ff3fda3ae0438974%26relation%3Dopener%26frame%3Df2944388ebaf9bc%26result%3D%2522xxRESULTTOKENxx%2522&sdk=joey">-->
+    <!--    <i class="facebook icon"></i></a>-->
+    <!--</button>-->
+    <!--<button class="ui circular twitter icon button">-->
+    <!--  <a href="https://twitter.com/intent/tweet?url=https%3A//youtu.be/pBBFy6dK1OY&text=%EC%A3%BC%EA%B0%84%EC%95%84%EC%9D%B4%EB%8F%8C%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8%28Infinite%29%20207%ED%9A%8C&via=YouTube&related=YouTube,YouTubeTrends,YTCreators">-->
+    <!--  <i class="twitter icon"></i></a>-->
+    <!--</button>-->
+    <!--<button class="ui circular youtube icon button">-->
+    <!--  <i class="youtube icon"></i>-->
+    <!--</button>-->
+    
+  
+  <!--새 방법-->
+  <!--페이스북-->
+  <a href="http://www.facebook.com/sharer/sharer.php?u="><i class="facebook icon"></i></a>
+  <!--트위터-->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <!--인스타-->
+  <!--해야 함-->
+  <!--</div>-->
+</div>
 
 
+<!--공유하기 팝업창용 script-->
+<script>
+$(document).ready(function(){
+  $(".share")
+    .popup({
+      popup : $('.custom.popup'),
+      on    : 'click'
+    });
+});
+</script>
 
-<button class="ui button black gridSwitch">
-  보기 모드 전환
-</button>
-
-<i class="grid layout icon" style="display: none;"></i>
-<i class="square icon" style="display: none;"></i>
-
+      <button class="ui button black gridSwitch">
+        보기 모드 전환
+      </button>
+      
+      <i class="grid layout icon" style="display: none;"></i>
+      <i class="square icon" style="display: none;"></i>
+      
+      
+<% @missions.each do |m| %>
 <div class="ui three stackable cards" style="padding-bottom:100px;margin:0 auto;">
-  <% @missions.each do |m| %>
-
-<div class="ui fluid card">
+  <div class="ui fluid card">
+    
     <!--프로필 파트-->
-    <div class="content">
-      <div class="right floated meta">14h</div>
-      <img class="ui avatar image" src="<%= m.multimedia %>"> Elliot
-    </div>
-    
-    <!--메인 이미지-->
-    <div class="image">
-      <img class="image" src="<%= m.multimedia %>">
-    </div>
-    
-    <!--내용-->
-    <div class="content">
-      <span class="left floated">
-        <i class="heart outline like icon"></i>
-        17 likes
-      </span>
-      <span class="right floated">
-        <i class="comment icon"></i>
-        3 comments
-        <div>
-          <a href="#" class="mmm">
-            <i class="share alternate icon"></i>
-          </a>
-          9 shared
+      <div class="content">
+            
+            <div class="right floated meta">
+              14h
+              <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
+              <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
+            </div>
+          
+      
+        <!--메인 이미지-->
+        <div class="image">
+          <img class="image" src="<%= m.multimedia %>" style="width:254.98px;">
         </div>
-      </span>
-    </div>
-    <div class="extra content">
-      <div class="ui large transparent left icon input">
-        <i class="heart outline icon"></i>
-        <input type="text" placeholder="Add Comment...">
+        
+        <!--내용-->
+        <div class="content">
+          <span class="left floated">
+            <i class="heart outline like icon"></i>
+            17 likes
+          </span>
+          <span class="right floated">
+            <i class="comment icon"></i>
+            3 comments
+            <div>
+              <a href="#" class="mmm">
+                <i class="share alternate icon"></i>
+              </a>
+              9 shared
+            </div>
+          </span>
+        </div>
+        <div class="extra content">
+          <div class="ui large transparent left icon input">
+            <i class="heart outline icon"></i>
+            <input type="text" placeholder="Add Comment...">
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   <% end %>
 </div>

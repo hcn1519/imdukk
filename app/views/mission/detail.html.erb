@@ -4,21 +4,20 @@
     <!--프로필 파트-->
     <div class="content">
       <div class="right floated meta">14h</div>
-      <img class="ui avatar image" src="<%= @mission_creator.profile_img %>"> <%= @mission_creator.nickname %>
+      <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
     
     <!--메인 이미지-->
-    <div class="image">
-      <img class="image" src="<%= @mission.multimedia %>">
+    <div class="image" style="margin: auto;">
+      <img class="image" src="<%= @mission.multimedia %>" style="max-width: 700px; height: auto; " />
     </div>
     
     <!--내용-->
     <div class="content">
-      <!--<h4><5= @one_mission.title 5></5></h4>-->
-      <!--<p><5= @one_mission.content 5></p>-->
       <span class="left floated">
-        <%= @mission.title %><br>
+        <strong><%= @mission.title %></strong><br><br>
         <%= @mission.content %>
+        <br>
       </span>
       <span class="right floated">
         <i class="comment icon"></i>
@@ -28,16 +27,16 @@
       </span>
     </div>
     <div class="extra content">
+      
+      <!--댓글-->
       <div class="ui large transparent left icon input">
         <i class="heart outline icon"></i>
-        <input type="text" placeholder="Add Comment...">
+        <input type="text" class="validate" name="mission_comment" placeholder="댓글달아주세용">
+      </div>
+
       </div>
     </div>
-    </div>
-
 </div>
-<!--여기까지가 미션 문제-->
-
 
 
 
@@ -64,7 +63,7 @@
     </a>
     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!--</div>-->
-  </div>
+</div>
 
 
 <!--공유하기 팝업창용 script-->
@@ -100,72 +99,95 @@ $(document).ready(function(){
 <br>
 <br>
 <!--다른사람이 수행한 미션-->
-<div class="section">
-  <% @performed_mission.each do |m| %>
-    <div class="ui three column grid">
-    <div class="column">
-      <div class="ui segment">
-        수행한 미션 이미지: <img src="<%= m.multimedia %>"/><br>
-      </div>
-    </div>
-    <div class="column">
-      <div class="ui segment">
-         수행한 미션 이미지: <img src="<%= m.multimedia %>"/><br>
-      </div>
-    </div>
-    <div class="column">
-      <div class="ui segment">
-        수행한 미션 이미지: <img src="<%= m.multimedia %>"/><br>
-      </div>
-    </div>
-  <% end %>
-</div>
-  <!--수행한 미션 타이틀: <5= m.title %><br>-->
-  <!--수행한 미션 이미지: <img src="<5= m.multimedia %>"/><br>-->
-  <!--수행한 미션 내용: <5= m.content %><br>-->
-  <!--<5 end %>-->
+  <!--수행한 미션 타이틀: <%#= m.title %><br>-->
+  <!--수행한 미션 이미지: <img src="<%#= m.multimedia %>"/><br>-->
+  <!--수행한 미션 내용: <%#= m.content %><br>-->
+  <!--<%# end %>-->
 </div>
 
+<!--형규:수행한미션띄우기-->
+  <!--<div class="ui three stackable cards">-->
+  <!--  <% @performed_mission.each do |m| %>-->
+  <!--    <div class="ui fluid card">-->
+  <!--      <div class="card" style="width: 326.66px; height: 300px; padding:auto 0; ">-->
+  <!--        <div class="image">-->
+  <!--          <img src="<%= m.multimedia %>" style="max-width: auto; height: auto;" >-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  <% end %>-->
+  <!--</div>-->
+  
+<!--예니:수행한미션띄우기-->
+  
 
-
-
-
-
-<!--다른 사람이 수행한 미션들-->
-<!--<div class="ui 3 stackable images" style="padding-bottom:100px;margin:0 auto;">-->
-<!--<div class="ui fluid images">-->
-<!--    프로필 파트-->
-<!--    <div class="content">-->
-<!--      <div class="right floated meta">14h</div>-->
-<!--      <img class="ui avatar image" src="<% @mission.multimedia %>"> Elliot-->
-<!--    </div>-->
+<div class="ui three stackable cards">
+    <% @performed_mission.each do |m| %>
+     <div class="ui fluid card">
+      <!--프로필 파트-->
+      <div class="content">
+        <div class="right floated meta">14h</div>
+        <% if @mission_creator.nil? %>
+        <% creator = User.find(@mission_creator[index]) %>
+        
+        <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
+      <% end %>
+      </div>
+      
+      <!--메인 이미지-->
+    <!--<5 @missions.each do |m| 5>-->
+    <!--<5 unless @missions.first.nil? 5>-->
+   <!--@missions.each do |m|-->
+    <div class="blurring dimmable image user-create-image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <a href="'mission/detail/:id/performed_mission/:id'<%= m.id %>">
+            <div id="performedMissionDetailModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
+            </a>
     
-<!--    메인 이미지-->
-<!--    <div class="image">-->
-<!--      <img class="image" src="<% @mission.multimedia %>">-->
-<!--    </div>-->
+    <!--아래는 참조할거        -->
+    <a href="/mission/detail/<%= m.id %>></a>
+    <% end %>
+    <%= link_to('/mission/detail/#{m.id}') do %>
+    <div id="missionPreviewModal i" class="ui inverted button">자세히 보기</div>
+    <% end %>
+    <!--여기까지-->
+            
     
-<!--    내용-->
-<!--    <div class="content">-->
-<!--      <h4><5= @one_mission.title 5></5></h4>-->
-<!--      <p><5= @one_mission.content 5></p>-->
-<!--      <span class="left floated">-->
-<!--        <% @mission.title %><br>-->
-<!--        <% @mission.content %>-->
-<!--      </span>-->
-<!--      <span class="right floated">-->
-<!--        <i class="comment icon"></i>-->
-<!--        3 comments-->
-<!--        <i class="share alternate icon"></i>-->
-<!--        9 shared-->
-<!--      </span>-->
-<!--    </div>-->
-<!--    <div class="extra content">-->
-<!--      <div class="ui large transparent left icon input">-->
-<!--        <i class="heart outline icon"></i>-->
-<!--        <input type="text" placeholder="Add Comment...">-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    </div>-->
+    <!--다른 것들-->
+    <!--<a href="/mission/detail/<5= m.id 5>>--
+    <!--</a>-->
+    <!--<5 end 5>-->
+    <!--<5= link_to('/mission/detail/#{m.id}') do 5><div id="missionPreviewModal i" class="ui inverted button">자세히 보기</div> <5 end 5>-->
+          </div>
+        </div>
+      </div>
+        <img class="image" src="<%= m.multimedia %>">
+    </div>
+    
+      <!--내용-->
 
-<!--</div>-->
+      <div class="extra content">
+        <span class="right floated">
+          <i class="heart outline like icon"></i>
+          17 likes
+        </span>
+        <i class="comment icon"></i>
+        3 comments
+      </div>
+    </div>
+
+<% end %>
+</div>
+  
+
+<% render 'mission/performedMissionDetailModal.html' %>
+  
+<script>
+$(document).ready(function(){
+  $('.cards .user-create-image').dimmer({
+    on: 'hover'
+  });
+});
+</script>

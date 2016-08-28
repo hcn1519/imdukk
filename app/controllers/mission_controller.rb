@@ -55,7 +55,7 @@ class MissionController < ApplicationController
     @performed_mission.category_id = @current_mission.category_id
     @performed_mission.content = params[:performed_mission_content]
     @performed_mission.warning = params[:performed_mission_warning]
-    @performed_mission.user_id = current_user
+    @performed_mission.user_id = current_user.id
     @performed_mission.multimedia = params[:performed_mission_multimedia]
 
     if @performed_mission.save

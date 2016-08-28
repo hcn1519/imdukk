@@ -32,4 +32,41 @@ class HomeController < ApplicationController
     @missions = Mission.all
   end
   
+  def missionLike
+    @likedMission = Mission.find(params[:id])
+    
+    @missionLike = MissionLike.where(:mission_id => @likedMission.id, :user_id => current_user.id)
+    
+    # 처음 좋아요 +
+    if @missionLike.first.nil?
+      @missionLike = MissionLike.new
+      @missionLike.user_id = current_user.id
+      @missionLike.mission_id = @likedMission.id
+      @missionLike.mission_like = 1
+      @missionLike.save  
+      @likedMission.mission_like_count = @likedMission.mission_like_count + 1
+
+    # 나중
+    else
+      
+      # 좋아요 +
+      if @missionLike.first.mission_like == 0 
+        
+        @missionLike.first.mission_like = 1
+        @likedMission.mission_like_count = @likedMission.mission_like_count + 1
+      
+      # 좋아요 -
+      else
+        @missionLike.first.mission_like = 0
+        @likedMission.mission_like_count = @likedMission.mission_like_count - 1
+      
+      end
+      @missionLike.first.save
+      
+    end
+    
+    
+    @likedMission.save
+    
+  end
 end

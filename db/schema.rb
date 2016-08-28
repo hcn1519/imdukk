@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827130901) do
+ActiveRecord::Schema.define(version: 20160828064330) do
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20160827130901) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "mission_likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "mission_id"
+    t.integer  "mission_like", default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "missions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "category_id"
@@ -38,8 +46,9 @@ ActiveRecord::Schema.define(version: 20160827130901) do
     t.string   "title"
     t.string   "multimedia"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "mission_like_count", default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "mycategories", force: :cascade do |t|

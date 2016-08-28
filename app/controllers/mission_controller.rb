@@ -8,7 +8,6 @@ class MissionController < ApplicationController
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
   end
   
-
   def mission_create
     @mission = Mission.new
     @mission.title = params[:mission_title]
@@ -44,7 +43,7 @@ class MissionController < ApplicationController
     @mission_comment.mission_id = @current_mission.id
     @mission_comment.mission_comment = params[:mission_comment]
     @mission_comment.save
-    redirect_to "/mission/detail"
+    redirect_to :back
     # -> 미션 작성자의 타임라인으로 가게 하는게 심플할까?
   end
   
@@ -60,7 +59,8 @@ class MissionController < ApplicationController
     @performed_mission.multimedia = params[:performed_mission_multimedia]
 
     if @performed_mission.save
-      redirect_to "/mission/detail/" + @current_mission.id.to_s
+      # redirect_to "/mission/detail/" + @current_mission.id.to_s
+      redirect_to :back
     else
       render text: performed_mission.errors.messages[:performed_mission_content].first
     end
@@ -75,9 +75,44 @@ class MissionController < ApplicationController
     @performed_mission_comment.performed_mission_id = @current_performed_mission.id
     @performed_mission_comment.performed_mission_comment = params[:performed_mission_comment]
     @performed_mission_comment.save
-    redirect_to "/mission/detail"
-    # -> 퍼폼드미션 작성자의 타임라인으로 가게 하는게 심플하다
+    # redirect_to "/mission/detail"
+    redirect_to :back
+  end
+    
+  def mission_edit
+    @mission = Mission.find(params[:id])
+    if @mission.email == current_user.email
+      
+    # 뷰 단에서 content로 되어 있는지 확인 
+    @mission.title = params[:title] 
+    @mission.content = params[:content] 
+    @mission.multimedia = params[:multimedia] 
+    @post.category_id = params[:category_id]
+    @post.save
+    
+      redirect_to '/main'
+    else 
+      redirect_to :back
+    end
   end
   
+  def mission_edit_view
+    @mission = Mission.find(params[:id])
+    
+    if @mission.email != current_user.email
+      redirect_to '/main'
+    end
   end
-
+  
+  
+  def mission_destroy
+    # 내용 어디에 쓰든 mission_destroy로 오게 한다! --view 
+    @mission = Mission.find(params[:id])
+    
+    if @mission.email == current_user.email
+      @mission.destroy
+    end
+    redirect_to :back
+  end
+end
+ 

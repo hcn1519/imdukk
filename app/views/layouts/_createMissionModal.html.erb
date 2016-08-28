@@ -9,8 +9,13 @@
   <!--<input name="authenticity_token" type="hidden"/>-->
     <div class="image content">
       <div class="ui medium image">
-        <img src="/images/test1.jpg">
-        <input type="file" name="mission_multimedia" accept="image/*">
+        <!--<img src="/images/test1.jpg">-->
+        
+        <input name="mission_multimedia" type="file" id="file" accept="image/*" onchange="getThumbnail(this,$('#image'))">
+        <div id="image"></div>
+        
+        <!--<input type="file" name="mission_multimedia" accept="image/*">-->
+        
       </div>
       <div class="description">
         <div class="ui header">
@@ -52,4 +57,25 @@ $(document).ready(function(){
     $('#createMissionModalContent').modal('show');
   });
 });
+</script>
+
+<script type="text/javascript">
+/**
+ * 이미지 썸네일을 불러오는 function
+ * @param html : input 필드의 dom을 인자로 받는다. 물론 타입은 file
+ * @param $target : 불러온 이미지를 적용할 jquery 객체.
+ **/
+function getThumbnail(html, $target) {
+   if (html.files && html.files[0]) {
+       var reader = new FileReader();
+       reader.onload = function (e) {
+           $target.html('<img class="image" src="'+ e.target.result + '"/>')
+          // $target.css({
+          //   'background-image': 'url(\"' + e.target.result + '\")',
+          //   'width' : '100%'
+          // });
+       }
+       reader.readAsDataURL(html.files[0]);
+   }
+}
 </script>

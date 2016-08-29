@@ -1,44 +1,139 @@
-<div class="ui one stackable cards" style="padding-bottom:100px;margin:0 auto;">
+<style>
+  .detailButtongroup {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .detailButtongroup .ui.button {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
+    box-shadow: none !important;
+  }
+  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
+    box-shadow: none !important;
+  }
+  @media (max-width: 722px) {
+   .mobile-title {
+     display: block;
+   }
+   .computer-title {
+     display: none;
+   }
+   .mission {
+      box-shadow: none;
+    }
+    .ui.stackable.cards > .card.wrapping{
+      margin-left:0 !important;
+      margin-right:0 !important;
+      width: 100% !important;
+    }
+   }
+   @media (min-width: 723px) {
+   .mobile-title {
+     display: none;
+   }
+   .computer-title {
+     display: block;
+   }
+   .mission {
+      border-radius: 2px;
+   }
+   .wrapping {
+      position: relative !important;
+      height: 500px;
+      box-shadow: none !important;
+    }
+    .wrapped-image {
+      position: absolute !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+   }
+
+  .mission {
+    box-shadow:0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+    margin-top: 2rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  } 
    
-<div class="ui fluid card">
-    <!--프로필 파트-->
-    <div class="content">
+
+</style>
+<div class="ui two stackable cards mission">
+  <div class="card wrapping">
+  
+    <!--모바일 프로필-->
+    <div class="content mobile-title">
+      <div class="right floated meta">14h</div>
+      <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
+    </div>
+
+    <div class="image wrapped-image" style="box-shadow: none; border: none">
+      <img class="image" src="<%= @mission.multimedia %>" />
+    </div>
+  </div>
+  <div class="card" style="box-shadow: none">
+    <!--데스크탑 프로필-->
+    <div class="content computer-title" style="padding-bottom: 0px; position:relative; flex-grow: 0.05">
       <div class="right floated meta">14h</div>
       <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
     
-    <!--메인 이미지-->
-    <div class="image" style="margin: auto;">
-      <img class="image" src="<%= @mission.multimedia %>" style="max-width: 700px; height: auto; " />
-    </div>
-    
-    <!--내용-->
     <div class="content">
-      <span class="left floated">
-        <strong><%= @mission.title %></strong><br><br>
-        <%= @mission.content %>
-        <br>
-      </span>
-      <span class="right floated">
-        <i class="comment icon"></i>
-        3 comments
-        <i class="share alternate icon"></i>
-        9 shared
-      </span>
-    </div>
-    <div class="extra content">
-      
-      <!--댓글-->
+    <!--내용-->
+    
+        <h3><%= @mission.title %></h3>
+        <p><%= @mission.content %></p>
+
+        <div class="ui basic buttons detailButtongroup" style="margin-left: -1.2rem">
+          <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
+            <button class="ui button missionLike<%= @mission.id%>">
+              <i class="heart icon" style="cursor: pointer"></i>
+              <span class="missionLike<%= @mission.id %>"><%= @mission.mission_like_count %></span>
+            </button>
+          </a>
+          <button class="ui button mainComment">
+            <i class="comment icon" style="cursor :pointer"></i>1,024
+          </button>
+          <button class="ui button mainShare">
+            <i class="share icon" style="cursor :pointer"></i>30
+          </button>
+        </div>
+  
+    <div class="content" style="margin-top: 10px">
+          <!--댓글-->
       <div class="ui large transparent left icon input">
-        <i class="heart outline icon"></i>
+        <a class="avatar">
+          <img src="/images/default-image.png">
+        </a>
         <input type="text" class="validate" name="mission_comment" placeholder="댓글달아주세용">
       </div>
-
+    <div class="ui comments">
+      <div class="comment">
+        <a class="avatar">
+          <img src="/images/default-image.png">
+        </a>
+        <div class="content">
+          <a class="author">BTS 사랑</a>
+          <div class="metadata">
+            <span class="date">Today at 5:42PM</span>
+          </div>
+          <div class="text">
+          재미 ㅇㅈ? ㅇ ㅇㅈ~
+          </div>
+        </div>
       </div>
+     </div>   
     </div>
+    </div>
+
+    
+  </div>
 </div>
 
 
+<br><br><br><br>
 
 <!--팝업 내용물-아직 하는 중입니다-->
 <div class="ui custom popup top left transition hidden">
@@ -77,11 +172,6 @@ $(document).ready(function(){
 });
 </script>
 
-
-
-
-
-
 <!--미션 수행하기 모달-->
 <%= render 'mission/createPerformedMissionModal' %>
 
@@ -98,28 +188,7 @@ $(document).ready(function(){
 <br>
 <br>
 <br>
-<!--다른사람이 수행한 미션-->
-  <!--수행한 미션 타이틀: <%#= m.title %><br>-->
-  <!--수행한 미션 이미지: <img src="<%#= m.multimedia %>"/><br>-->
-  <!--수행한 미션 내용: <%#= m.content %><br>-->
-  <!--<%# end %>-->
-</div>
 
-<!--형규:수행한미션띄우기-->
-  <!--<div class="ui three stackable cards">-->
-  <!--  <%# @performed_mission.each do |m| %>-->
-  <!--    <div class="ui fluid card">-->
-  <!--      <div class="card" style="width: 326.66px; height: 300px; padding:auto 0; ">-->
-  <!--        <div class="image">-->
-  <!--          <img src="<%#= m.multimedia %>" style="max-width: auto; height: auto;" >-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  <%# end %>-->
-  <!--</div>-->
-  
-<!--예니:수행한미션띄우기-->
-  
 
 <div class="ui three stackable cards">
     <% @performed_mission.each do |m| %>

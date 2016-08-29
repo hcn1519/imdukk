@@ -13,10 +13,6 @@
   .ui.basic.buttons .button:focus, .ui.basic.button:focus {
     box-shadow: none !important;
   }
-
-  /*.mainLike1:hover, .mainLike2:hover, .mainLike3:hover, .mainLike4:hover, .mainLike5:hover, .mainLike6:hover  {*/
-  /*  border: none !important;*/
-  /*}*/
 </style>
 <div class="ui center aligned segment" style="border: none; box-shadow: none; background: transparent">
   오늘 할 덕질을 내일로 미루지 말자
@@ -78,18 +74,43 @@
         </h3>
         <p>
           <%= m.content %>
+          
+          <%# @likeClick = MissionLike.where(:mission_id => m.id) %>
+          <%#= @likeClick.inspect %><br><br>
+          <%#= @userlike.inspect %>
         </p>
       </div>
       <div class="content" style="padding: 0;">
         <div class="ui basic buttons mainButtongroup">
-          
+    
+    <% if user_signed_in? %>
+      <!--회원 ok?  -->
+      <% @likeClick = MissionLike.where(:mission_id => m.id) %>
+      <% if @likeClick.include?(@userlike) %>
         <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
-      <button class="ui button mainLike<%= m.id%>">
-        <i class="heart icon" style="cursor: pointer"></i>
-        <span class="mainLike<%= m.id %>"><%= m.mission_like_count %></span>
-      </button>
-          </a>
-
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon basic blue" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>" style="color: #54C8FF"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+      <% else %>
+        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+      <% end %>
+    
+    <% else %>
+      <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+    <% end %>
+    
           <button class="ui button mainComment">
             <i class="comment icon" style="cursor :pointer"></i>1,024
           </button>

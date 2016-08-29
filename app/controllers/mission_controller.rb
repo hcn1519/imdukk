@@ -7,7 +7,6 @@ class MissionController < ApplicationController
     
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
    
-    @performed_missions = @performed_mission.all
     
   end
   

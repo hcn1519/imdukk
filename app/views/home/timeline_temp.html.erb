@@ -1,20 +1,39 @@
+<style>
+  .mainButtongroup {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .mainButtongroup .ui.button {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
+    box-shadow: none !important;
+  }
+  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
+    box-shadow: none !important;
+  }
+
+  /*.mainLike1:hover, .mainLike2:hover, .mainLike3:hover, .mainLike4:hover, .mainLike5:hover, .mainLike6:hover  {*/
+  /*  border: none !important;*/
+  /*}*/
+</style>  
   
-  
-<!--팝업 내용물-아직 하는 중입니다-->
+ <!--팝업 내용물-아직 하는 중입니다-->
 <div class="ui custom popup top left transition hidden">
-<!--<div class="ui small buttons">-->
-  <!--원래 공유 버튼-->
-  <!--<button class="ui facebook icon button">-->
-  <!--  <a href="https://www.facebook.com/dialog/share?app_id=184484190795&display=popup&e2e=%7B%7D&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&locale=en_US&mobile_iframe=false&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df189db51f1a3c14%26domain%3Dwww.fbrell.com%26origin%3Dhttp%253A%252F%252Fwww.fbrell.com%252Ff3fda3ae0438974%26relation%3Dopener%26frame%3Df2944388ebaf9bc%26result%3D%2522xxRESULTTOKENxx%2522&sdk=joey">-->
-  <!--    <i class="facebook icon"></i></a>-->
-  <!--</button>-->
-  <!--<button class="ui circular twitter icon button">-->
-  <!--  <a href="https://twitter.com/intent/tweet?url=https%3A//youtu.be/pBBFy6dK1OY&text=%EC%A3%BC%EA%B0%84%EC%95%84%EC%9D%B4%EB%8F%8C%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8%28Infinite%29%20207%ED%9A%8C&via=YouTube&related=YouTube,YouTubeTrends,YTCreators">-->
-  <!--  <i class="twitter icon"></i></a>-->
-  <!--</button>-->
-  <!--<button class="ui circular youtube icon button">-->
-  <!--  <i class="youtube icon"></i>-->
-  <!--</button>-->
+  <!--<div class="ui small buttons">-->
+    <!--원래 공유 버튼-->
+    <!--<button class="ui facebook icon button">-->
+    <!--  <a href="https://www.facebook.com/dialog/share?app_id=184484190795&display=popup&e2e=%7B%7D&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&locale=en_US&mobile_iframe=false&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df189db51f1a3c14%26domain%3Dwww.fbrell.com%26origin%3Dhttp%253A%252F%252Fwww.fbrell.com%252Ff3fda3ae0438974%26relation%3Dopener%26frame%3Df2944388ebaf9bc%26result%3D%2522xxRESULTTOKENxx%2522&sdk=joey">-->
+    <!--    <i class="facebook icon"></i></a>-->
+    <!--</button>-->
+    <!--<button class="ui circular twitter icon button">-->
+    <!--  <a href="https://twitter.com/intent/tweet?url=https%3A//youtu.be/pBBFy6dK1OY&text=%EC%A3%BC%EA%B0%84%EC%95%84%EC%9D%B4%EB%8F%8C%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8%28Infinite%29%20207%ED%9A%8C&via=YouTube&related=YouTube,YouTubeTrends,YTCreators">-->
+    <!--  <i class="twitter icon"></i></a>-->
+    <!--</button>-->
+    <!--<button class="ui circular youtube icon button">-->
+    <!--  <i class="youtube icon"></i>-->
+    <!--</button>-->
     
   
   <!--새 방법-->
@@ -40,79 +59,197 @@ $(document).ready(function(){
 </script>
 
 
-<!--실제 내용-->
-<button class="ui button black gridSwitch">
-  보기 모드 전환
-</button>
+<!--프로필-->
+<div class="ui segment" style="border:none;">
+  <div class="ui equal width grid">
+    <div class="Left floated right aligned six wide column">
+        <img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">
+    </div>
+    <div class="Right floated left aligned column">
+      <h2 class="ui header" style="margin-top: 44px;margin-bottom: 0px;">쵸아쬬아&nbsp; <img src="/images/profile_duck.png" style="width:30px;" ></h2>
+      <p style="font-size:12px;">
+        <strong>Duck Pt. </strong>525 &nbsp;
+        <strong>Friends </strong>75 &nbsp;
+        <strong>Likes </strong>129&nbsp; </p>
+    </div>
+  </div>
+</div>
 
-<!--<i class="grid layout icon" style="display: none;"></i>-->
-<!--<i class="square icon" style="display: none;"></i>-->
-      
-<div class="ui center aligned segment" style="border: none; box-shadow: none; background: transparent">
-  오늘 할 덕질을 내일로 미루지 말자
-</div>      
 
-<div class="ui three stackable cards" style="padding-bottom:100px;margin:0 auto;">
-<% @missions.each do |m| %>
-  <div class="ui fluid card">
-    
-    <!--프로필 파트-->
-      <div class="content">
-        <div class="right floated meta">
-          14h
-          <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
-          <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
-        </div>
-    
-    
-     <!--메인 이미지-->
-    <div class="blurring dimmable image user-create-image">
-      <div class="ui dimmer">
+  <br>
+  <div class="right floated meta">
+    <button class="ui button black gridSwitch">
+      보기 모드 전환
+    </button>
+  </div>  
+
+<script>
+$(document).ready(function(){
+  $('.menu .item')
+    .tab()
+;
+});
+</script>
+
+
+<div class="ui top attached tabular menu">
+  <a class="item active" data-tab="mission">만든 미션</a>
+  <a class="item" data-tab="performed_mission">수행한 미션</a>
+</div>
+<div class="ui bottom attached tab segment active" data-tab="mission">
+  <!--카드-->
+  <i class="grid layout icon" style="display: none;"></i>
+  <i class="square icon" style="display: none;"></i>
+  
+  (총 <%= @missions.to_a.count %>개)
+  <br>
+  <br>
+  <div class="ui three stackable cards">
+    <% @missions.each do |m| %>      
+      <div class="ui fluid card">
+        <!--프로필 파트-->
         <div class="content">
-          <div class="center">
-            <a href="/mission/detail/<%= m.id %>">
-              <div id="missionPreviewModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
-            </a>
- 
+          <div class="left floated meta">14h</div>
+          <div class="right floated meta">
+            <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
+            <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
           </div>
-        </div>
-      </div>
-        <img class="image" src="<%= m.multimedia %>">
-    </div>      
-      
+        </div>  
         <!--메인 이미지-->
-        <div class="image">
+        <div class="image user-create-image">
+         <!--style="margin: auto-->
           <img class="image" src="<%= m.multimedia %>">
-          <!--style="width:254.98px;"-->
         </div>
-        
         <!--내용-->
         <div class="content">
-          <span class="left floated">
-            <i class="heart outline like icon"></i>
-            17 likes
-          </span>
-          <span class="right floated">
-            <i class="comment icon"></i>
-            3 comments
-            <div>
+          <h3 class="title">
+            <%= m.title %>
+          </h3>
+          <p>
+            <%= m.content %>
+          </p>
+        </div>
+        <div class="content" style="padding: 0;">
+          <div class="ui basic buttons mainButtongroup">
+            <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+              <button class="ui button mainLike<%= m.id%>">
+                <i class="heart icon" style="cursor: pointer"></i>
+                <span class="mainLike<%= m.id %>"><%= m.mission_like_count %></span>
+              </button>
+            </a>
+            <button class="ui button mainComment">
+              <i class="comment icon" style="cursor :pointer"></i>1,024
+            </button>
+            <button class="ui button mainShare">
               <a href="#" class="mmm">
-                <i class="share alternate icon"></i>
-              </a>
-              9 shared
-            </div>
-          </span>
-        </div>
-        <div class="extra content">
-          <div class="ui large transparent left icon input">
-            <i class="heart outline icon"></i>
-            <input type="text" placeholder="Add Comment...">
+              <i class="share icon" style="cursor :pointer"></i>
+              </a>30
+            </button>
           </div>
-        </div>
+        </div>  
+          <!--<span class="left floated">-->
+          <!--  <i class="heart outline like icon"></i>-->
+          <!--  17 likes-->
+          <!--</span>-->
+          <!--<span class="right floated">-->
+          <!--  <i class="comment icon"></i>-->
+          <!--  3 comments-->
+          <!--  <div>-->
+          <!--    <a href="#" class="mmm">-->
+          <!--      <i class="share alternate icon"></i>-->
+          <!--    </a>-->
+          <!--    9 shared-->
+          <!--  </div>-->
+          <!--</span>-->
+          
+          <!--<div class="extra content">-->
+          <!--  <div class="ui large transparent left icon input">-->
+          <!--    <i class="heart outline icon"></i>-->
+          <!--    <input type="text" placeholder="Add Comment...">-->
+          <!--  </div>-->
+          <!--</div>-->
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
+<div class="ui bottom attached tab segment" data-tab="performed_mission">
+  <!--카드-->
+  <i class="grid layout icon" style="display: none;"></i>
+  <i class="square icon" style="display: none;"></i>
+  
+  (총 <%= @performed_missions.to_a.count %>개)
+  <br>
+  <br>
+  
+  <div class="ui three stackable cards">
+    <% @performed_missions.each do |m| %>      
+      <div class="ui fluid card">
+        <!--프로필 파트-->
+        <div class="content">
+          <div class="left floated meta">14h</div>
+          <div class="right floated meta">
+            <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
+            <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
+          </div>
+        </div>  
+        <!--메인 이미지-->
+        <div class="image user-create-image">
+         <!--style="margin: auto-->
+          <img class="image" src="<%= m.multimedia %>">
+        </div>
+        <!--내용-->
+        <div class="content">
+          <h3 class="title">
+            ㄴ<%= m.title %>
+          </h3>
+          <p>
+            <%= m.content %>
+          </p>
+        </div>
+        <div class="content" style="padding: 0;">
+          <div class="ui basic buttons mainButtongroup">
+            <!--<a href="/home/missionLike/<%#= m.id %>" data-remote="true" id="missionLike">-->
+              <button class="ui button mainLike<%#= m.id%>">
+                <i class="heart icon" style="cursor: pointer"></i>
+            <!--    <span class="mainLike<%#= m.id %>"><%#= m.mission_like_count %></span>-->
+              </button>
+            <!--</a>-->
+            <button class="ui button mainComment">
+              <i class="comment icon" style="cursor :pointer"></i>1,024
+            </button>
+            <button class="ui button mainShare">
+              <a href="#" class="mmm">
+              <i class="share icon" style="cursor :pointer"></i>
+              </a>30
+            </button>
+          </div>
+        </div>  
+          <!--<span class="left floated">-->
+          <!--  <i class="heart outline like icon"></i>-->
+          <!--  17 likes-->
+          <!--</span>-->
+          <!--<span class="right floated">-->
+          <!--  <i class="comment icon"></i>-->
+          <!--  3 comments-->
+          <!--  <div>-->
+          <!--    <a href="#" class="mmm">-->
+          <!--      <i class="share alternate icon"></i>-->
+          <!--    </a>-->
+          <!--    9 shared-->
+          <!--  </div>-->
+          <!--</span>-->
+          
+          <!--<div class="extra content">-->
+          <!--  <div class="ui large transparent left icon input">-->
+          <!--    <i class="heart outline icon"></i>-->
+          <!--    <input type="text" placeholder="Add Comment...">-->
+          <!--  </div>-->
+          <!--</div>-->
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 
 <script>

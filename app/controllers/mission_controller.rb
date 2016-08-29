@@ -6,7 +6,6 @@ class MissionController < ApplicationController
     @mission_creator = User.find(@mission.user_id)
     
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
-   
     @performed_missions = @performed_mission.all
     
   end
@@ -28,7 +27,7 @@ class MissionController < ApplicationController
     #이건옛날꺼 @mission.multimedia = params[:mission_multimedia]
     
     if @mission.save
-      redirect_to "/home/main"
+      redirect_to :back
     else
       render text: mission.errors.messages[:mission_content].first
     end

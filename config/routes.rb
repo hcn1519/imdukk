@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
                                          
                                                                                           # 삭제
-  get 'mission/destroy/:id' => 'mission#missione_destroy'                                  # 작성자가 본인 미션글 삭제
+  get 'mission/mission_destroy/:id' => 'mission#mission_destroy'                                  # 작성자가 본인 미션글 삭제
   get 'mission/performed_mission/destroy/:id' => 'mission#performed_mission_destroy'      # 수행자가 본인 수행글 삭제
   
   get 'mission/mission_editview/:id' => 'mission#mission_editview'                            #작성자 본인 글 수정 내용 입력하는 페이지                                                                                

@@ -29,7 +29,9 @@ class HomeController < ApplicationController
   end
 
   def timeline_temp
-    @missions = Mission.all
+    @missions = Mission.all.reverse
+    @performed_missions = PerformedMission.all.reverse
+
   end
   
   def missionLike

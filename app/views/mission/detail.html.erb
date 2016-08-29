@@ -6,12 +6,10 @@
       <div class="right floated meta">14h</div>
       <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
-    
     <!--메인 이미지-->
     <div class="image" style="margin: auto;">
       <img class="image" src="<%= @mission.multimedia %>" style="max-width: 700px; height: auto; " />
     </div>
-    
     <!--내용-->
     <div class="content">
       <span class="left floated">
@@ -26,9 +24,8 @@
         9 shared
       </span>
     </div>
+    <!--댓글-->
     <div class="extra content">
-      
-      <!--댓글-->
       <div class="ui large transparent left icon input">
         <i class="heart outline icon"></i>
         <input type="text" class="validate" name="mission_comment" placeholder="댓글달아주세용">
@@ -122,19 +119,18 @@ $(document).ready(function(){
   
 
 <div class="ui three stackable cards">
-    <% @performed_mission.each do |m| %>
-     <div class="ui fluid card">
-      <!--프로필 파트-->
-      <div class="content">
-        <div class="right floated meta">14h</div>
-        <% if @mission_creator.nil? %>
-        <% creator = User.find(@mission_creator[index]) %>
-        
-        <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
-      <% end %>
-      </div>
+  <% @performed_mission.each do |m| %>
+    <div class="ui fluid card">
+    <!--프로필 파트-->
+    <div class="content">
+      <div class="right floated meta">14h</div>
+      <% if @mission_creator.nil? %>
+      <% creator = User.find(@mission_creator[index]) %>
       
-
+      <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
+    <% end %>
+    </div>
+    <!--메인 이미지-->
     <div class="blurring dimmable image user-create-image">
       <div class="ui dimmer">
         <div class="content">
@@ -147,17 +143,16 @@ $(document).ready(function(){
       </div>
         <img class="image" src="<%= m.multimedia %>">
     </div>
-      <!--내용-->
-      <div class="extra content">
-        <span class="right floated">
-          <i class="heart outline like icon"></i>
-          17 likes
-        </span>
-        <i class="comment icon"></i>
-        3 comments
-      </div>
+    <!--내용-->
+    <div class="extra content">
+      <span class="right floated">
+        <i class="heart outline like icon"></i>
+        17 likes
+      </span>
+      <i class="comment icon"></i>
+      3 comments
     </div>
-
+  </div>
 <% end %>
 </div>
   

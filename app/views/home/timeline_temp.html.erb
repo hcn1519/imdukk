@@ -63,7 +63,8 @@ $(document).ready(function(){
 <div class="ui segment" style="border:none;">
   <div class="ui equal width grid">
     <div class="Left floated right aligned six wide column">
-        <img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">
+      <img src="/images/default-image.png" style="float:right; width:150px;margin-left:40px;"> <%= @user.nickname %>
+        <!--<img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">-->
     </div>
     <div class="Right floated left aligned column">
       <h2 class="ui header" style="margin-top: 44px;margin-bottom: 0px;">쵸아쬬아&nbsp; <img src="/images/profile_duck.png" style="width:30px;" ></h2>
@@ -92,6 +93,7 @@ $(document).ready(function(){
 </script>
 
 
+
 <div class="ui top attached tabular menu">
   <a class="item active" data-tab="mission">만든 미션</a>
   <a class="item" data-tab="performed_mission">수행한 미션</a>
@@ -107,9 +109,9 @@ $(document).ready(function(){
   <div class="ui three stackable cards">
     <% @missions.each do |m| %>      
       <div class="ui fluid card">
-        <!--프로필 파트-->
+        <!--유저 닉네임 사진 + 수정삭제기능-->
         <div class="content">
-          <div class="left floated meta">14h</div>
+          <div class="left floated meta">14h </div>
           <div class="right floated meta">
             <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
             <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
@@ -188,8 +190,8 @@ $(document).ready(function(){
         <div class="content">
           <div class="left floated meta">14h</div>
           <div class="right floated meta">
-            <a href="/mission/mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
-            <a href="/mission/mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
+            <a href="/mission/performed_mission_editview/<%= m.id %>"><i class="edit icon"></i></a>
+            <a href="/mission/performed_mission_destroy/<%= m.id %>"><i class="remove icon"></i></a>
           </div>
         </div>  
         <!--메인 이미지-->
@@ -199,9 +201,11 @@ $(document).ready(function(){
         </div>
         <!--내용-->
         <div class="content">
-          <h3 class="title">
+          <a href="/mission/detail/<%= m.mission_id %>"><h3 class="title">
             ㄴ<%= m.title %>
           </h3>
+          </a>
+          <br>
           <p>
             <%= m.content %>
           </p>

@@ -14,11 +14,13 @@ Rails.application.routes.draw do
                                          
                                                                                           # 삭제
   get 'mission/mission_destroy/:id' => 'mission#mission_destroy'                                  # 작성자가 본인 미션글 삭제
-  get 'mission/performed_mission/destroy/:id' => 'mission#performed_mission_destroy'      # 수행자가 본인 수행글 삭제
+  get 'mission/performed_mission_destroy/:id' => 'mission#performed_mission_destroy'      # 수행자가 본인 수행글 삭제
   
   get 'mission/mission_editview/:id' => 'mission#mission_editview'                            #작성자 본인 글 수정 내용 입력하는 페이지                                                                                
   post 'mission/mission_edit/:id' => 'mission#mission_edit'                                    #입력한 내용이 임시로 날아갔다가 돌아옴
 
+  get 'mission/performed_mission_editview/:id' => 'mission#performed_mission_editview'                            #작성자 본인 글 수정 내용 입력하는 페이지                                                                                
+  post 'mission/performed_mission_edit/:id' => 'mission#performed_mission_edit'    
   
   # post 'home/update_write/:id' => 'home#update_write'
   # get 'home/update/:id' => 'home#update'

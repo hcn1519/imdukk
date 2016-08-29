@@ -43,7 +43,7 @@
      <div class="ui fluid card">
       <!--프로필 파트-->
       <div class="content">
-        <div class="right floated meta">14h</div>
+        <div class="right floated meta"><%= time_ago_in_words(m.created_at.in_time_zone("Asia/Seoul")) %> ago</div>
         <% if @mission_creator.nil? %>
           <% creator = User.find(@mission_creator[index]) %>
           

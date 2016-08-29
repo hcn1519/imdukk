@@ -99,7 +99,7 @@ class MissionController < ApplicationController
     @mission = Mission.find(params[:id])
 
     # if @mission.email != current_user.email
-      # redirect_to '/timeline_temp'
+      # redirect_to '/timeline_temp'/
     # end
   end
   
@@ -115,6 +115,34 @@ class MissionController < ApplicationController
     redirect_to '/home/timeline_temp'
   end
   
+  def performed_mission_destroy
+    # 내용 어디에 쓰든 performed_mission_destroy로 오게 한다! --view 
+    @destroy_performed_mission= PerformedMission.find(params[:id])
+    
+    # if @mission.email == current_user.email
+    @destroy_performed_mission.destroy
+    # end
+    redirect_to :back
+  end
   
+  def performed_mission_editview
+    @performed_mission = PerformedMission.find(params[:id])
+
+    # if @mission.email != current_user.email
+      # redirect_to '/timeline_temp'
+    # end
+  end
+  
+  def performed_mission_edit
+    @performed_mission = PerformedMission.find(params[:id])
+   
+    @performed_mission.content = params[:content] 
+    @performed_mission.multimedia = params[:multimedia] 
+    # @post.category_id = params[:category_id]
+    @performed_mission.save
+    
+    redirect_to '/home/timeline_temp'
+  end
+
 end
  

@@ -11,25 +11,22 @@ class HomeController < ApplicationController
     @missions.each do |m|
       @mission_creator.push(m.user_id)
     end
-    
-    if user_signed_in?
-      @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
-    end
-    
   end
   
   def timeline
     @user = User.find(params[:id])
+    @mission = Mission.find(params[:id])
     
     # 회원체크
     unless current_user.nil?
       # 유저가 타임라인 주인이라면
       if @user.id == current_user.id
-      # 다른 사람 타임라인 들어온거라면
+      # 다른 사람 타임라인 들어온거라면 수정 삭제 보여주기
       else
+      # 수정 삭제 보여주지 말기
       end
     end
-    @userCreatedMission = Mission.where(user_id: @user.id)
+    @userCreatedMission = Mission.wherse(user_id: @user.id)
     @userPerformedMission = PerformedMission.where(user_id: @user.id)
   end
 
@@ -45,7 +42,7 @@ class HomeController < ApplicationController
     @missionLike = MissionLike.where(:mission_id => @likedMission.id, :user_id => current_user.id)
     
     # 처음 좋아요 +
-    if @missionLike.nil?
+    if @missionLike.first.nil?
       @missionLike = MissionLike.new
       @missionLike.user_id = current_user.id
       @missionLike.mission_id = @likedMission.id

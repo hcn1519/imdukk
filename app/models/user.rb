@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # has_many :performed_comments through :performed_mission_comments, source: :performed_mission
   
   has_many :mission_likes, :through => :mission_likes, :source => :mission
-  # has_many :mission_comments, through mission_comments, source: :mission
+  has_many :mission_comments, :through => :mission_comments, :source => :mission
 
 
   devise :database_authenticatable, :registerable,

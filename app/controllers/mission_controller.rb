@@ -7,8 +7,10 @@ class MissionController < ApplicationController
     
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
     
+    # 좋아요 용
     if user_signed_in?
       @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
+      @likeClick = MissionLike.where(:mission_id => @mission.id, :mission_like => 1, :user_id => current_user.id)
     end
   end
   
@@ -39,19 +41,7 @@ class MissionController < ApplicationController
     #   render text: post.errors.messages  
     
   end
-  
-  
-  def mission_comment_create
-    @current_mission = Mission.find(params[:id])
-    @mission_comment = MissionComment.new
-    @mission_comment.mission_id = @current_mission.id
-    @mission_comment.mission_comment = params[:mission_comment]
-    @mission_comment.user_id = current_user.id
-    @mission_comment.save
-    redirect_to :back
-    # -> 미션 작성자의 타임라인으로 가게 하는게 심플할까?
-  end
-  
+ 
   def performed_mission_create
     @current_mission = Mission.find(params[:id])
     @performed_mission = PerformedMission.new
@@ -115,6 +105,7 @@ class MissionController < ApplicationController
     redirect_to '/home/timeline_temp'
   end
   
+
   def performed_mission_destroy
     # 내용 어디에 쓰든 performed_mission_destroy로 오게 한다! --view 
     @destroy_performed_mission= PerformedMission.find(params[:id])
@@ -142,6 +133,47 @@ class MissionController < ApplicationController
     @performed_mission.save
     
     redirect_to '/home/timeline_temp'
+  end
+
+  def mission_creator_timeline
+    if @mission.creator == current_user
+      
+    else
+      # 수정삭제 안 보여주
+  end
+
+  def missionComment
+    @commentedMission = Mission.find(params[:id])
+    
+    @commentContent = params[:mission_comment]
+    
+    @missionComment = MissionComment.where(:mission_id => @commentedMission.id, :user_id => current_user.id)
+    
+    # 처음 좋아요 +
+    if @missionComment.first.nil?
+      @missionComment = MissionComment.new
+      @missionComment.user_id = current_user.id
+      @missionComment.mission_id = @CommentedMission.id
+      @missionComment.mission_Comment = 1
+      @missionComment.save
+      @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
+
+    # 나중
+    else
+      # 좋아요 +
+      if @missionComment.first.mission_Comment == 0 
+        @missionComment.first.mission_Comment = 1
+        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
+      # 좋아요 -
+      else
+        @missionComment.first.mission_Comment = 0
+        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count - 1
+      end
+      @missionComment.first.save
+    end
+    
+    @CommentdMission.save
+    
   end
 
 end

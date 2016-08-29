@@ -10,6 +10,7 @@ class CreateMissions < ActiveRecord::Migration
       t.text :content
       
       t.integer :mission_like_count, default: 0
+      t.integer :mission_comment_count, default: 0
       t.timestamps null: false
     end
   end

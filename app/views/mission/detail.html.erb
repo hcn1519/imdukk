@@ -55,7 +55,7 @@
     <button class="ui circular youtube icon button">
       <i class="youtube icon"></i>
     </button>
-    
+</div>   
   
     <!--새 방법-->
     <a href="http://www.facebook.com/sharer/sharer.php?u=">
@@ -63,7 +63,7 @@
     </a>
     <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!--</div>-->
-</div>
+
 
 
 <!--공유하기 팝업창용 script-->
@@ -107,15 +107,15 @@ $(document).ready(function(){
 
 <!--형규:수행한미션띄우기-->
   <!--<div class="ui three stackable cards">-->
-  <!--  <% @performed_mission.each do |m| %>-->
+  <!--  <%# @performed_mission.each do |m| %>-->
   <!--    <div class="ui fluid card">-->
   <!--      <div class="card" style="width: 326.66px; height: 300px; padding:auto 0; ">-->
   <!--        <div class="image">-->
-  <!--          <img src="<%= m.multimedia %>" style="max-width: auto; height: auto;" >-->
+  <!--          <img src="<%#= m.multimedia %>" style="max-width: auto; height: auto;" >-->
   <!--        </div>-->
   <!--      </div>-->
   <!--    </div>-->
-  <!--  <% end %>-->
+  <!--  <%# end %>-->
   <!--</div>-->
   
 <!--예니:수행한미션띄우기-->
@@ -142,32 +142,23 @@ $(document).ready(function(){
       <div class="ui dimmer">
         <div class="content">
           <div class="center">
-            <a href="'mission/detail/:id/performed_mission/:id'<%= m.id %>">
+            <a href="/mission/detail/performed_mission/<%= m.id %>">
             <div id="performedMissionDetailModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
             </a>
-    
-    <!--아래는 참조할거        -->
-    <a href="/mission/detail/<%= m.id %>></a>
-    <% end %>
-    <%= link_to('/mission/detail/#{m.id}') do %>
-    <div id="missionPreviewModal i" class="ui inverted button">자세히 보기</div>
-    <% end %>
-    <!--여기까지-->
-            
-    
+
     <!--다른 것들-->
     <!--<a href="/mission/detail/<5= m.id 5>>--
     <!--</a>-->
     <!--<5 end 5>-->
     <!--<5= link_to('/mission/detail/#{m.id}') do 5><div id="missionPreviewModal i" class="ui inverted button">자세히 보기</div> <5 end 5>-->
+
+
           </div>
         </div>
       </div>
         <img class="image" src="<%= m.multimedia %>">
     </div>
-    
       <!--내용-->
-
       <div class="extra content">
         <span class="right floated">
           <i class="heart outline like icon"></i>

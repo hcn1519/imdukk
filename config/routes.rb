@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'register/infoget'
 
   get 'mission/detail/:id', to: 'mission#detail'
-  get 'mission/detail/:id/performed_mission/:id', to: 'mission#detail'
+  get 'mission/detail/performed_mission/:id', to: 'mission#detail'
 
   post 'mission/mission_create'                                                           #작성자가 미션 작성하는 페이지
   post 'mission/performed_mission_create'                                                 #수행자가 미션 작성하는 페이지

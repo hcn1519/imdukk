@@ -25,9 +25,7 @@ Rails.application.routes.draw do
   # post 'home/update_write/:id' => 'home#update_write'
   # get 'home/update/:id' => 'home#update'
   
-  post 'mission/mission_comment_create'
-  
- 
+  post 'mission/missionComment/:id', to: 'mission#missionComment'
   
   
   

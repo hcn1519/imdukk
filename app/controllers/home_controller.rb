@@ -11,6 +11,12 @@ class HomeController < ApplicationController
     @missions.each do |m|
       @mission_creator.push(m.user_id)
     end
+    
+    # 좋아요 용
+    if user_signed_in?
+      @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
+    end
+    
   end
   
   def timeline

@@ -25,18 +25,20 @@ class User::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @identity = Identity.find_for_oauth(auth)
       
       # 새로운 유저라면?
-      unless User.exists?(id: current_user.id)
-        
-         # 가입형식별 redirct
-        if @identity.provider == "twitter"
-          register_info2_path
-        else
-          register_info1_path
-        end
-        
-      # 이미 있는 유저라면?
+      @user = User.where(id: current_user.id)
+    unless @user.nil?
+        # 가입형식별 redirct
+      if @identity.provider == "twitter"
+        register_info2_path
       else
-        home_main_path
-      end  
+        register_info1_path
+      end
+        
+    # 이미 있는 유저라면?
+    else
+      home_main_path
+    end
+      
   end
+
 end

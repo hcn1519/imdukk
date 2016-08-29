@@ -4,7 +4,7 @@ class MissionController < ApplicationController
     
     # 미션 제작자
     @mission_creator = User.find(@mission.user_id)
-    
+    @users = User.all
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
     
     # 좋아요 용
@@ -35,10 +35,6 @@ class MissionController < ApplicationController
     else
       render text: mission.errors.messages[:mission_content].first
     end
-    
-    # flash[:notice] = "전송되었습니다!"
-    # else
-    #   render text: post.errors.messages  
     
   end
  
@@ -147,8 +143,6 @@ class MissionController < ApplicationController
     @commentedMission = Mission.find(params[:id])
     
     @replyContent = params[:mission_comment]
-    
-    # @missionComment = MissionComment.where(:mission_id => @commentedMission.id, :user_id => current_user.id)
     
     @missionComment = MissionComment.new
     @missionComment.user_id = current_user.id

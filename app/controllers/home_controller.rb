@@ -21,25 +21,39 @@ class HomeController < ApplicationController
   
   def timeline
     @user = User.find(params[:id])
-    @mission = Mission.find(params[:id])
     
     # 회원체크
     unless current_user.nil?
       # 유저가 타임라인 주인이라면
       if @user.id == current_user.id
-      # 다른 사람 타임라인 들어온거라면 수정 삭제 보여주기
+      # 타임라인 들어온거라면 수정 삭제 보여주기
+      # 타임라인 들어온거라면 프로필 사진 변경 가능하게 하기
       else
-      # 수정 삭제 보여주지 말기
+      # 다른 사람 수정 삭제 보여주지 말기
       end
     end
-    @userCreatedMission = Mission.wherse(user_id: @user.id)
+    @userCreatedMission = Mission.where(user_id: @user.id)
     @userPerformedMission = PerformedMission.where(user_id: @user.id)
+    @missions = Mission.all.reverse
+    @performed_missions = PerformedMission.all.reverse
+    @user.profile_img = params[:profile_img]
+    
+  end
+  
+  def profile_img_upload
+      @user = User.find(params[:id])  
+      @user.profile_img = params[:profile_img]
+      @user.save
+      redirect_to '/home/timeline/<%= @user.id %>'
   end
 
   def timeline_temp
+    @user = User.find(params[:id])   
+    
     @missions = Mission.all.reverse
     @performed_missions = PerformedMission.all.reverse
-
+    current_user.profile_img = params[:user_profile_img]
+    
   end
   
   def missionLike

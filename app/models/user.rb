@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # has_many :performed_likes, through :performed_mission_likes, source: :performed_mission
   # has_many :performed_comments through :performed_mission_comments, source: :performed_mission
   
-  # has_many :mission_likes, through :mission_likes, source: :mission
+  has_many :mission_likes, :through => :mission_likes, :source => :mission
   # has_many :mission_comments, through mission_comments, source: :mission
 
 

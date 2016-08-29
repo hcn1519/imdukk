@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get 'home/main'
   get 'home/timeline/:id', to: 'home#timeline'
   get 'home/timeline_temp'
-  
+  get 'home/missionLike/:id', to: 'home#missionLike'
   devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations" }
   
   # The priority is based upon order of creation: first created -> highest priority.

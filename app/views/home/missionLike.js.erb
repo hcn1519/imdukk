@@ -1,0 +1,29 @@
+<% @id = @likedMission.id.to_s %>
+<% @value = @likedMission.mission_like_count %>
+
+<% if @missionLike.nil? %>
+<!--지속적으로 누르면 나오는 곳-->
+
+  <% if @missionLike.first.mission_like == 1  %>
+    $('.mainLike<%= @id %> > i.icon').addClass('basic blue');
+    $('span.mainLike<%= @id %>').html('<%= @value %>').css('color', '#54C8FF');
+    
+  <% else %>
+    $('.mainLike<%= @id %> > i.icon').removeClass('basic blue');
+    $('span.mainLike<%= @id %>').html('<%= @value %>').css('color', '#858585');
+  
+  <% end %>
+
+<% else %>
+<!--처음 누르면 오는 곳-->
+
+  if( $('.mainLike<%= @id %> > i.icon').hasClass('blue') ) {
+    $('.mainLike<%= @id %> > i.icon').removeClass('basic blue');
+    $('span.mainLike<%= @id %>').html('<%= @value %>').css('color', '#858585');
+  } else {
+    $('.mainLike<%= @id %> > i.icon').addClass('basic blue');
+    $('span.mainLike<%= @id %>').html('<%= @value %>').css('color', '#54C8FF');
+  }
+    
+    
+<% end %>

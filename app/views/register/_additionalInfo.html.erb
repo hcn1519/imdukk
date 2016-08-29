@@ -1,5 +1,6 @@
 <%= form_tag(register_infoget_path, :class => 'ui form') do %>
   <% if @user.email.nil? or @user.email == '' %>
+  <div class="ui raised segment">  
     <div class="field">
       <label for="email">email</label>
       <%= text_field_tag :email %>
@@ -7,7 +8,7 @@
   <% end %>
   
   <div class="field">
-    <label for="nickname">nickname</label>
+    <label for="nickname" class="ui left aligned header" >nickname</label>
     <%= text_field_tag :nickname %>
   </div>
   
@@ -30,6 +31,8 @@
   
   <%= submit_tag "제출", :class => 'ui primary button' %>
 <% end %>
+</div>
+</div>
 <script>
   $(document).ready(function(){
     $('.ui.radio.checkbox').checkbox();

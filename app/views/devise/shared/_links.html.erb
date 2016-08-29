@@ -2,44 +2,39 @@
   <div class = "outer">
     <div class ="inner">
       <div class ="centered">
-
 <%- if devise_mapping.omniauthable? %>
   <div>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to omniauth_authorize_path(resource_name, provider) do %>
-      <%- if provider.to_s == "google_oauth2" %>
-        <% provider = "google plus" %>
-      <% end %>
-  <button class="ui <%= provider %> icon button">
-  <i class="<%= provider %> icon" ></i>
-  <%- if provider == "google plus" %>
-  <% provider = "google" %>
-  <% end %>
-  </button>
-  <% end -%>
-  <% end -%>
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to omniauth_authorize_path(resource_name, provider) do %>
+        <%- if provider.to_s == "google_oauth2" %>
+          <% provider = "google plus" %>
+        <% end %>
+        <button class="ui <%= provider %> icon button">
+          <i class="<%= provider %> icon" ></i>
+        </button>
+      <% end -%>
+    <% end -%>
+  </div>
+<% end -%>
+<%- if controller_name != 'sessions' %>
+  <div class ='container'>
+    <button class="ui primary large basic button">
+      <%= link_to "로그인", new_session_path(resource_name) %><br />
   </div>
 <% end -%>
 
-<%- if controller_name != 'sessions' %>
-  <div>
-  <button class="ui primary mini basic button">
-    <%= link_to "Log in", new_session_path(resource_name) %><br />
-</div>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+  <div class ='container'>
+    <button class="ui primary large basic button">
+      <%= link_to "비밀번호 찾기", new_password_path(resource_name) %><br />
+  </div>
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-<div>
-  <button class="ui primary mini basic button">
-    <%= link_to "Sign up", new_registration_path(resource_name) %><br />
-</div>
-<% end -%>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-<div>
-  <button class="ui primary mini basic button">
-    <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-</div>
+  <div class ='container'>
+    <button class="ui primary large basic button">
+      <%= link_to "가입하기", new_registration_path(resource_name), :name => 'test' %><br />
+  </div>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>

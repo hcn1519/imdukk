@@ -1,3 +1,23 @@
+<style>
+  .mainButtongroup {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .mainButtongroup .ui.button {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
+    box-shadow: none !important;
+  }
+  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
+    box-shadow: none !important;
+  }
+
+  /*.mainLike1:hover, .mainLike2:hover, .mainLike3:hover, .mainLike4:hover, .mainLike5:hover, .mainLike6:hover  {*/
+  /*  border: none !important;*/
+  /*}*/
+</style>
 <div class="ui center aligned segment" style="border: none; box-shadow: none; background: transparent">
   오늘 할 덕질을 내일로 미루지 말자
 </div>
@@ -30,16 +50,13 @@
       <div class="content">
         <div class="right floated meta">14h</div>
         <% if @mission_creator.nil? %>
-        <% creator = User.find(@mission_creator[index]) %>
-        
-        <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
-      <% end %>
+          <% creator = User.find(@mission_creator[index]) %>
+          
+          <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
+        <% end %>
       </div>
       
       <!--메인 이미지-->
-    <!--<5 @missions.each do |m| 5>-->
-    <!--<5 unless @missions.first.nil? 5>-->
-   <!--@missions.each do |m|-->
     <div class="blurring dimmable image user-create-image">
       <div class="ui dimmer">
         <div class="content">
@@ -47,12 +64,7 @@
             <a href="/mission/detail/<%= m.id %>">
               <div id="missionPreviewModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
             </a>
-    
-    <!--다른 것들-->
-    <!--<a href="/mission/detail/<5= m.id 5>>--
-    <!--</a>-->
-    <!--<5 end 5>-->
-    <!--<5= link_to('/mission/detail/#{m.id}') do 5><div id="missionPreviewModal i" class="ui inverted button">자세히 보기</div> <5 end 5>-->
+ 
           </div>
         </div>
       </div>
@@ -61,16 +73,30 @@
     
       <!--내용-->
       <div class="content">
-        <strong><%= m.title %></strong><br>
-        <br>
-        <%= m.content %><br>
-        <br>
-        <span class="right floated">
-          <i class="heart outline like icon"></i>
-          17 likes
-        </span>
-        <i class="comment icon"></i>
-        3 comments
+        <h3 class="title">
+          <%= m.title %>
+        </h3>
+        <p>
+          <%= m.content %>
+        </p>
+      </div>
+      <div class="content" style="padding: 0;">
+        <div class="ui basic buttons mainButtongroup">
+          
+        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+      <button class="ui button mainLike<%= m.id%>">
+        <i class="heart icon" style="cursor: pointer"></i>
+        <span class="mainLike<%= m.id %>"><%= m.mission_like_count %></span>
+      </button>
+          </a>
+
+          <button class="ui button mainComment">
+            <i class="comment icon" style="cursor :pointer"></i>1,024
+          </button>
+          <button class="ui button mainShare">
+            <i class="share icon" style="cursor :pointer"></i>30
+          </button>
+        </div>
       </div>
       <div class="extra content">
         <div class="ui large transparent left icon input">

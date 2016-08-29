@@ -9,6 +9,7 @@ class CreateMissions < ActiveRecord::Migration
       t.string :multimedia
       t.text :content
       
+      t.integer :mission_like_count, default: 0
       t.timestamps null: false
     end
   end

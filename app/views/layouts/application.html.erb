@@ -15,6 +15,16 @@
   <!--navbar(상단바) 설정-->
   <% if current_page?('/')%>
     <%= yield %>
+  <% elsif current_page?('/users/sign_up')%>
+    <%= yield %>
+  <% elsif current_page?('/users/sign_in')%>
+    <%= yield %>
+  <% elsif current_page?('/users/password/new')%>
+    <%= yield %>
+  <% elsif current_page?('/register/info1')%>
+    <%= yield %>
+  <% elsif current_page?('/register/info2')%>
+    <%= yield %>
   <% else %>
     <%= render 'layouts/navbar' %>
     <div class="ui container" style="margin-top: 20px; margin-bottom: 20px">

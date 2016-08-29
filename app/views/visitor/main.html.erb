@@ -62,60 +62,62 @@
       display: none;
     }
 
-    @media only screen and (max-width: 700px) {
-      .ui.fixed.menu {
-        display: none !important;
-      }
-      .secondary.pointing.menu .item,
-      .secondary.pointing.menu .menu {
-        display: none;
-      }
-      .secondary.pointing.menu .toc.item {
-        display: block;
-      }
-      .masthead.segment {
-        min-height: 350px;
-      }
-      .masthead h1.ui.header {
-        font-size: 2em;
-        margin-top: 1.5em;
-      }
-      .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-      }
-    }
+    /*@media only screen and (max-width: 700px) {*/
+    /*  .ui.fixed.menu {*/
+    /*    display: none !important;*/
+    /*  }*/
+    /*  .secondary.pointing.menu .item,*/
+    /*  .secondary.pointing.menu .menu {*/
+    /*    display: none;*/
+    /*  }*/
+    /*  .secondary.pointing.menu .toc.item {*/
+    /*    display: block;*/
+    /*  }*/
+    /*  .masthead.segment {*/
+    /*    min-height: 350px;*/
+    /*  }*/
+    /*  .masthead h1.ui.header {*/
+    /*    font-size: 2em;*/
+    /*    margin-top: 1.5em;*/
+    /*  }*/
+    /*  .masthead h2 {*/
+    /*    margin-top: 0.5em;*/
+    /*    font-size: 1.5em;*/
+    /*  }*/
+    /*}*/
   </style>
 
 <body class="pushable">
 <!-- Page Contents -->
 <div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment">
+  <div class="ui vertical masthead center aligned segment">
 
     <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
+      <div class="ui large secondary menu">
         <div class="right item">
           <% if user_signed_in? %>
-          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui inverted button') %>
+          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui black basic button') %>
           <% else %>
-          <a class="ui inverted button" href="/users/sign_in">로그인</a>
+          <a class="ui black basic button" href="/users/sign_in">로그인</a>
           <% end %>
         </div>
       </div>
     </div>
 
     <div class="ui text container">
-      <h1 class="ui inverted header">
+      <h1 class="ui header">
         <div class="ui header">
-          <img src="/images/white_duck_logo.png" class="image animated infinite jello">
+          <img src="/images/yellow_duck_logo.png" class="image animated infinite jello">
         </div>
+        <div class="content">
         덕질할땐?
+        </div>
       </h1>
       <h2>아임덕</h2>
       <% if user_signed_in? %>
-        <%= link_to('메인으로 가기', home_main_path, :class => 'ui primary button') %>
+        <%= link_to('메인으로 가기', home_main_path, :class => 'ui yellow button') %>
       <% else %>
-        <a class="ui primary button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>
+        <a class="ui yellow button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>
       <% end %>
     </div>
 </div>

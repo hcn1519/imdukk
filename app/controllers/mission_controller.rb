@@ -4,7 +4,7 @@ class MissionController < ApplicationController
     
     # 미션 제작자
     @mission_creator = User.find(@mission.user_id)
-    
+    @users = User.all
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
     
     # 좋아요 용
@@ -135,46 +135,40 @@ class MissionController < ApplicationController
     redirect_to '/home/timeline_temp'
   end
 
-  def mission_creator_timeline
-    if @mission.creator == current_user
-      
-    else
-      # 수정삭제 안 보여주
-  end
 
-  def missionComment
-    @commentedMission = Mission.find(params[:id])
+  # def missionComment
+  #   @commentedMission = Mission.find(params[:id])
     
-    @commentContent = params[:mission_comment]
+  #   @commentContent = params[:mission_comment]
     
-    @missionComment = MissionComment.where(:mission_id => @commentedMission.id, :user_id => current_user.id)
+  #   @missionComment = MissionComment.where(:mission_id => @commentedMission.id, :user_id => current_user.id)
     
-    # 처음 좋아요 +
-    if @missionComment.first.nil?
-      @missionComment = MissionComment.new
-      @missionComment.user_id = current_user.id
-      @missionComment.mission_id = @CommentedMission.id
-      @missionComment.mission_Comment = 1
-      @missionComment.save
-      @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
+  #   # 처음 좋아요 +
+  #   if @missionComment.first.nil?
+  #     @missionComment = MissionComment.new
+  #     @missionComment.user_id = current_user.id
+  #     @missionComment.mission_id = @CommentedMission.id
+  #     @missionComment.mission_Comment = 1
+  #     @missionComment.save
+  #     @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
 
-    # 나중
-    else
-      # 좋아요 +
-      if @missionComment.first.mission_Comment == 0 
-        @missionComment.first.mission_Comment = 1
-        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
-      # 좋아요 -
-      else
-        @missionComment.first.mission_Comment = 0
-        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count - 1
-      end
-      @missionComment.first.save
-    end
+  #   # 나중
+  #   else
+  #     # 좋아요 +
+  #     if @missionComment.first.mission_Comment == 0 
+  #       @missionComment.first.mission_Comment = 1
+  #       @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
+  #     # 좋아요 -
+  #     else
+  #       @missionComment.first.mission_Comment = 0
+  #       @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count - 1
+  #     end
+  #     @missionComment.first.save
+  #   end
     
-    @CommentdMission.save
+  #   @CommentdMission.save
     
-  end
+  # end
 
 end
  

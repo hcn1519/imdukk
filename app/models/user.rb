@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :mission_likes, :through => :mission_likes, :source => :mission
   has_many :mission_comments, :through => :mission_comments, :source => :mission
 
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   has_many :identities
@@ -71,4 +70,7 @@ class User < ActiveRecord::Base
   def email_changed?
     false
   end
+  
+  mount_uploader :profile_pic, UserProfileImageUploader
+  
 end

@@ -4,7 +4,7 @@ class MissionController < ApplicationController
     
     # 미션 제작자
     @mission_creator = User.find(@mission.user_id)
-    
+    @users = User.all
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
     
     # 좋아요 용
@@ -35,10 +35,6 @@ class MissionController < ApplicationController
     else
       render text: mission.errors.messages[:mission_content].first
     end
-    
-    # flash[:notice] = "전송되었습니다!"
-    # else
-    #   render text: post.errors.messages  
     
   end
  
@@ -140,40 +136,22 @@ class MissionController < ApplicationController
       
     else
       # 수정삭제 안 보여주
-  end
+    end
+  end  
 
   def missionComment
     @commentedMission = Mission.find(params[:id])
     
-    @commentContent = params[:mission_comment]
+    @replyContent = params[:mission_comment]
     
-    @missionComment = MissionComment.where(:mission_id => @commentedMission.id, :user_id => current_user.id)
+    @missionComment = MissionComment.new
+    @missionComment.user_id = current_user.id
+    @missionComment.mission_id = @commentedMission.id
+    @missionComment.mission_comment = @replyContent
+    @missionComment.save
     
-    # 처음 좋아요 +
-    if @missionComment.first.nil?
-      @missionComment = MissionComment.new
-      @missionComment.user_id = current_user.id
-      @missionComment.mission_id = @CommentedMission.id
-      @missionComment.mission_Comment = 1
-      @missionComment.save
-      @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
-
-    # 나중
-    else
-      # 좋아요 +
-      if @missionComment.first.mission_Comment == 0 
-        @missionComment.first.mission_Comment = 1
-        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count + 1
-      # 좋아요 -
-      else
-        @missionComment.first.mission_Comment = 0
-        @CommentdMission.mission_Comment_count = @CommentedMission.mission_Comment_count - 1
-      end
-      @missionComment.first.save
-    end
-    
-    @CommentdMission.save
-    
+    @commentedMission.mission_comment_count = @commentedMission.mission_comment_count + 1
+    @commentedMission.save
   end
 
 end

@@ -122,21 +122,25 @@
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
         </div>
-  
-    <div class="content" style="margin-top: 10px">
-      <!--댓글-->
-      <div class="ui large transparent left icon input">
-        <a class="avatar">
-          <img src="/images/default-image.png">
-        </a>
-        <%= text_field_tag :mission_comment, nil, :class => 'validate', :placeholder => '댓글달아주세용', :style => 'width: 100%' %>
-      
-        <a class="ui icon button yellow" href="/home/missionComment/<%= @mission.id %>" data-remote="true" id="missionComment">
-          <i class="icon edit"></i>
-        </a>
-        
+  <div class="ui comments">
+    <div class="comment">
+      <a class="avatar">
+        <img src="/images/default-image.png">
+      </a>
+      <div class="content">
+        <a class="author"><%= current_user.nickname %></a>
       </div>
-    <div class="ui comments">
+      <div class="content">
+        <%= form_tag('/mission/missionComment/' + @mission.id.to_s, :remote => true, :class => 'ui form') do %>
+          <%= text_field_tag :mission_comment, nil, :class => 'validate', :placeholder => '댓글달아주세용', :style => 'width: 100%' %>
+          <input type="submit" value="등록하기" style="display: none">
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
+       
+    <div class="ui comments missionComments">
       <div class="comment">
         <a class="avatar">
           <img src="/images/default-image.png">
@@ -222,7 +226,7 @@ $(document).ready(function(){
     <div class="ui fluid card">
     <!--프로필 파트-->
     <div class="content">
-      <div class="right floated meta">14h</div>
+      <div class="right floated meta"><%= time_ago_in_words(m.created_at.in_time_zone("Asia/Seoul")) %> ago</div>
       <% if @mission_creator.nil? %>
       <% creator = User.find(@mission_creator[index]) %>
       

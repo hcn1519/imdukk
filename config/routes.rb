@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post 'mission/mission_create'                                                           #작성자가 미션 작성하는 페이지
   post 'mission/performed_mission_create'                                                 #수행자가 미션 작성하는 페이지
   post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
-                                         
+   
+  post 'home/timeline/:id' => 'home#profile_img_upload'                                       
                                                                                           # 삭제
   get 'mission/mission_destroy/:id' => 'mission#mission_destroy'                                  # 작성자가 본인 미션글 삭제
   get 'mission/performed_mission_destroy/:id' => 'mission#performed_mission_destroy'      # 수행자가 본인 수행글 삭제
@@ -25,9 +26,7 @@ Rails.application.routes.draw do
   # post 'home/update_write/:id' => 'home#update_write'
   # get 'home/update/:id' => 'home#update'
   
-  post 'mission/mission_comment_create'
-  
- 
+  post 'mission/missionComment/:id', to: 'mission#missionComment'
   
   
   

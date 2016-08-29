@@ -45,7 +45,7 @@ class HomeController < ApplicationController
     @missionLike = MissionLike.where(:mission_id => @likedMission.id, :user_id => current_user.id)
     
     # 처음 좋아요 +
-    if @missionLike.nil?
+    if @missionLike.first.nil?
       @missionLike = MissionLike.new
       @missionLike.user_id = current_user.id
       @missionLike.mission_id = @likedMission.id

@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(version: 20160828064330) do
     t.string   "title"
     t.string   "multimedia"
     t.text     "content"
-    t.integer  "mission_like_count", default: 0
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "mission_like_count",    default: 0
+    t.integer  "mission_comment_count", default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "mycategories", force: :cascade do |t|

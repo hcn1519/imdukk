@@ -90,7 +90,6 @@
           
     <% if user_signed_in? %>
       <!--회원 ok?  -->
-      <% @likeClick = MissionLike.where(:mission_id => @mission.id, :mission_like => 1, :user_id => current_user.id) %>
       <% if @userlike.include?(@likeClick.first) %>
         <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
           <button class="ui button missionLike<%= @mission.id%>">
@@ -116,11 +115,9 @@
       </a>
     <% end %>      
           
-         
-          
-          <button class="ui button mainComment">
-            <i class="comment icon" style="cursor :pointer"></i>1,024
-          </button>
+        <button class="ui button mainComment">
+          <i class="comment icon" style="cursor :pointer"></i>1,024
+        </button>
           <button class="ui button mainShare">
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
@@ -132,7 +129,12 @@
         <a class="avatar">
           <img src="/images/default-image.png">
         </a>
-        <input type="text" class="validate" name="mission_comment" placeholder="댓글달아주세용">
+        <%= text_field_tag :mission_comment, nil, :class => 'validate', :placeholder => '댓글달아주세용', :style => 'width: 100%' %>
+      
+        <a class="ui icon button yellow" href="/home/missionComment/<%= @mission.id %>" data-remote="true" id="missionComment">
+          <i class="icon edit"></i>
+        </a>
+        
       </div>
     <div class="ui comments">
       <div class="comment">

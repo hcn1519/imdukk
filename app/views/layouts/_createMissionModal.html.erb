@@ -1,53 +1,161 @@
+<style>
+ /*body {margin: 10px}*/
+.where {
+  display: block;
+  margin: 25px 15px;
+  font-size: 11px;
+  color: #000;
+  text-decoration: none;
+  font-family: verdana;
+  font-style: italic;
+} 
+.filebox {display:inline-block; margin-right: 10px;}
+
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #000000;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #ffc718;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.filebox.bs3-primary label {
+  color: #ffc718;
+  background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.filebox.bs3-success label {
+  color: #ffc718;
+  background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.ui.mission.form {
+  width: 450px;
+  
+}
+
+.ui.long.modal {
+  position: fixed;
+  top: 1em;
+  bottom: 1em;
+  width: 500px;
+  .content {
+    position: absolute;
+    display: block;
+    overflow: auto;
+    top: 5em;
+    bottom: 5em;
+    width: 100%;
+  }
+
+  .actions2 {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+  .container2 {
+  width: 100%;
+  height: 100%;
+  margin: 10px auto;
+}
+.outer2 {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.inner2 {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.centered2 {
+  position: relative;
+  display: inline-block;
+
+  width: 100%;
+  padding: 1em;
+}
+</style>
+
 <!-- Modal Structure -->
-<div class="ui modal" id="createMissionModalContent">
+<div class="ui long modal" id="createMissionModalContent">
   <i class="close icon"></i>
+  
   <div class="header">
     미션 만들기
   </div>
   <%= form_tag('/mission/mission_create', :enctype => 'multipart/form-data') do %>
   <!--    <input name="utf8" type="hidden"/>-->
   <!--<input name="authenticity_token" type="hidden"/>-->
+    <div class = "container2">
+        <div class = "outer2">
+          <div class ="inne2r">
+            <div class ="centered2">
     <div class="image content">
       <div class="ui medium image">
         <!--<img src="/images/test1.jpg">-->
-        
-        <input name="mission_multimedia" type="file" id="file" accept="image/*" onchange="getThumbnail(this,$('#image'))">
+        <div class="filebox">
+         <label for="ex_file3">업로드</label>
+        <input name="mission_multimedia"  type="file" id="ex_file3" accept="image/*" onchange="getThumbnail(this,$('#image'))">
+        </div>
         <div id="image"></div>
         
         <!--<input type="file" name="mission_multimedia" accept="image/*">-->
         
       </div>
+      <!--모달창 중앙정렬..으아아아 내가 끔찍한 혼종을 만들었다아...8월30일 첫커밋을 돌려라..-->
+      
       <div class="description">
         <div class="ui header">
-          <div class="ui form">
+          <div class="ui mission form">
             <div class="field">
               <label></label>
               <input name="mission_title" type="text" placeholder="미션 제목">
             </div>
           </div>
         </div>
-        <div class="ui form">
+        <div class="ui mission form">
           <div class="field">
             <label></label>
             <textarea name="mission_content" placeholder="미션 내용"></textarea>
           </div>
         </div>
       </div>
-    </div>
-    <div class="actions">
-      <!--<div class="ui black deny button">-->
-      <!--  취소-->
-      <!--</div>-->
-    
+      </div>
+   
+    <div class="actions2">
         <button class="ui positive right labeled icon button">
           만들기
           <i class="checkmark icon"></i>
         </button>
-
     </div>
   <% end %>
 </div>
-
+ </div>
+    </div>
+    </div>
+    </div>
 <script>
 $(document).ready(function(){
   $('#createMissionModalDesktop').click(function(){
@@ -69,6 +177,7 @@ function getThumbnail(html, $target) {
    if (html.files && html.files[0]) {
        var reader = new FileReader();
        reader.onload = function (e) {
+           
            $target.html('<img class="image" src="'+ e.target.result + '"/>')
           // $target.css({
           //   'background-image': 'url(\"' + e.target.result + '\")',

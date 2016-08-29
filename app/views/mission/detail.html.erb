@@ -68,7 +68,6 @@
       <div class="right floated meta">14h</div>
       <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
-<<<<<<< HEAD
 
     <div class="image wrapped-image" style="box-shadow: none; border: none">
       <img class="image" src="<%= @mission.multimedia %>" />
@@ -88,12 +87,37 @@
         <p><%= @mission.content %></p>
 
         <div class="ui basic buttons detailButtongroup" style="margin-left: -1.2rem">
-          <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
-            <button class="ui button missionLike<%= @mission.id%>">
-              <i class="heart icon" style="cursor: pointer"></i>
-              <span class="missionLike<%= @mission.id %>"><%= @mission.mission_like_count %></span>
-            </button>
-          </a>
+          
+    <% if user_signed_in? %>
+      <!--회원 ok?  -->
+      <% @likeClick = MissionLike.where(:mission_id => @mission.id, :mission_like => 1, :user_id => current_user.id) %>
+      <% if @userlike.include?(@likeClick.first) %>
+        <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= @mission.id%>">
+            <i class="heart icon basic blue" style="cursor: pointer"></i>
+            <span class="missionLike<%= @mission.id %>" style="color: #54C8FF"><%= @mission.mission_like_count %></span>
+          </button>
+        </a>
+      <% else %>
+        <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= @mission.id%>">
+            <i class="heart icon" style="cursor: pointer"></i>
+            <span class="missionLike<%= @mission.id %>"><%= @mission.mission_like_count %></span>
+          </button>
+        </a>
+      <% end %>
+    
+    <% else %>
+      <a href="/home/missionLike/<%= @mission.id %>" data-remote="true" id="missionLike">
+        <button class="ui button missionLike<%= @mission.id%>">
+          <i class="heart icon" style="cursor: pointer"></i>
+          <span class="missionLike<%= @mission.id %>"><%= @mission.mission_like_count %></span>
+        </button>
+      </a>
+    <% end %>      
+          
+         
+          
           <button class="ui button mainComment">
             <i class="comment icon" style="cursor :pointer"></i>1,024
           </button>
@@ -103,29 +127,7 @@
         </div>
   
     <div class="content" style="margin-top: 10px">
-          <!--댓글-->
-=======
-    <!--메인 이미지-->
-    <div class="image" style="margin: auto;">
-      <img class="image" src="<%= @mission.multimedia %>" style="max-width: 700px; height: auto; " />
-    </div>
-    <!--내용-->
-    <div class="content">
-      <span class="left floated">
-        <strong><%= @mission.title %></strong><br><br>
-        <%= @mission.content %>
-        <br>
-      </span>
-      <span class="right floated">
-        <i class="comment icon"></i>
-        3 comments
-        <i class="share alternate icon"></i>
-        9 shared
-      </span>
-    </div>
-    <!--댓글-->
-    <div class="extra content">
->>>>>>> 8e16f98f130b4e0fe819a7a9451ba3831557f251
+      <!--댓글-->
       <div class="ui large transparent left icon input">
         <a class="avatar">
           <img src="/images/default-image.png">

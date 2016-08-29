@@ -6,8 +6,10 @@ class MissionController < ApplicationController
     @mission_creator = User.find(@mission.user_id)
     
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
-    @performed_missions = @performed_mission.all
     
+    if user_signed_in?
+      @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
+    end
   end
   
   def mission_create

@@ -38,7 +38,6 @@
     <% end %>
     </div>
 
-
 <div class="ui three stackable cards">
 <% @missions.each_with_index do |m, index| %>
      <div class="ui fluid card">
@@ -74,10 +73,6 @@
         </h3>
         <p>
           <%= m.content %>
-          
-          <%# @likeClick = MissionLike.where(:mission_id => m.id) %>
-          <%#= @likeClick.inspect %><br><br>
-          <%#= @userlike.inspect %>
         </p>
       </div>
       <div class="content" style="padding: 0;">
@@ -85,8 +80,8 @@
     
     <% if user_signed_in? %>
       <!--회원 ok?  -->
-      <% @likeClick = MissionLike.where(:mission_id => m.id) %>
-      <% if @likeClick.include?(@userlike) %>
+      <% @likeClick = MissionLike.where(:mission_id => m.id, :mission_like => 1, :user_id => current_user.id) %>
+      <% if @userlike.include?(@likeClick.first) %>
         <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
           <button class="ui button missionLike<%= m.id%>">
             <i class="heart icon basic blue" style="cursor: pointer"></i>

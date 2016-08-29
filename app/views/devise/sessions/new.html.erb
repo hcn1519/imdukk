@@ -19,8 +19,9 @@
   .holder .middle {
     height: 100%
   }
-  .ui.check_box {
+  .ui.checkbox {
     float: left;
+    margin-bottom : 10px;
   }
 </style>
   
@@ -38,14 +39,14 @@
   </div>
 
   <div class="ui field">
-    <%= f.label :password, :class => 'ui left aligned header' %>
+    <%= f.label :name, '비밀번호', :class => 'ui left aligned header' %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class= "ui check_box">
+    <div class= "ui checkbox">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :name, '기억하기' %>
     </div>
   <% end -%>
 

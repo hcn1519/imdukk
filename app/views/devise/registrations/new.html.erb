@@ -36,7 +36,7 @@
       </div>
   
       <div class="field">
-        <%= f.label :password, :class => 'ui left aligned header' %>
+        <%= f.label :name, '비밀번호', :class => 'ui left aligned header' %>
         <!--<% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> 자 이상이어야 합니다.)</em>
         <% end %><br />-->
@@ -44,7 +44,7 @@
       </div>
   
       <div class="field">
-        <%= f.label :password_confirmation, :class => 'ui left aligned header' %>
+        <%= f.label :name, '비밀번호 확인', :class => 'ui left aligned header' %>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
       </div>
   

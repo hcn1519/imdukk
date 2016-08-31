@@ -42,13 +42,14 @@
    .wrapping {
       position: relative !important;
       height: 500px;
-      max-height: 400px;
       box-shadow: none !important;
+      overflow: hidden;
     }
     .wrapped-image {
-      position: absolute !important;
+      position: relative !important;
       top: 50% !important;
       transform: translateY(-50%) !important;
+      
     }
    }
 
@@ -58,7 +59,10 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   } 
-   
+  .mission-image {
+    max-width: 100%;
+    max-height: auto;
+  } 
 
 </style>
 <div class="ui two stackable cards mission">
@@ -71,7 +75,7 @@
     </div>
 
     <div class="image wrapped-image" style="box-shadow: none; border: none">
-      <img class="image" src="<%= @mission.multimedia %>" />
+      <img class="image mission-image" src="<%= @mission.multimedia %>" />
     </div>
   </div>
   <div class="card" style="box-shadow: none">
@@ -116,46 +120,59 @@
       </a>
     <% end %>      
           
-        <button class="ui button mainComment">
-          <i class="comment icon" style="cursor :pointer"></i>1,024
+        <button class="ui button missionComment">
+          <i class="comment icon" style="cursor :pointer"></i><span class="missionComment"><%= @mission.mission_comment_count %></span>
         </button>
           <button class="ui button mainShare">
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
         </div>
   <div class="ui comments">
-    <div class="comment">
+     <div class="comment">
       <a class="avatar">
         <img src="/images/default-image.png">
-      </a>
+      </a> 
+      
       <div class="content">
-        <a class="author"><%= current_user.nickname %></a>
-      </div>
-      <div class="content">
+        <div class="ui large transparent left icon input">
+        
         <%= form_tag('/mission/missionComment/' + @mission.id.to_s, :remote => true, :class => 'ui form') do %>
-          <%= text_field_tag :mission_comment, nil, :class => 'validate', :placeholder => '댓글달아주세용', :style => 'width: 100%' %>
+          <%= text_field_tag :mission_comment, nil, :class => 'validate', :placeholder => '댓글달아주세용', :style => 'width: 100%; margin-top: 12px' %>
           <input type="submit" value="등록하기" style="display: none">
         <% end %>
+        </div>
       </div>
     </div>
   </div>
     
        
     <div class="ui comments missionComments">
-      <div class="comment">
-        <a class="avatar">
-          <img src="/images/default-image.png">
-        </a>
-        <div class="content">
-          <a class="author">BTS 사랑</a>
-          <div class="metadata">
-            <span class="date">Today at 5:42PM</span>
+      <% unless @mission_comment.first.nil? %>
+        <% @mission_comment.each do |c| %>
+          <% @comment_user = User.where(:id => c.user_id) %>
+          <div class="comment">
+            <a class="avatar">
+              <img src="/images/default-image.png">
+            </a>
+            <div class="content">
+              <a class="author"><%= @comment_user.first.nickname %></a>
+              <div class="metadata">
+                <span class="date"><%= time_ago_in_words( c.updated_at - 1) %> 전</span>
+              </div>
+              <div class="text">
+              <%= c.mission_comment %>
+              </div>
+            </div>
           </div>
-          <div class="text">
-          재미 ㅇㅈ? ㅇ ㅇㅈ~
+        
+        <% end %>
+      <% else %>
+        <div class="comment blank_comment">
+          <div class="ui transparent">
+            댓글을 입력하세요
           </div>
         </div>
-      </div>
+      <% end %>
      </div>   
     </div>
     </div>

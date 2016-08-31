@@ -12,6 +12,8 @@ class MissionController < ApplicationController
       @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
       @likeClick = MissionLike.where(:mission_id => @mission.id, :mission_like => 1, :user_id => current_user.id)
     end
+    
+    @mission_comment = MissionComment.where(:mission_id => @mission.id)
   end
   
   def mission_create

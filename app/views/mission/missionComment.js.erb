@@ -1,2 +1,9 @@
-$(".missionComments").append("<%= j render('/mission/mission_comment') %>");
+if( $(".comment").hasClass("blank_comment") ) {
+  $(".blank_comment").html('');
+  $(".missionComments").append("<%= j render('/mission/mission_comment') %>");
+} else {
+  $(".missionComments").append("<%= j render('/mission/mission_comment') %>");
+}
+
 $("#mission_comment").val("");
+$("span.missionComment").html('<%= @commentedMission.mission_comment_count %>');

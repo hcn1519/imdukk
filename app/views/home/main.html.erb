@@ -43,7 +43,7 @@
      <div class="ui fluid card">
       <!--프로필 파트-->
       <div class="content">
-        <div class="right floated meta"><%= time_ago_in_words(m.created_at.in_time_zone("Asia/Seoul")) %> ago</div>
+        <div class="right floated meta"><%= time_ago_in_words(m.created_at) %> 전</div>
         <% if @mission_creator.nil? %>
           <% creator = User.find(@mission_creator[index]) %>
           
@@ -75,7 +75,7 @@
           <%= m.content %>
         </p>
       </div>
-      <div class="content" style="padding: 0;">
+      <div class="extra content" style="padding: 0;">
         <div class="ui basic buttons mainButtongroup">
     
     <% if user_signed_in? %>
@@ -107,19 +107,14 @@
     <% end %>
     
           <button class="ui button mainComment">
-            <i class="comment icon" style="cursor :pointer"></i>1,024
+            <i class="comment icon" style="cursor :pointer"></i><%= m.mission_comment_count %>
           </button>
           <button class="ui button mainShare">
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
         </div>
       </div>
-      <div class="extra content">
-        <div class="ui large transparent left icon input">
-          <i class="heart outline icon"></i>
-          <input type="text" placeholder="Add Comment...">
-        </div>
-      </div>
+      
     </div>
 
 <% end %>

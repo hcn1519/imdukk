@@ -65,8 +65,7 @@ $(document).ready(function(){
     <div class="Left floated right aligned six wide column">
       <!--<img src="/images/default-image.png" style="float:right; width:150px;margin-left:40px;"> <5= @user.nickname 5>-->
         <!--<img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">-->
-      
-    <div class="blurring dimmable image user-create-image">
+        <div class="blurring dimmable image user-create-image">
         <div class="ui dimmer">
           <div class="content">
             <div class="center">
@@ -121,7 +120,7 @@ $(document).ready(function(){
   <i class="grid layout icon" style="display: none;"></i>
   <i class="square icon" style="display: none;"></i>
   
-  (총 <%= @missions.to_a.count %>개)
+  <span style="float:right;"><strong>총 <%= @missions.to_a.count %>개</strong></span>
   <br>
   <br>
   <div class="ui three stackable cards">
@@ -197,7 +196,7 @@ $(document).ready(function(){
   <i class="grid layout icon" style="display: none;"></i>
   <i class="square icon" style="display: none;"></i>
   
-  (총 <%= @performed_missions.to_a.count %>개)
+  <span style="float:right;"><strong>총 <%= @performed_missions.to_a.count %>개</strong></span>
   <br>
   <br>
   

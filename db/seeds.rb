@@ -7,14 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 for i in 1..6 do
-  User.create(
+      User.create(
     email: "abc#{i}@test.com",
     password: "123456",
-    nickname: "테스트닉#{i}",
-    :profile_img => File.open(File.join(Rails.root, "public/images/default-image.png")),
+    nickname: "초아쬬아#{i}",
+    :profile_img => File.open(File.join(Rails.root, "public/images/choajoa3.png")),
     )
-  
-  Mission.create(
+    
+    Mission.create(
     user_id: i,
     title: "타이틀#{i}",
     :multimedia => File.open(File.join(Rails.root, "public/images/test#{i}.jpg")),

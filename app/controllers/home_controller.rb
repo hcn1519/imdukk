@@ -48,7 +48,7 @@ class HomeController < ApplicationController
   end
 
   def timeline_temp
-    @user = User.find(params[:id])   
+    # @user = User.find(params[:id])   
     
     @missions = Mission.all.reverse
     @performed_missions = PerformedMission.all.reverse

@@ -18,7 +18,7 @@
   오늘 할 덕질을 내일로 미루지 말자
 </div>
 
-    <% title = ["[1일 1덕]", "데일리 팬뉴스", "아티스트 프로필"] %>
+    <% title = ["[1일 1덕]", " 데일리 팬뉴스", " 아티스트 프로필"] %>
     <div class="ui three stackable cards">
     <% for i in 1..3 do %>
         <div class="ui fluid card">
@@ -75,51 +75,46 @@
           <%= m.content %>
         </p>
       </div>
-      <div class="content" style="padding: 0;">
+      <div class="extra content" style="padding-top: 1px;
+    padding-bottom: 1px;">
         <div class="ui basic buttons mainButtongroup">
-    
-    <% if user_signed_in? %>
-      회원 ok?  
-      <% @likeClick = MissionLike.where(:mission_id => m.id, :mission_like => 1, :user_id => current_user.id) %>
-      <% if @userlike.include?(@likeClick.first) %>
-        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
-          <button class="ui button missionLike<%= m.id%>">
-            <i class="heart icon basic blue" style="cursor: pointer"></i>
-            <span class="missionLike<%= m.id %>" style="color: #54C8FF"><%= m.mission_like_count %></span>
-          </button>
-        </a>
-      <% else %>
-        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
-          <button class="ui button missionLike<%= m.id%>">
-            <i class="heart icon" style="cursor: pointer"></i>
-            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
-          </button>
-        </a>
-      <% end %>
-    
-    <% else %>
-      <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
-          <button class="ui button missionLike<%= m.id%>">
-            <i class="heart icon" style="cursor: pointer"></i>
-            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
-          </button>
-        </a>
-    <% end %>
-    
-          <button class="ui button mainComment">
-            <i class="comment icon" style="cursor :pointer"></i>1,024
-          </button>
-          <button class="ui button mainShare">
-            <i class="share icon" style="cursor :pointer"></i>30
-          </button>
-        </div>
-      </div>
-      <div class="extra content">
-        <div class="ui large transparent left icon input">
-          <i class="heart outline icon"></i>
-          <input type="text" placeholder="Add Comment...">
-        </div>
-      </div>
+            
+            <% if user_signed_in? %>
+              회원 ok?  
+              <% @likeClick = MissionLike.where(:mission_id => m.id, :mission_like => 1, :user_id => current_user.id) %>
+              <% if @userlike.include?(@likeClick.first) %>
+                <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+                  <button class="ui button missionLike<%= m.id%>">
+                    <i class="heart icon basic blue" style="cursor: pointer"></i>
+                    <span class="missionLike<%= m.id %>" style="color: #54C8FF"><%= m.mission_like_count %></span>
+                  </button>
+                </a>
+              <% else %>
+                <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+                  <button class="ui button missionLike<%= m.id%>">
+                    <i class="heart icon" style="cursor: pointer"></i>
+                    <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+                  </button>
+                </a>
+              <% end %>
+            
+            <% else %>
+              <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+                  <button class="ui button missionLike<%= m.id%>">
+                    <i class="heart icon" style="cursor: pointer"></i>
+                    <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+                  </button>
+                </a>
+            <% end %>
+            
+                  <button class="ui button mainComment">
+                    <i class="comment icon" style="cursor :pointer"></i>1,024
+                  </button>
+                  <button class="ui button mainShare">
+                    <i class="share icon" style="cursor :pointer"></i>30
+                  </button>
+                </div>
+              </div>
     </div>
 
 <% end %>

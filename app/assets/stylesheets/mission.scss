@@ -1,3 +1,77 @@
 // Place all the styles related to the mission controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+  .detailButtongroup {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .detailButtongroup .ui.button {
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
+    box-shadow: none !important;
+  }
+  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
+    box-shadow: none !important;
+  }
+  @media (max-width: 722px) {
+   .mobile-title {
+     display: block;
+   }
+   .computer-title {
+     display: none;
+   }
+   .mission {
+      box-shadow: none;
+    }
+    .ui.stackable.cards > .card.wrapping{
+      margin-left:0 !important;
+      margin-right:0 !important;
+      width: 100% !important;
+    }
+    .wrapped-image{
+      border-radius: 0 !important;
+    }
+   }
+   @media (min-width: 723px) {
+   .mobile-title {
+     display: none;
+   }
+   .computer-title {
+     display: block;
+   }
+   .mission {
+      border-radius: 2px;
+   }
+   .wrapping {
+      position: relative !important;
+      height: 500px;
+      box-shadow: none !important;
+      overflow: hidden;
+    }
+    .wrapped-image {
+      position: relative !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
+    .mission-content {
+      height: 500px; 
+      overflow-y: auto;
+    }
+   }
+
+  .mission {
+    box-shadow:0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
+    margin-top: 2rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  } 
+  .mission-image {
+    max-width: 100%;
+    max-height: auto;
+  } 
+  .mission-content {
+    box-shadow: none; 
+  }

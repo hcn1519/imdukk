@@ -7,11 +7,20 @@ class MissionController < ApplicationController
     @users = User.all
     @performed_mission = PerformedMission.where(mission_id: @mission.id)
     
+    # 미션 수행자
+    @mission_performer = Array.new
+    
+    @performed_mission.each do |m|
+      @mission_performer.push(m.user_id)
+    end
+    
     # 좋아요 용
     if user_signed_in?
       @userlike = MissionLike.where(:user_id => current_user.id, :mission_like => 1)
       @likeClick = MissionLike.where(:mission_id => @mission.id, :mission_like => 1, :user_id => current_user.id)
     end
+    
+    @mission_comment = MissionComment.where(:mission_id => @mission.id)
   end
   
   def mission_create

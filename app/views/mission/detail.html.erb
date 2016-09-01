@@ -1,76 +1,10 @@
-<style>
-  .detailButtongroup {
-    border-radius: 0 !important;
-    border: none !important;
-  }
-  .detailButtongroup .ui.button {
-    border-radius: 0 !important;
-    border: none !important;
-  }
-  .ui.basic.buttons .button:hover, .ui.basic.button:hover {
-    box-shadow: none !important;
-  }
-  .ui.basic.buttons .button:focus, .ui.basic.button:focus {
-    box-shadow: none !important;
-  }
-  @media (max-width: 722px) {
-   .mobile-title {
-     display: block;
-   }
-   .computer-title {
-     display: none;
-   }
-   .mission {
-      box-shadow: none;
-    }
-    .ui.stackable.cards > .card.wrapping{
-      margin-left:0 !important;
-      margin-right:0 !important;
-      width: 100% !important;
-    }
-   }
-   @media (min-width: 723px) {
-   .mobile-title {
-     display: none;
-   }
-   .computer-title {
-     display: block;
-   }
-   .mission {
-      border-radius: 2px;
-   }
-   .wrapping {
-      position: relative !important;
-      height: 500px;
-      box-shadow: none !important;
-      overflow: hidden;
-    }
-    .wrapped-image {
-      position: relative !important;
-      top: 50% !important;
-      transform: translateY(-50%) !important;
-      
-    }
-   }
-
-  .mission {
-    box-shadow:0px 1px 3px 0px #D4D4D5, 0px 0px 0px 1px #D4D4D5;
-    margin-top: 2rem !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  } 
-  .mission-image {
-    max-width: 100%;
-    max-height: auto;
-  } 
-
-</style>
+<!--css는 app/assets/stylesheets/mission.scss에 있습니다.-->
 <div class="ui two stackable cards mission">
   <div class="card wrapping">
   
     <!--모바일 프로필-->
     <div class="content mobile-title">
-      <div class="right floated meta">14h</div>
+      <div class="right floated meta"><%= time_ago_in_words( @mission.updated_at - 1) %> 전</div>
       <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
 
@@ -78,20 +12,20 @@
       <img class="image mission-image" src="<%= @mission.multimedia %>" />
     </div>
   </div>
-  <div class="card" style="box-shadow: none">
+  <div class="card mission-content" style="box-shadow: none;">
     <!--데스크탑 프로필-->
-    <div class="content computer-title" style="padding-bottom: 0px; position:relative; flex-grow: 0.05">
-      <div class="right floated meta">14h</div>
+    <div class="content computer-title" style="position:relative; flex-grow: 0.05">
+      <div class="right floated meta"><%= time_ago_in_words( @mission.updated_at - 1) %> 전</div>
       <img class="ui avatar image" src="/images/default-image.png"> <%= @mission_creator.nickname %>
     </div>
     
     <div class="content">
     <!--내용-->
     
-        <h3><%= @mission.title %></h3>
-        <p><%= @mission.content %></p>
+      <h3><%= @mission.title %></h3>
+      <p><%= @mission.content %></p>
 
-        <div class="ui basic buttons detailButtongroup" style="margin-left: -1.2rem">
+      <div class="ui basic buttons detailButtongroup" style="margin-left: -1.2rem">
           
     <% if user_signed_in? %>
       <!--회원 ok?  -->
@@ -127,7 +61,7 @@
             <i class="share icon" style="cursor :pointer"></i>30
           </button>
         </div>
-  <div class="ui comments">
+      <div class="ui comments">
      <div class="comment">
       <a class="avatar">
         <img src="/images/default-image.png">
@@ -145,8 +79,7 @@
     </div>
   </div>
     
-       
-    <div class="ui comments missionComments">
+      <div class="ui comments missionComments">
       <% unless @mission_comment.first.nil? %>
         <% @mission_comment.each do |c| %>
           <% @comment_user = User.where(:id => c.user_id) %>
@@ -175,38 +108,114 @@
       <% end %>
      </div>   
     </div>
-    </div>
-
-    
   </div>
+
+<!--미션 카드 전체 end  -->
 </div>
 
 
-<br><br><br><br>
-
 <!--팝업 내용물-아직 하는 중입니다-->
 <div class="ui custom popup top left transition hidden">
-  <!--<div class="ui small buttons">-->
+  <div class="ui small buttons">
     <!--원래 공유 버튼-->
-    <button class="ui facebook icon button">
-      <a href="https://www.facebook.com/dialog/share?app_id=184484190795&display=popup&e2e=%7B%7D&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&locale=en_US&mobile_iframe=false&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df189db51f1a3c14%26domain%3Dwww.fbrell.com%26origin%3Dhttp%253A%252F%252Fwww.fbrell.com%252Ff3fda3ae0438974%26relation%3Dopener%26frame%3Df2944388ebaf9bc%26result%3D%2522xxRESULTTOKENxx%2522&sdk=joey">
-        <i class="facebook icon"></i></a>
-    </button>
-    <button class="ui circular twitter icon button">
-      <a href="https://twitter.com/intent/tweet?url=https%3A//youtu.be/pBBFy6dK1OY&text=%EC%A3%BC%EA%B0%84%EC%95%84%EC%9D%B4%EB%8F%8C%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8%28Infinite%29%20207%ED%9A%8C&via=YouTube&related=YouTube,YouTubeTrends,YTCreators">
-      <i class="twitter icon"></i></a>
-    </button>
-    <button class="ui circular youtube icon button">
+    <a href="https://www.facebook.com/dialog/share?app_id=184484190795&display=popup&e2e=%7B%7D&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&locale=en_US&mobile_iframe=false&next=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FuN4_cXtJDGb.js%3Fversion%3D42%23cb%3Df189db51f1a3c14%26domain%3Dwww.fbrell.com%26origin%3Dhttp%253A%252F%252Fwww.fbrell.com%252Ff3fda3ae0438974%26relation%3Dopener%26frame%3Df2944388ebaf9bc%26result%3D%2522xxRESULTTOKENxx%2522&sdk=joey">
+      <button class="ui facebook icon button">
+        <i class="facebook icon"></i>
+      </button>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=https%3A//youtu.be/pBBFy6dK1OY&text=%EC%A3%BC%EA%B0%84%EC%95%84%EC%9D%B4%EB%8F%8C%20%EC%9D%B8%ED%94%BC%EB%8B%88%ED%8A%B8%28Infinite%29%20207%ED%9A%8C&via=YouTube&related=YouTube,YouTubeTrends,YTCreators">
+      <button class="ui twitter icon button">
+        <i class="twitter icon"></i>
+      </button>
+    </a>
+    <button class="ui youtube icon button">
       <i class="youtube icon"></i>
     </button>
 </div>   
+</div>
+
+<div class="content">
+  새 방법
+  <a href="http://www.facebook.com/sharer/sharer.php?u=<%= request.original_url %>" target="_blank">
+    <i class="facebook icon"></i>
+  </a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a>
+</div>
+
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<!--미션 수행하기 모달-->
+<%= render 'mission/createPerformedMissionModal' %>
+
+<!--여기부터 performed_mission-->
+<div class="ui centered grid" style="margin-top: 30px; margin-bottom: 30px">
+  <div class="ui animated fade button yellow" id="createPerformedMissionModal" tabindex="0">
+    <div class="visible content">미션수행하기</div>
+    <div class="hidden content">
+      덕질하자
+    </div>
+  </div>
+</div>
+
+<div class="ui three stackable cards">
+  <% @performed_mission.each_with_index do |p, index| %>
+    <div class="ui fluid card">
+      <!--프로필 파트-->
+      <div class="content">
+        <div class="right floated meta"><%= time_ago_in_words(p.created_at) %> 전</div>
+        <% unless @mission_performer.nil? %>
+        <% performer = User.find(@mission_performer[index]) %>
+        
+        <img class="ui avatar image" src="<%= performer.profile_img %>"> <%= performer.nickname %>
+      <% end %>
+      </div>
+      <!--메인 이미지-->
+      <div class="blurring dimmable image user-create-image">
+        <div class="ui dimmer">
+          <div class="content">
+            <div class="center">
+              <span id="performedMissionDetailModal<%= p.id %>">
+              <div class="ui inverted button">자세히 보기</div>
+              </span>
+            </div>
+          </div>
+        </div>
+          <img class="image" src="<%= p.multimedia %>">
+      </div>
+      <!--내용-->
+      <div class="extra content">
+        <span class="right floated">
+          <i class="heart outline like icon"></i>
+          17 likes
+        </span>
+        <i class="comment icon"></i>
+        3 comments
+      </div>
+  </div>
+<% end %>
+</div>
   
-    <!--새 방법-->
-    <a href="http://www.facebook.com/sharer/sharer.php?u=">
-      <i class="facebook icon"></i>
-    </a>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!--</div>-->
+
+<%= render 'mission/performedMissionDetailModal' %>
+
+<!--미션 콘텐츠 스크롤 생성용-->
+<script>
+$(document).ready(function(){
+  (function($) {
+      $.fn.hasScrollBar = function() {
+          return this.get(0).scrollHeight > this.height();
+      }
+  })(jQuery);
+
+  if ( $('.mission-content').hasScrollBar() ) {
+    $(".computer-title").css("padding-bottom", "40px");
+  } else {
+    $(".computer-title").css("padding-bottom", "0px");
+  }
+});
+</script>
 
 
 
@@ -221,65 +230,7 @@ $(document).ready(function(){
 });
 </script>
 
-<!--미션 수행하기 모달-->
-<%= render 'mission/createPerformedMissionModal' %>
 
-<!--여기부터 performed_mission-->
-<div class="ui animated fade button centered yellow" id="createPerformedMissionModal" tabindex="0">
-  <div class="visible content">미션수행하기</div>
-  <div class="hidden content">
-    덕질하자
-  </div>
-</div>
-
-
-<br>
-<br>
-<br>
-<br>
-
-
-<div class="ui three stackable cards">
-  <% @performed_mission.each do |m| %>
-    <div class="ui fluid card">
-    <!--프로필 파트-->
-    <div class="content">
-      <div class="right floated meta"><%= time_ago_in_words(m.created_at.in_time_zone("Asia/Seoul")) %> ago</div>
-      <% if @mission_creator.nil? %>
-      <% creator = User.find(@mission_creator[index]) %>
-      
-      <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
-    <% end %>
-    </div>
-    <!--메인 이미지-->
-    <div class="blurring dimmable image user-create-image">
-      <div class="ui dimmer">
-        <div class="content">
-          <div class="center">
-            <span id="performedMissionDetailModal<%= m.id %>">
-            <div class="ui inverted button">자세히 보기</div>
-            </span>
-          </div>
-        </div>
-      </div>
-        <img class="image" src="<%= m.multimedia %>">
-    </div>
-    <!--내용-->
-    <div class="extra content">
-      <span class="right floated">
-        <i class="heart outline like icon"></i>
-        17 likes
-      </span>
-      <i class="comment icon"></i>
-      3 comments
-    </div>
-  </div>
-<% end %>
-</div>
-  
-
-<%= render 'mission/performedMissionDetailModal' %>
-  
 <script>
 $(document).ready(function(){
   $('.cards .user-create-image').dimmer({

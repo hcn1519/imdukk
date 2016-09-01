@@ -44,7 +44,7 @@
       <!--프로필 파트-->
       <div class="content">
         <div class="right floated meta"><%= time_ago_in_words(m.created_at) %> 전</div>
-        <% if @mission_creator.nil? %>
+        <% unless @mission_creator.nil? %>
           <% creator = User.find(@mission_creator[index]) %>
           
           <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>

@@ -1,6 +1,17 @@
 class User::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
 
+  protect_from_forgery
+
+  def after_sign_in_path_for(resource)
+    sign_in_url = new_user_session_url
+    if request.referer == sign_in_url
+      home_main_path
+    else
+      home_main_path
+    end
+  end
+  
   # GET /resource/sign_in
   # def new
   #   super

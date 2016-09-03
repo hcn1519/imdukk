@@ -1,51 +1,52 @@
-<h1 class="ui header">수정하기</h1>
-    <%= form_tag('/mission/performed_mission_edit/' + @performed_mission.id.to_s, :method => 'POST', :multipart => true) do %>
-    <div class="image content">
-      <div class="ui medium image">
-        <!--<img src="/images/test1.jpg">-->
+
+    <h1 class="ui header">수정하기</h1>
+        <%= form_tag('/mission/performed_mission_edit/' + @performed_mission.id.to_s, :method => 'POST', :multipart => true) do %>
+        <div class="image content">
+          <div class="ui medium image">
+            <!--<img src="/images/test1.jpg">-->
+            
+            <input value="<%= @performed_mission.multimedia %>" name="multimedia" type="file" id="file" accept="image/*" onchange="getThumbnail(this,$('.imagePreview'))">
+            <div id="image"><img class="image imagePreview" src="<%= @performed_mission.multimedia %>"></div>
+            
+            <!--<input type="file" name="mission_multimedia" accept="image/*">-->
+          </div>
         
-        <input value="<%= @performed_mission.multimedia %>" name="multimedia" type="file" id="file" accept="image/*" onchange="getThumbnail(this,$('.imagePreview'))">
-        <div id="image"><img class="image imagePreview" src="<%= @performed_mission.multimedia %>"></div>
-        
-        <!--<input type="file" name="mission_multimedia" accept="image/*">-->
-      </div>
-    
-      <div class="description">
-        <div class="ui header">
-          <div class="ui form">
-            <div class="field">
-              <br>
-              <p>ㄴ<%= @performed_mission.title %></p>
-              <!--<label></label>-->
-              <!--<div class="ui disabled input">-->
-              <!--  <input value="<#%= @performed_mission.title %>" name="title" type="text" placeholder="미션 제목">-->
-              <!--</div>-->
+          <div class="description">
+            <div class="ui header">
+              <div class="ui form">
+                <div class="field">
+                  <br>
+                  <p>ㄴ<%= @performed_mission.title %></p>
+                  <!--<label></label>-->
+                  <!--<div class="ui disabled input">-->
+                  <!--  <input value="<#%= @performed_mission.title %>" name="title" type="text" placeholder="미션 제목">-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="ui form">
+              <div class="field">
+                <label></label>
+                <textarea name="content" placeholder="미션 내용"><%= @performed_mission.content %></textarea>
+              </div>
             </div>
           </div>
+          
         </div>
-        <div class="ui form">
-          <div class="field">
-            <label></label>
-            <textarea name="content" placeholder="미션 내용"><%= @performed_mission.content %></textarea>
-          </div>
+        
+        <div class="actions">
+          <!--<div class="ui black deny button">-->
+          <!--  취소-->
+          <!--</div>-->
+        
+            <button class="ui positive right labeled icon button">
+              수정하기
+              <i class="write icon"></i>
+            </button>
+    
         </div>
-      </div>
-      
-    </div>
+      <% end %>
     
-    <div class="actions">
-      <!--<div class="ui black deny button">-->
-      <!--  취소-->
-      <!--</div>-->
-    
-        <button class="ui positive right labeled icon button">
-          수정하기
-          <i class="write icon"></i>
-        </button>
-
-    </div>
-  <% end %>
-  
   
 <script type="text/javascript">
     /**
@@ -64,8 +65,7 @@
        }
     }
 </script>
-        
-        
+
         
         
         

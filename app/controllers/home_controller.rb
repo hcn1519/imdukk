@@ -34,17 +34,32 @@ class HomeController < ApplicationController
     end
     @userCreatedMission = Mission.where(user_id: @user.id)
     @userPerformedMission = PerformedMission.where(user_id: @user.id)
-    @missions = Mission.all.reverse
-    @performed_missions = PerformedMission.all.reverse
+    @missions = Mission.where(user_id: @user.id).reverse
+    @performed_missions = PerformedMission.where(user_id: @user.id).reverse
     @user.profile_img = params[:profile_img]
-    
+    @missions_like = @missionLike.to_a.count
+    #덕포인트 
+    @duckpoint = @missions.to_a.count + @performed_missions.to_a.count
+    @timeline_duckpoint = @duckpoint*5
+    # @timeline_duckpoint = (5..100000).to_a.count()
+      if @timeline_duckpoint >= 5 and @timeline_duckpoint < 50
+          path = view_context.image_path('images/duck1.png')
+      elsif @timeline_duckpoint >= 50 and @timeline_duckpoint < 100
+          path = view_context.image_path('images/duck2.png')
+      elsif @timeline_duckpoint >= 100 and @timeline_duckpoint < 500
+          path = view_context.image_path('images/duck3.png')
+      elsif @timeline_duckpoint >= 500 and @timeline_duckpoint < 1000
+          path = view_context.image_path('images/duck4.png')
+      else @timeline_duckpoint >= 5000
+          path = view_context.image_path('images/duck5.png')
+      end
   end
-  
+ 
   def profile_img_upload
       @user = User.find(params[:id])  
       @user.profile_img = params[:profile_img]
       @user.save
-      redirect_to '/home/timeline/<%= @user.id %>'
+      redirect_to controller: 'home', action: "timeline", id: current_user.id
   end
 
   def timeline_temp

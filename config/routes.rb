@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   post 'mission/performed_mission_create'                                                 #수행자가 미션 작성하는 페이지
   post 'mission/performed_mission_create/:id' => 'mission#performed_mission_create'
    
-  post 'home/timeline/:id' => 'home#profile_img_upload'                                       
+  # post 'home/timeline/profile_img_upload/'   
+  post 'home/timeline/profile_img_upload/:id' => 'home#profile_img_upload'
+   
+  post 'home/timeline/:id' => 'home#timeline'                                       
                                                                                           # 삭제
   get 'mission/mission_destroy/:id' => 'mission#mission_destroy'                                  # 작성자가 본인 미션글 삭제
   get 'mission/performed_mission_destroy/:id' => 'mission#performed_mission_destroy'      # 수행자가 본인 수행글 삭제
@@ -42,7 +45,7 @@ Rails.application.routes.draw do
   get 'home/timeline/:id', to: 'home#timeline'
   get 'home/timeline_temp'
   get 'home/missionLike/:id', to: 'home#missionLike'
-  devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations", sessions: 'user/sessions' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'user/omniauth_callbacks', registrations: "user/registrations" }
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

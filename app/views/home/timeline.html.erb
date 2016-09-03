@@ -62,38 +62,44 @@ $(document).ready(function(){
 <!--프로필-->
 <div class="ui segment" style="border:none;">
   <div class="ui equal width grid">
-    <div class="Left floated right aligned six wide column">
       <!--<img src="/images/default-image.png" style="float:right; width:150px;margin-left:40px;"> <5= @user.nickname 5>-->
         <!--<img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">-->
-        <div class="blurring dimmable image user-create-image">
-        <div class="ui dimmer">
-          <div class="content">
-            <div class="center">
-              <span id="userProfileImageUploader">
-              <div class="ui inverted icon"><i class="upload icon"></i></div>
-              </span>
+        <div class="Left floated right aligned three wide column"></div>
+          
+        <div class="Left floated right aligned three wide column">
+            <div class="blurring dimmable image user-create-image">
+              <div class="ui dimmer">
+                <div class="content">
+                  <div class="center">
+                    <span id="userProfileImageUploader">
+                    <div class="ui inverted icon"><i class="upload icon"></i></div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <img class="ui circular image" src="/images/default_profile.jpg"  style="float:right;margin-top:10px;">
+              <!--width:150px;margin-left: 40px;-->
             </div>
-          </div>
         </div>
-        <img class="ui circular image" src="/images/default-image.png" style="float:right; width:150px;margin-left: 40px;">
-    </div>
-      
 
-    </div>
-    <div class="Right floated left aligned column">
-      <h2 class="ui header" style="margin-top: 44px;margin-bottom: 0px;"><%= @user.nickname %>
-      &nbsp; 
-      <img src="/images/profile_duck.png" style="width:30px;" ></h2>
-      <p style="font-size:12px;">
-        <strong>Duck Pt. </strong>525 &nbsp;
-        <strong>Friends </strong>75 &nbsp;
-        <strong>Likes </strong>129&nbsp; </p>
-    </div>
+        <div class="Right floated left aligned column">
+          <h2 class="ui header" style="margin-top: 70px;margin-bottom: 0px;"><%= @user.nickname %>
+          &nbsp; 
+          <!--<img src="/images/" style="width:30px;" ></h2>-->
+            <%= image_tag("images/duck/:id.png", width: '30', alt: "duck_level", class: "duck") %>
+          <p style="font-size:12px;">
+            <strong>Duck Pt. </strong><%= @timeline_duckpoint %> &nbsp;
+            <strong>Friends </strong>75 &nbsp;
+            <strong>Likes </strong><%= @missions_like %> &nbsp; </p>
+        </div>
   </div>
 </div>
 
 
-
+  <br>
+  <br>
+  <br>
+  <br>
   <br>
   <div class="right floated meta">
     <button class="ui button black gridSwitch">
@@ -119,7 +125,7 @@ $(document).ready(function(){
   <!--카드-->
   <i class="grid layout icon" style="display: none;"></i>
   <i class="square icon" style="display: none;"></i>
-  
+
   <span style="float:right;"><strong>총 <%= @missions.to_a.count %>개</strong></span>
   <br>
   <br>
@@ -301,3 +307,5 @@ $(document).ready(function(){
   });
 });
 </script>
+
+

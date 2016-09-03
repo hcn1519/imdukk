@@ -78,62 +78,75 @@ class MissionController < ApplicationController
     
   def mission_destroy
     # 내용 어디에 쓰든 mission_destroy로 오게 한다! --view 
-    @destroy_mission= Mission.find(params[:id])
+    @mission= Mission.find(params[:id])
     
-    # if @mission.email == current_user.email
-    @destroy_mission.destroy
-    # end
+    # if @post.email == current_user.email
+    #   @post.destroy
+    # end   
+    
+    if @mission.user_id == current_user.id
+    @mission.destroy
+    end
+    
     redirect_to :back
   end
   
   def mission_editview
     @mission = Mission.find(params[:id])
 
-    # if @mission.email != current_user.email
-      # redirect_to '/timeline_temp'/
-    # end
+    if @mission.user_id != current_user.id
+      redirect_to :back
+    end
   end
   
   def mission_edit
     @mission = Mission.find(params[:id])
    
-    @mission.title = params[:title] 
-    @mission.content = params[:content] 
-    @mission.multimedia = params[:multimedia] 
-    # @post.category_id = params[:category_id]
-    @mission.save
-    
-    redirect_to '/home/timeline_temp'
+    if @mission.user_id == current_user.id
+      @mission.title = params[:title] 
+      @mission.content = params[:content] 
+      @mission.multimedia = params[:multimedia] 
+      # @post.category_id = params[:category_id]
+      @mission.save
+      
+      redirect_to controller: 'home', action: "timeline", id: current_user.id
+    else 
+      redirect_to :back
+    end
   end
   
 
   def performed_mission_destroy
     # 내용 어디에 쓰든 performed_mission_destroy로 오게 한다! --view 
-    @destroy_performed_mission= PerformedMission.find(params[:id])
+    @performed_mission= PerformedMission.find(params[:id])
     
-    # if @mission.email == current_user.email
-    @destroy_performed_mission.destroy
-    # end
+    if @performed_mission.user_id == current_user.id
+      @performed_mission.destroy
+    end
     redirect_to :back
   end
   
   def performed_mission_editview
     @performed_mission = PerformedMission.find(params[:id])
 
-    # if @mission.email != current_user.email
-      # redirect_to '/timeline_temp'
-    # end
+    if @performed_mission.user_id != current_user.id
+      redirect_to :back
+    end
   end
   
   def performed_mission_edit
     @performed_mission = PerformedMission.find(params[:id])
    
-    @performed_mission.content = params[:content] 
-    @performed_mission.multimedia = params[:multimedia] 
-    # @post.category_id = params[:category_id]
-    @performed_mission.save
-    
-    redirect_to '/home/timeline_temp'
+    if @performed_mission.user_id == current_user.id
+      @performed_mission.content = params[:content] 
+      @performed_mission.multimedia = params[:multimedia] 
+      # @post.category_id = params[:category_id]
+      @performed_mission.save
+      
+      redirect_to controller: 'home', action: "timeline", id: current_user.id
+    else 
+      redirect_to :back
+    end
   end
 
   def mission_creator_timeline

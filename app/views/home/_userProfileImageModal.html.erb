@@ -1,7 +1,9 @@
 <!-- Modal Structure -->
   <div class="ui modal" id="userProfileImageUploaderContent">
+    <div class="modal_title">
+    <i class="close icon"></i>
         <h1 class="ui header">수정하기</h1>
-            <%= form_tag('/home/timeline/'+ @user.id.to_s, :method => 'POST', :multipart => true) do %>
+            <%= form_tag('/home/timeline/profile_img_upload/'+ @user.id.to_s, :method => 'POST', :multipart => true) do %>
             <div class="image content">
               <div class="ui medium image">
                 <!--<img src="/images/test1.jpg">-->
@@ -21,9 +23,10 @@
                   <i class="check icon"></i>
                 </button>
 
-    </div>
-  <% end %>
-</div>
+            </div>
+          <% end %>
+        </div>
+      </div>
 
 
 <script>
@@ -57,4 +60,22 @@ $(document).ready(function(){
        }
     }
 </script>
+
+
+<!--미션 콘텐츠 스크롤 생성용-->
+<!--<script>-->
+<!--$(document).ready(function(){-->
+<!--  (function($) {-->
+<!--      $.fn.hasScrollBar = function() {-->
+<!--          return this.get(0).scrollHeight > this.height();-->
+<!--      }-->
+<!--  })(jQuery);-->
+
+<!--  if ( $('.ui modal').hasScrollBar() ) {-->
+<!--    $(".modal_title").css("padding-bottom", "40px");-->
+<!--  } else {-->
+<!--    $(".modal_title").css("padding-bottom", "0px");-->
+<!--  }-->
+<!--});-->
+<!--</script>        -->
         

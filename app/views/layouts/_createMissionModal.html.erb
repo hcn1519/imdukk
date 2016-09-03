@@ -1,5 +1,4 @@
 <style>
- /*body {margin: 10px}*/
 .where {
   display: block;
   margin: 25px 15px;
@@ -98,8 +97,42 @@
 }
 </style>
 
+<!--<div class="ui first coupled modal transition visible active" style="margin-top: -140px; display: block !important;">-->
+<!--    <div class="header">-->
+<!--      Modal #1-->
+<!--    </div>-->
+<!--    <div class="image content">-->
+<!--      <div class="image">-->
+<!--        <i class="right arrow icon"></i>-->
+<!--      </div>-->
+<!--      <div class="description">-->
+<!--        <p>We have more to share with you. Follow us along to modal 2</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="actions">-->
+<!--      <div class="ui primary button">Proceed</div>-->
+<!--    </div>-->
+<!--  </div>-->
+  
+<!--<div class="ui small second coupled modal transition visible active" style="margin-top: -92.5px; display: block !important;">-->
+<!--    <div class="header">-->
+<!--      Modal #2-->
+<!--    </div>-->
+<!--    <div class="content">-->
+<!--      <div class="description">-->
+<!--        <p>That's everything!</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="actions">-->
+<!--      <div class="ui approve button">-->
+<!--        <i class="checkmark icon"></i>-->
+<!--        All Done-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>  -->
+
 <!-- Modal Structure -->
-<div class="ui long modal" id="createMissionModalContent">
+<div class="ui coupled long modal" id="createMissionModalContent">
   <i class="close icon"></i>
   
   <div class="header">
@@ -170,7 +203,7 @@ $(document).ready(function(){
 });
 </script>    
     
-    
+
 <script>
 $(document).ready(function(){
   $('#createMissionModalDesktop').click(function(){
@@ -202,4 +235,20 @@ function getThumbnail(html, $target) {
        reader.readAsDataURL(html.files[0]);
    }
 }
+</script>
+<script>
+  // initialize all modals
+$('.ui.coupled.long.modal')
+  .modal({
+    allowMultiple: true
+  })
+;
+// open second modal on first modal buttons
+$('.second.modal')
+  .modal('attach events', '.first.modal .button')
+;
+// show first immediately
+$('.first.modal')
+  .modal('show')
+;
 </script>

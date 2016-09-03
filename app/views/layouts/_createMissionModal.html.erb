@@ -141,8 +141,15 @@
             <textarea name="mission_content" placeholder="미션 내용"></textarea>
           </div>
         </div>
+      
+        <div class="ui mission form" style="margin-bottom: 15px">
+          <div class="field">
+            <%= text_field_tag :creator_tag, nil, :placeholder => '#해시태그' %>
+          </div>
+        </div>
+        
       </div>
-      </div>
+    </div>
    
     <div class="actions2">
         <button class="ui positive right labeled icon button">
@@ -151,18 +158,26 @@
         </button>
     </div>
   <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
- </div>
-    </div>
-    </div>
-    </div>
+
+<script>
+$(document).ready(function(){
+  $("#creator_tag").tokenfield();
+});
+</script>    
+    
+    
 <script>
 $(document).ready(function(){
   $('#createMissionModalDesktop').click(function(){
-    $('#createMissionModalContent').modal('show');
+    $('#createMissionModalContent').modal({closable  : false}).modal('show');
   });
   $('#createMissionModalTablet').click(function(){
-    $('#createMissionModalContent').modal('show');
+    $('#createMissionModalContent').modal({closable  : false}).modal('show');
   });
 });
 </script>

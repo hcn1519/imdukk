@@ -9,4 +9,7 @@ class Mission < ActiveRecord::Base
     validates :content, presence: { message: "내용을 입력하세요." }
     # validates :content, presence: { message: "사진 또는 영상을 첨부하세요." }
     mount_uploader :multimedia, MissionMultimediaUploader
+    
+    acts_as_taggable 
+    acts_as_taggable_on :creator_hashtags
 end

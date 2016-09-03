@@ -8,6 +8,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 gem 'omniauth-twitter'
+gem 'acts-as-taggable-on', '~> 4.0'
+gem 'jquery-ui-rails'
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem "font-awesome-rails"

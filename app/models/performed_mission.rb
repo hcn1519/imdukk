@@ -7,4 +7,7 @@ class PerformedMission < ActiveRecord::Base
     has_many :performed_mission_comments, :through => :performed_mission_comment, :source => :user
     belongs_to :category
     mount_uploader :multimedia, PerformedMissionMultimediaUploader
+    
+    acts_as_taggable 
+    acts_as_taggable_on :user_hashtag
 end

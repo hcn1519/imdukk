@@ -15,9 +15,11 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui/autocomplete
  *= require_self
  */
 @import 'animate.min.css';
+@import 'semantic-tokenfield.min.css';
 @import 'mission';
 * {
   font-family: 'Spoqa Han Sans', 'Sans-serif';

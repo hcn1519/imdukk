@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/autocomplete
 //= require semantic-ui
+//= require semantic-tokenfield.min
 //= require turbolinks

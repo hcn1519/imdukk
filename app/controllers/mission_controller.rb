@@ -33,16 +33,12 @@ class MissionController < ApplicationController
     # 지금 로그인 한 사람
     @mission.multimedia = params[:mission_multimedia]
     
-    # file = params[:mission_multimedia]
-    # uploader = MissionMultimediaUploader.new
-    # uploader.store!(file)
-    # @mission.multimedia = uploader.url
-    #이건옛날꺼 @mission.multimedia = params[:mission_multimedia]
+    @mission.creator_hashtag_list.add(params[:creator_tag], parse: true)
     
     if @mission.save
       redirect_to :back
     else
-      render text: mission.errors.messages[:mission_content].first
+      render text: @mission.errors.messages[:mission_content].first
     end
     
   end

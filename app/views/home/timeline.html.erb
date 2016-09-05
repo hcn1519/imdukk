@@ -13,7 +13,17 @@
   .ui.basic.buttons .button:focus, .ui.basic.button:focus {
     box-shadow: none !important;
   }
-
+  
+  .ui.segment.profile {
+    background: url("/images/bts_6.png") repeat; 
+  }
+  
+  .ui.segment.box{
+      /*opacity: 0.7 !important;*/
+      /*border: none;*/
+      filter: alpha(opacity=80); /* For IE8 and earlier */
+      background-color: rgba( 2, 2, 2, 0.5 );
+  }
   /*.mainLike1:hover, .mainLike2:hover, .mainLike3:hover, .mainLike4:hover, .mainLike5:hover, .mainLike6:hover  {*/
   /*  border: none !important;*/
   /*}*/
@@ -60,8 +70,9 @@ $(document).ready(function(){
 
 
 <!--프로필-->
-<div class="ui segment" style="border:none;">
-  <div class="ui equal width grid">
+<div class="ui segment profile" style="border:none;">
+  <div class="ui segment box">
+    <div class="ui equal width grid">
       <!--<img src="/images/default-image.png" style="float:right; width:150px;margin-left:40px;"> <5= @user.nickname 5>-->
         <!--<img class="ui circular image" src="/images/choajoa3.png" style="float:right; width:150px;margin-left: 40px;">-->
         <div class="Left floated right aligned three wide column"></div>
@@ -81,20 +92,20 @@ $(document).ready(function(){
               <!--width:150px;margin-left: 40px;-->
             </div>
         </div>
-
+    
         <div class="Right floated left aligned column">
-          <h2 class="ui header" style="margin-top: 70px;margin-bottom: 0px;"><%= @user.nickname %>
+          <h2 class="ui header duck" style="margin-top: 70px;margin-bottom: 0px;color:white"><%= @user.nickname %>
           &nbsp; 
-          <!--<img src="/images/" style="width:30px;" ></h2>-->
-            <%= image_tag("images/duck/:id.png", width: '30', alt: "duck_level", class: "duck") %>
-          <p style="font-size:12px;">
+          <img src="<%= @user.duck_img %>" style="width:30px;" ></h2>
+          <!--<5= image_tag("images/duck/" +@duck_img_id +  ".png" , width: '30', alt: "duck_level", class: "duck") 5>-->
+          <p style="font-size:12px;color:white;">
             <strong>Duck Pt. </strong><%= @timeline_duckpoint %> &nbsp;
             <strong>Friends </strong>75 &nbsp;
-            <strong>Likes </strong><%= @missions_like %> &nbsp; </p>
+            <strong>Likes </strong><%= @mission_likes %> &nbsp; </p>
         </div>
+    </div>
   </div>
 </div>
-
 
   <br>
   <br>

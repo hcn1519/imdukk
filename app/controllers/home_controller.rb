@@ -36,22 +36,24 @@ class HomeController < ApplicationController
     @userPerformedMission = PerformedMission.where(user_id: @user.id)
     @missions = Mission.where(user_id: @user.id).reverse
     @performed_missions = PerformedMission.where(user_id: @user.id).reverse
+    @mission_likes = MissionLike.where(user_id: @user.id).to_a.count
+    # 이건 타임라인 소유자가 만든 미션들이 받은 좋아요가 아니라 소유자가 좋아요를 누른 갯수다 어쩌지?
     @user.profile_img = params[:profile_img]
-    @missions_like = @missionLike.to_a.count
+
     #덕포인트 
     @duckpoint = @missions.to_a.count + @performed_missions.to_a.count
     @timeline_duckpoint = @duckpoint*5
-    # @timeline_duckpoint = (5..100000).to_a.count()
-      if @timeline_duckpoint >= 5 and @timeline_duckpoint < 50
-          path = view_context.image_path('images/duck1.png')
+    # path = view_context.image_path('images/duck4.png')
+      if @timeline_duckpoint >= 5 and @timeline_duckpoint < 25
+         @user.duck_img ="/images/duck1.png"
+      elsif @timeline_duckpoint >= 25 and @timeline_duckpoint < 50
+          @user.duck_img ="/images/duck2.png"
       elsif @timeline_duckpoint >= 50 and @timeline_duckpoint < 100
-          path = view_context.image_path('images/duck2.png')
-      elsif @timeline_duckpoint >= 100 and @timeline_duckpoint < 500
-          path = view_context.image_path('images/duck3.png')
-      elsif @timeline_duckpoint >= 500 and @timeline_duckpoint < 1000
-          path = view_context.image_path('images/duck4.png')
-      else @timeline_duckpoint >= 5000
-          path = view_context.image_path('images/duck5.png')
+          @user.duck_img ="/images/duck3.png"
+      elsif @timeline_duckpoint >= 100 and @timeline_duckpoint < 250
+          @user.duck_img ="/images/duck4.png"
+      else @timeline_duckpoint >= 250
+          @user.duck_img ="/images/duck5.png"
       end
   end
  

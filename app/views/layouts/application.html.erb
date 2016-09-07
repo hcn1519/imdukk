@@ -32,7 +32,9 @@
   <% end %>
 
   <!--footer 설정-->
-  <%= render 'layouts/footer' %>
-  
+  <% unless current_page?('/users/sign_up') or current_page?('/users/sign_in') or current_page?('/register/info1') or current_page?('/register/info2') %> 
+    <%= render 'layouts/footer' %>
+  <% end %>
+
 </body>
 </html>

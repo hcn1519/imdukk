@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20160903050831) do
   end
 
   create_table "user_points", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "duck_point"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

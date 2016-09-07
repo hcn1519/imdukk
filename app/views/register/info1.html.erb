@@ -1,48 +1,10 @@
-<style type="text/css">
-  body {
-    /*background-color: #DADADA;*/
-  }
-  body > .grid {
-    height: 100%;
-  }
-  .image {
-    margin-top: -100px;
-  }
-  .column {
-    width: 100% !important;
-    max-width: 450px !important;
-  }
-  @media (max-width: 766px) {
-    .holder{
-      height: 663px;
-    } 
-  }
-  @media (min-width:767px) {
-    .holder{
-      height: 823px;
-    } 
-  }
-  @media (min-width: 900px) {
-    .holder{
-      height: 658px;
-    } 
-  }
-  @media (min-width: 1400px) {
-    .holder{
-      height: 750px;
-    } 
-  }
-  .holder .middle {
-    height: 100%
-  }
-</style>
-<div class="holder">  
-    <div class="ui middle aligned center aligned grid">
-        <div class="column">
-            <h2 class='ui orange image header'>
-              닉네임 받기
-            </h2>
-            <%= render 'register/additionalInfo' %>
-        </div>
-    </div>
+<div class="ui middle aligned center aligned grid nicForm">
+  <div class="column nicColumn">
+    <h2 class="ui orange image header nicImage">
+      <div class="content">
+        닉네임 입력
+      </div>
+    </h2>
+    <%= render 'register/additionalInfo' %>
+  </div>
 </div>

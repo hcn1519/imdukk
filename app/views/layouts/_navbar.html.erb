@@ -38,12 +38,13 @@
   </div>
   
   <div class="ui right vertical sidebar labeled icon menu">
-    <!--프로필 탭-->
-      <a class="item" href="/home/timeline" style="line-height: 1">
-        <i class="user icon nav"></i>
-        타임라인
-      <!--만들기 탭-->
-      </a>
+
+      <!--프로필 탭-->
+        <a class="item" href="/home/timeline/<%= current_user.id %>" style="line-height: 1">
+          <i class="user icon nav"></i>
+          타임라인
+        <!--만들기 탭-->
+        </a>
       <span id="createMissionModalTablet" class="item borderless" style="cursor: pointer">
         <i class="write icon nav"></i>
         미션제작
@@ -77,6 +78,7 @@
           </div>
       </div>
       <% if user_signed_in? %>
+        <!--프로필 탭-->
         <% unless current_user.profile_img.nil? %>
           <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
             <img class="mini ui image" src="<%= current_user.profile_img %>">
@@ -91,12 +93,8 @@
       <% else %>
         <%= link_to('로그인', new_user_session_path, :class => 'item borderless') %> 
       <% end %>
-      <!--프로필 탭-->
-      <a class="item borderless" href="/home/timeline" style="line-height: 1">
-        <i class="user icon nav"></i>
-        
+
       <!--만들기 탭-->
-      </a>
       <span id="createMissionModalTablet" class="item borderless" style="cursor: pointer">
         <i class="write icon nav"></i>
       </span>
@@ -119,22 +117,23 @@
           </div>
       </div>
       <% if user_signed_in? %>
+        <!--프로필 탭-->
         <% unless current_user.profile_img.nil? %>
           <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
-            <img class="mini ui image" src="<%= current_user.profile_img %>">
+            <img class="mini ui image" src="<%= current_user.profile_img.url %>">
           </a>
         <% else %>
-
+          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
+            <img class="mini ui image" src="/images/default-image.png">
+          </a>
         <% end %>
         <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'item borderless') %>
         
       <% else %>
         <%= link_to('로그인', new_user_session_path, :class => 'item borderless') %> 
       <% end %>
-      <!--프로필 탭-->
-          <a href="/home/timeline/<%= current_user.id %>" class="item borderless">
-            <img class="mini ui image" src="/images/choajoa3.png">
-          </a>
+
+      <!--만들기 탭-->
       <span id="createMissionModalDesktop" class="item borderless" style="cursor: pointer">
         <i class="write icon nav"></i>
       </span>

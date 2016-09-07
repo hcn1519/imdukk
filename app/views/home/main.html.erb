@@ -123,6 +123,93 @@
 
 <!--render 'home/missionPreviewModal' %>-->
 
+
+<div class="ui four stackable cards">
+<% @missions.each_with_index do |m, index| %>
+     <div class="ui fluid card">
+      <!--프로필 파트-->
+      <div class="content">
+        <div class="right floated meta"><%= time_ago_in_words(m.created_at) %> 전</div>
+        <% unless @mission_creator.nil? %>
+          <% creator = User.find(@mission_creator[index]) %>
+          
+          <img class="ui avatar image" src="<%= creator.profile_img %>"> <%= creator.nickname %>
+        <% end %>
+      </div>
+      
+      <!--메인 이미지-->
+    <div class="blurring dimmable image user-create-image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <a href="/mission/detail/<%= m.id %>">
+              <div id="missionPreviewModal<%= m.id %>" class="ui inverted button">자세히 보기</div>
+            </a>
+ 
+          </div>
+        </div>
+      </div>
+        <img class="image" src="<%= m.multimedia %>">
+    </div>
+    
+      <!--내용-->
+      <div class="content">
+        <h3 class="title">
+          <%= m.title %>
+        </h3>
+        <p>
+          <%= m.content %>
+        </p>
+      </div>
+      
+      <div class="extra content" style="padding-top: 1px; padding-bottom: 1px;">
+        <div class="ui basic buttons mainButtongroup">
+    
+    <% if user_signed_in? %>
+      <!--회원 ok?  -->
+      <% @likeClick = MissionLike.where(:mission_id => m.id, :mission_like => 1, :user_id => current_user.id) %>
+      <% if @userlike.include?(@likeClick.first) %>
+        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon basic blue" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>" style="color: #54C8FF"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+      <% else %>
+        <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+      <% end %>
+    
+    <% else %>
+      <a href="/home/missionLike/<%= m.id %>" data-remote="true" id="missionLike">
+          <button class="ui button missionLike<%= m.id%>">
+            <i class="heart icon" style="cursor: pointer"></i>
+            <span class="missionLike<%= m.id %>"><%= m.mission_like_count %></span>
+          </button>
+        </a>
+    <% end %>
+    
+          <button class="ui button mainComment">
+            <i class="comment icon" style="cursor :pointer"></i><%= m.mission_comment_count %>
+          </button>
+          <button class="ui button mainShare">
+            <i class="share icon" style="cursor :pointer"></i>30
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+<% end %>
+</div>
+
+
+
+
 <script>
 $(document).ready(function(){
   $('.cards .user-create-image').dimmer({

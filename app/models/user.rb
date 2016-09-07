@@ -36,14 +36,14 @@ class User < ActiveRecord::Base
           # 트위터는 email을 제공하지 않음
           if auth.provider == "twitter"
             user = User.new(
-              profile_img: auth.info.image,
+              remote_profile_img_url: auth.info.image.gsub('http://','https://'),
               password: Devise.friendly_token[0,20]
             )    
           
           else  
             user = User.new(
               email: auth.info.email,
-              profile_img: auth.info.image,
+              remote_profile_img_url: auth.info.image.gsub('http://','https://'),
               password: Devise.friendly_token[0,20]
             )            
           end 
@@ -71,6 +71,6 @@ class User < ActiveRecord::Base
     false
   end
   
-  mount_uploader :profile_pic, UserProfileImageUploader
+  mount_uploader :profile_img, UserProfileImageUploader
   
 end

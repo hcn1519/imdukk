@@ -62,52 +62,44 @@
       display: none;
     }
 
-    /*@media only screen and (max-width: 700px) {*/
-    /*  .ui.fixed.menu {*/
-    /*    display: none !important;*/
-    /*  }*/
-    /*  .secondary.pointing.menu .item,*/
-    /*  .secondary.pointing.menu .menu {*/
-    /*    display: none;*/
-    /*  }*/
-    /*  .secondary.pointing.menu .toc.item {*/
-    /*    display: block;*/
-    /*  }*/
-    /*  .masthead.segment {*/
-    /*    min-height: 350px;*/
-    /*  }*/
-    /*  .masthead h1.ui.header {*/
-    /*    font-size: 2em;*/
-    /*    margin-top: 1.5em;*/
-    /*  }*/
-    /*  .masthead h2 {*/
-    /*    margin-top: 0.5em;*/
-    /*    font-size: 1.5em;*/
-    /*  }*/
-    /*}*/
-  </style>
+body > .grid {
+  height: 100% !important;
+}
+.column {
+  width: 100% !important;
+}
+@media(min-width: 600px){
+  .duck {
+   width: 300px !important; 
+  }
+}
+@media(max-width: 599px){
+  .duck {
+   width: 200px !important; 
+  }
+}
+</style>
 
-<body class="pushable">
-<!-- Page Contents -->
-<div class="pusher">
-  <div class="ui vertical masthead center aligned segment">
-
-    <div class="ui container">
-      <div class="ui large secondary menu">
-        <div class="right item">
-          <% if user_signed_in? %>
-          <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui black basic button') %>
-          <% else %>
-          <a class="ui black basic button" href="/users/sign_in">로그인</a>
-          <% end %>
-        </div>
-      </div>
+<!--시작 페이지용 navbar-->
+<div class="ui container">
+  <div class="ui large secondary menu" style="margin-top: 10px">
+    <div class="right item">
+      <% if user_signed_in? %>
+      <%= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui black basic button') %>
+      <% else %>
+      <a class="ui black basic button" href="/users/sign_in">로그인</a>
+      <% end %>
     </div>
+  </div>
+</div>
 
+<!-- Page Contents -->
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
     <div class="ui text container">
       <h1 class="ui header">
         <div class="ui header">
-          <img src="/images/yellow_duck_logo.png" class="image animated infinite jello">
+          <img src="/images/yellow_duck_logo.png" class="image animated infinite jello duck">
         </div>
         <div class="content">
         덕질할땐?
@@ -120,18 +112,51 @@
         <a class="ui yellow button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>
       <% end %>
     </div>
+  </div>
+</div>
     <img src="/images/perform.png" style="width:100%">
     <img src="/images/perform2.png" style="width:100%">
     <img src="/images/point.png" style="width:100%">
     <a href="https://www.facebook.com/imdukk"><h1>https://www.facebook.com/imdukk</h1></a>
     <h1>페이스북에서 <strong>'아임덕'</strong>을 검색하세요.</h1>
     <br>
-</div>
-</div>
 
-</body>
+<!--<div class="pusher">-->
+<!--  <div class="ui vertical masthead center aligned segment">-->
 
+    <!--<div class="ui container">-->
+    <!--  <div class="ui large secondary menu">-->
+    <!--    <div class="right item">-->
+    <!--      <#% if user_signed_in? %>-->
+          <%#= link_to('로그아웃', destroy_user_session_path, :method => :delete, :class => 'ui black basic button') %>
+    <!--      <#% else %>-->
+    <!--      <a class="ui black basic button" href="/users/sign_in">로그인</a>-->
+    <!--      <#% end %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
 
-  <script>
-
-  </script>
+<!--    <div class="ui text container">-->
+<!--      <h1 class="ui header">-->
+<!--        <div class="ui header">-->
+<!--          <img src="/images/yellow_duck_logo.png" class="image animated infinite jello">-->
+<!--        </div>-->
+<!--        <div class="content">-->
+<!--        덕질할땐?-->
+<!--        </div>-->
+<!--      </h1>-->
+<!--      <h2>아임덕</h2>-->
+<!--      <%# if user_signed_in? %>-->
+<!--        <%#= link_to('메인으로 가기', home_main_path, :class => 'ui yellow button') %>-->
+<!--      <%# else %>-->
+<!--        <a class="ui yellow button" href="/users/sign_up">시작하기<i class="right arrow icon"></i></a>-->
+<!--      <%# end %>-->
+<!--    </div>-->
+    <!--<img src="/images/perform.png" style="width:100%">-->
+    <!--<img src="/images/perform2.png" style="width:100%">-->
+    <!--<img src="/images/point.png" style="width:100%">-->
+    <!--<a href="https://www.facebook.com/imdukk"><h1>https://www.facebook.com/imdukk</h1></a>-->
+    <!--<h1>페이스북에서 <strong>'아임덕'</strong>을 검색하세요.</h1>-->
+    <!--<br>-->
+<!--</div>-->
+<!--</div>-->

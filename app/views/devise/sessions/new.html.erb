@@ -1,41 +1,15 @@
 <%= stylesheet_link_tag 'signupin', media: 'all', 'data-turbolinks-track' => true %>
-<style type="text/css">
-  body {
-    /*background-color: #DADADA;*/
-  }
-  body > .grid {
-    height: 100%;
-  }
-  .image {
-    margin-top: -100px;
-  }
-  .column {
-    width: 100% !important;
-    max-width: 450px !important;
-  }
-  .holder {
-    height: 800px
-  }
-  .holder .middle {
-    height: 100%
-  }
-  .ui.checkbox {
-    float: left;
-    margin-bottom : 10px;
-  }
-</style>
-  
-<div class="holder">
-<div class="ui middle aligned center aligned grid">
-  <div class="column">
-  <h2 class='ui orange image header'>
+
+<div class="ui middle aligned center aligned grid loginForm">
+  <div class="column loginColumn">
+    <h2 class="ui orange image header loginImage">
       로그인
     </h2>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {class: "ui large form"}) do |f| %>
-<div class="ui raised segment">
+<div class="ui raised segment loginBox">
   <div class="ui field">
     <%= f.label :email, :class => 'ui left aligned header' %>
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email %>
   </div>
 
   <div class="ui field">
@@ -54,8 +28,7 @@
     <%= f.submit "Log in", :class => 'ui fluid small yellow submit button' %>
   </div>
 <% end %>
-    </div>
+  </div>  
     <%= render "devise/shared/links" %>
   </div>
-</div>
 </div>

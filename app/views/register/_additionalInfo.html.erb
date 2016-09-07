@@ -1,4 +1,4 @@
-<%= form_tag(register_infoget_path, :class => 'ui form') do %>
+<%= form_tag(register_infoget_path, :class => 'ui large form') do %>
   <% if @user.email.nil? or @user.email == '' %>
   <div class="ui raised segment">  
     <div class="field">
@@ -28,8 +28,7 @@
       </div>
     </div>
   </div>
-  
-  <%= submit_tag "제출", :class => 'ui primary button' %>
+    <%= submit_tag "제출", :class => 'ui fluid large yellow submit button' %>
 <% end %>
 </div>
 </div>

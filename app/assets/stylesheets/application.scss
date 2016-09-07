@@ -2,6 +2,15 @@
 @import "font-awesome";
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 
+* {
+  font-family: 'Spoqa Han Sans', 'Lato' !important;
+}
+i.icon {
+  font-family: 'icons' !important;
+}
+// i.icon {
+//   font-family: 'Lato' !important;
+// }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -21,6 +30,4 @@
 @import 'animate.min.css';
 @import 'semantic-tokenfield.min.css';
 @import 'mission';
-* {
-  font-family: 'Spoqa Han Sans', 'Sans-serif';
-}
+@import 'register';
